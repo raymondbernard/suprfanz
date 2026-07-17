@@ -447,9 +447,12 @@ class MessengerTerminal:
         
         return None
     
-    def create_playwright_script(self, message: str, messenger_url: str = None) -> str:
+    def create_playwright_script(self, message: str, messenger_url: str = None, contact_name: str = None) -> str:
         """Create Node.js Playwright script - navigates to contact's URL and types message"""
         escaped_message = message.replace('\\', '\\\\').replace('`', '\\`').replace('$', '\\$')
+        
+        # Safe filename for screenshots
+        safe_name = (contact_name or 'unknown').replace(' ', '_').replace('.', '_').replace('/', '_')
         
         # Navigation code if URL provided
         nav_code = ''
@@ -461,6 +464,12 @@ class MessengerTerminal:
             console.log('Navigation slow, continuing anyway...');
         }});
         console.log('Page loaded, waiting for render...');
+        
+        // Take BEFORE screenshot
+        try {{
+            await page.screenshot({{ path: 'before_{safe_name}.png', fullPage: false }});
+            console.log('Before screenshot saved: before_{safe_name}.png');
+        }} catch(e) {{ console.log('Screenshot failed:', e.message); }}
         
         // Wait for the textbox to be visible (page fully rendered)
         try {{
@@ -518,6 +527,12 @@ class MessengerTerminal:
         
         console.log('SUCCESS: Message sent!');
         
+        // Take AFTER screenshot
+        try {{
+            await page.screenshot({{ path: 'after_{safe_name}.png', fullPage: false }});
+            console.log('After screenshot saved: after_{safe_name}.png');
+        }} catch(e) {{ console.log('After screenshot failed:', e.message); }}
+        
         await browser.close();
         
     }} catch (error) {{
@@ -562,7 +577,7 @@ class MessengerTerminal:
             # Run Playwright: navigate + type + send
             print("   Sending...")
             
-            script_content = self.create_playwright_script(message, contact.messenger_url)
+            script_content = self.create_playwright_script(message, contact.messenger_url, contact.fb_name)
             temp_script = DATA_DIR / "temp_send.js"
             temp_script.write_text(script_content, encoding='utf-8')
             
