@@ -405,12 +405,27 @@ class MessengerTerminal:
         
         print("   Launching Chrome...")
         
-        # Use PowerShell Start-Process - the ONLY method that reliably opens Chrome on this system
-        args_str = f"--user-data-dir={user_data} --profile-directory={PROFILE} --start-maximized --disable-blink-features=AutomationControlled --remote-debugging-port=9222 --remote-allow-origins=* --no-first-run --no-default-browser-check --no-restore-last-session {url}"
+        # Use PowerShell Start-Process - properly escape each argument separately
+        print("   Launching Chrome...")
+        
+        # Build ArgumentList as separate quoted items so spaces in paths don't split
+        ps_args = [
+            f"'--user-data-dir={user_data}'",
+            f"'--profile-directory={PROFILE}'",
+            "'--start-maximized'",
+            "'--disable-blink-features=AutomationControlled'",
+            "'--remote-debugging-port=9222'",
+            "'--remote-allow-origins=*'",
+            "'--no-first-run'",
+            "'--no-default-browser-check'",
+            "'--no-restore-last-session'",
+            f"'{url}'"
+        ]
+        args_list = ",".join(ps_args)
         
         subprocess.Popen([
             'powershell', '-Command',
-            f"Start-Process -FilePath '{CHROME_EXE}' -ArgumentList '{args_str}'"
+            f"Start-Process -FilePath '{CHROME_EXE}' -ArgumentList {args_list}"
         ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         
         # Wait for debug port
