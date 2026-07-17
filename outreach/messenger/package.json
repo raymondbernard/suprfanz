@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "csv-parse": "^7.0.1",
+    "csv-parser": "^3.2.1",
     "csv-stringify": "^6.8.1",
     "playwright": "^1.61.1"
   }
