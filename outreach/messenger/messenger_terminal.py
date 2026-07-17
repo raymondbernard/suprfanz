@@ -241,7 +241,7 @@ class MessengerTerminal:
             with open(CSV_PATH, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    if only_pending and row.get('message_sent') == 'true':
+                    if only_pending and row.get('message_sent') in ('true', 'bad'):
                         continue
                     
                     profile_id = row.get('fb_profile_id', '').lstrip('/')
@@ -336,6 +336,35 @@ class MessengerTerminal:
         else:
             self.launch_chrome("https://www.messenger.com")
         return self.is_chrome_connected()
+    
+    def mark_contact_bad(self, contact: Contact, reason: str):
+        """Mark a contact as bad profile - sets message_sent=true with error in last_error
+        so it's permanently skipped from future runs"""
+        if not CSV_PATH.exists():
+            return
+        
+        try:
+            rows = []
+            with open(CSV_PATH, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                fieldnames = reader.fieldnames
+                for row in reader:
+                    row_profile = row.get('fb_profile_id', '').lstrip('/')
+                    contact_profile = contact.fb_profile_id.lstrip('/')
+                    if row_profile == contact_profile and row_profile:
+                        row['message_sent'] = 'bad'
+                        row['last_error'] = f"BAD PROFILE: {reason}"
+                    rows.append(row)
+            
+            with open(CSV_PATH, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(rows)
+            
+            print(f"   Marked {contact.fb_name} as BAD PROFILE - will be skipped permanently")
+                    
+        except Exception as e:
+            logger.error(f"Failed to mark bad contact: {e}")
     
     def update_csv_status(self, contact: Contact, success: bool, error: str = None):
         """Update CSV with send status - matches by profile_id (handles leading slash)"""
@@ -498,10 +527,15 @@ class MessengerTerminal:
             print("   (or 's' to skip, 'q' to quit): ")
             print(f"{'='*60}\n")
             
-            confirm = input("Press ENTER when ready for automation to type\n   (or 's' to skip, 'q' to quit): ").strip().lower()
+            confirm = input("Press ENTER when ready for automation to type\n   (or 's' to skip, 'b' to mark as bad profile, 'q' to quit): ").strip().lower()
             
             if confirm == 's':
                 print("   Skipping...")
+                return False
+            
+            if confirm == 'b':
+                print("   Marking as bad profile...")
+                self.mark_contact_bad(contact, "User marked as bad")
                 return False
             
             if confirm == 'q':
@@ -538,22 +572,24 @@ class MessengerTerminal:
             else:
                 error = result.stderr or "Unknown error"
                 print(f"\nAutomation failed: {error}")
-                print("\n   You may need to manually type the message.")
-                input("\nPress ENTER when done...")
-                self.update_csv_status(contact, success=False, error=error)
+                # Mark as bad profile if the error suggests the profile is broken
+                if any(x in error.lower() for x in ['not found', 'timeout', 'composer not found', 'textbox not found']):
+                    self.mark_contact_bad(contact, error)
+                else:
+                    print("\n   You may need to manually type the message.")
+                    input("\nPress ENTER when done...")
+                    self.update_csv_status(contact, success=False, error=error)
                 self.error_count += 1
                 return False
                 
         except subprocess.TimeoutExpired:
-            print("\nTimeout - message may not have been sent")
-            input("\nPress ENTER to continue...")
-            self.update_csv_status(contact, success=False, error="Timeout")
+            print("\nTimeout - profile may be broken")
+            self.mark_contact_bad(contact, "Timeout - page did not load")
             self.error_count += 1
             return False
         except Exception as e:
             print(f"\nError: {e}")
-            input("\nPress ENTER to continue...")
-            self.update_csv_status(contact, success=False, error=str(e))
+            self.mark_contact_bad(contact, str(e))
             self.error_count += 1
             return False
         finally:
