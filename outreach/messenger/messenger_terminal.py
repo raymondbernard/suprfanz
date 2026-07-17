@@ -457,11 +457,22 @@ class MessengerTerminal:
             nav_code = f"""
         // Navigate to this contact's conversation
         console.log('Navigating to: {messenger_url}');
-        await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded', timeout: 10000 }}).catch(e => {{
-            console.log('Navigation slow, continuing anyway...');
+        await page.goto('{messenger_url}', {{ waitUntil: 'networkidle', timeout: 15000 }}).catch(e => {{
+            console.log('Network idle timeout, trying domcontentloaded...');
+            await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded', timeout: 10000 }}).catch(e2 => {{
+                console.log('Navigation still slow, continuing anyway...');
+            }});
         }});
-        console.log('Page loaded, waiting for composer...');
-        await page.waitForTimeout(1000);"""
+        console.log('Page loaded, waiting for full render...');
+        
+        // Wait for the textbox to actually be visible (page fully rendered)
+        try {{
+            await page.waitForSelector('div[role="textbox"]', {{ state: 'visible', timeout: 15000 }});
+            console.log('Textbox is visible, page fully rendered');
+        }} catch(e) {{
+            console.log('Textbox not visible yet, waiting 5 more seconds...');
+            await page.waitForTimeout(5000);
+        }}"""
         
         return f'''const {{ chromium }} = require('playwright');
 
@@ -488,16 +499,16 @@ class MessengerTerminal:
         console.log('Looking for message composer...');
         
         const textbox = page.locator('div[role="textbox"]').first();
-        await textbox.waitFor({{ timeout: 8000 }}).catch(e => {{
+        await textbox.waitFor({{ state: 'visible', timeout: 8000 }}).catch(e => {{
             console.error('ERROR: Message composer not found after 8s');
             process.exit(1);
         }});
         console.log('Found textbox');
         
-        // Click to focus
+        // Click to focus and wait for it to be ready
         console.log('Clicking composer...');
         await textbox.click();
-        await page.waitForTimeout(200);
+        await page.waitForTimeout(500);
         
         // Use keyboard.type() - simulates real keystrokes
         console.log('Typing message...');
