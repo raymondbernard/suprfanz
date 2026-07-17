@@ -386,9 +386,11 @@ class MessengerTerminal:
             nav_code = f"""
         // Navigate to this contact's conversation
         console.log('Navigating to: {messenger_url}');
-        await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded' }});
+        await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded', timeout: 10000 }}).catch(e => {{
+            console.log('Navigation slow, continuing anyway...');
+        }});
         console.log('Page loaded, waiting for composer...');
-        await page.waitForTimeout(3000);"""
+        await page.waitForTimeout(2000);"""
         
         return f'''const {{ chromium }} = require('playwright');
 
@@ -415,7 +417,10 @@ class MessengerTerminal:
         console.log('Looking for message composer...');
         
         const textbox = page.locator('div[role="textbox"]').first();
-        await textbox.waitFor({{ timeout: 15000 }});
+        await textbox.waitFor({{ timeout: 8000 }}).catch(e => {{
+            console.error('ERROR: Message composer not found after 8s');
+            process.exit(1);
+        }});
         console.log('Found textbox');
         
         // Click to focus
@@ -482,7 +487,7 @@ class MessengerTerminal:
                 text=True,
                 encoding='utf-8',
                 errors='replace',
-                timeout=120,
+                timeout=30,
                 cwd=str(DATA_DIR)
             )
             
