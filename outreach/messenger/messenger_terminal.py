@@ -446,7 +446,7 @@ class MessengerTerminal:
             console.log('Navigation slow, continuing anyway...');
         }});
         console.log('Page loaded, waiting for composer...');
-        await page.waitForTimeout(2000);"""
+        await page.waitForTimeout(1000);"""
         
         return f'''const {{ chromium }} = require('playwright');
 
@@ -482,14 +482,18 @@ class MessengerTerminal:
         // Click to focus
         console.log('Clicking composer...');
         await textbox.click();
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(200);
         
         // Use keyboard.type() - simulates real keystrokes
         console.log('Typing message...');
-        await page.keyboard.type(`{escaped_message}`, {{ delay: 10 }});
+        await page.keyboard.type(`{escaped_message}`, {{ delay: 3 }});
+        await page.waitForTimeout(300);
         
-        console.log('SUCCESS: Message typed!');
-        console.log('Review in Messenger, then press Enter to send.');
+        // Press Enter to send the message
+        console.log('Sending message...');
+        await page.keyboard.press('Enter');
+        
+        console.log('SUCCESS: Message sent!');
         
         await browser.close();
         
@@ -560,30 +564,23 @@ class MessengerTerminal:
             )
             
             if result.returncode == 0:
-                print("\nMessage typed successfully!")
-                print("\nIMPORTANT: Review the message in Messenger.")
-                print("   If it looks good, manually press Enter to send it.")
-                input("\nPress ENTER when done...")
-                
+                print("\nMessage sent!")
                 self.history.record_sent(contact, self.event.url, message)
                 self.update_csv_status(contact, success=True)
                 self.sent_count += 1
                 return True
             else:
                 error = result.stderr or "Unknown error"
-                print(f"\nAutomation failed: {error}")
-                # Mark as bad profile if the error suggests the profile is broken
+                print(f"\nFailed: {error}")
                 if any(x in error.lower() for x in ['not found', 'timeout', 'composer not found', 'textbox not found']):
                     self.mark_contact_bad(contact, error)
                 else:
-                    print("\n   You may need to manually type the message.")
-                    input("\nPress ENTER when done...")
                     self.update_csv_status(contact, success=False, error=error)
                 self.error_count += 1
                 return False
                 
         except subprocess.TimeoutExpired:
-            print("\nTimeout - profile may be broken")
+            print("\nTimeout - marking as bad profile")
             self.mark_contact_bad(contact, "Timeout - page did not load")
             self.error_count += 1
             return False
@@ -750,10 +747,13 @@ class MessengerTerminal:
                 print("\nBatch cancelled by user.")
                 break
             
-            if i < to_send:
-                delay = random.randint(self.config['min_delay'], self.config['max_delay'])
+            # Only delay after successful sends, not skips/bad/errors
+            if success and i < to_send:
+                delay = random.randint(5, 15)
                 print(f"\n   Waiting {delay}s before next message...")
                 time.sleep(delay)
+            elif not success and i < to_send:
+                print("\n   Moving to next contact...")
         
         print(f"\n{'='*70}")
         print(f"  BATCH COMPLETE")

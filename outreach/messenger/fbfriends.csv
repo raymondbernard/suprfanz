@@ -1,7 +1,7 @@
 fb_usr_id,fb_first_name,fb_last_name,fb_name,fb_profile_id,,message_sent,sent_at,last_error
-,David,,David Fleming,/dracon,,,,
-,Allen,,Allen Halcomb,/allen.halcomb.5,,,,
-,Gonzalo,,Gonzalo Catalán,/gcatalanw,,,,
+,David,,David Fleming,/dracon,,bad,,BAD PROFILE: User marked as bad
+,Allen,,Allen Halcomb,/allen.halcomb.5,,true,2026-07-17T19:26:04.381408,
+,Gonzalo,,Gonzalo Catalán,/gcatalanw,,true,2026-07-17T19:30:13.151467,
 ,Frankie,,Frankie Pipps,/frank.n.francese,,,,
 ,Tony,,Tony Jumble,/100009523520562,,,,
 ,Donald,,Donald Sztabnik,/100006321756956,,,,
