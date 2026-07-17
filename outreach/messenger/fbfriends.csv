@@ -865,8 +865,8 @@ fb_usr_id,fb_first_name,fb_last_name,fb_name,fb_profile_id,,message_sent,sent_at
 1014208141,Marge,Raymond,Marge Raymond,/MargeRaymond,,true,2026-07-17T23:06:54.697Z,
 628381819,Ben,Curtis,Ben Curtis,/ActorBenCurtis,,bad,,No textbox
 1.00E+14,Joey,Kelly,Joey Kelly,/muddclubjoey,,true,2026-07-17T23:07:40.964Z,
-1042390203,James,Adams,James Adams,/snakemonstertelevion,,,,
-607370563,Karl,Schwarz,Karl Schwarz,/karl.schwarz1,,,,
+1042390203,James,Adams,James Adams,/snakemonstertelevion,,bad,,No textbox
+607370563,Karl,Schwarz,Karl Schwarz,/karl.schwarz1,,true,2026-07-17T23:20:00.786Z,
 1356880739,Karena,Reiter,Karena Reiter,/KarenaNYC,,,,
 1578768640,Mayu,Saeki,Mayu Saeki,/mayu.saeki.90,,,,
 1.00E+14,Suzanne,Ross,Suzanne Ross,/suzanne.ross.79,,,,
