@@ -468,8 +468,40 @@ class MessengerTerminal:
         // Take BEFORE screenshot
         try {{
             await page.screenshot({{ path: 'before_{safe_name}.png', fullPage: false }});
-            console.log('Before screenshot saved: before_{safe_name}.png');
-        }} catch(e) {{ console.log('Screenshot failed:', e.message); }}
+            console.log('Before screenshot saved');
+        }} catch(e) {{ console.log('Screenshot failed'); }}
+        
+        // DETECT AND CLICK CONTINUE BUTTON
+        // Facebook shows a 'Continue' or 'Continue as' button on some conversations
+        console.log('Checking for Continue button...');
+        let continueClicked = false;
+        
+        for (let attempt = 0; attempt < 3; attempt++) {{
+            try {{
+                const buttons = await page.locator('div[role="button"], button').all();
+                for (const btn of buttons) {{
+                    const text = await btn.textContent().catch(() => '');
+                    const isVisible = await btn.isVisible().catch(() => false);
+                    if (isVisible && text.toLowerCase().includes('continue')) {{
+                        console.log('Found Continue button: ' + text + ' — clicking...');
+                        await btn.click();
+                        continueClicked = true;
+                        console.log('Continue button clicked!');
+                        await page.waitForTimeout(3000);
+                        break;
+                    }}
+                }}
+                if (continueClicked) break;
+                if (attempt < 2) await page.waitForTimeout(2000);
+            }} catch(e) {{}}
+        }}
+        
+        if (continueClicked) {{
+            console.log('Conversation loading after Continue...');
+            try {{ await page.screenshot({{ path: 'after_continue_{safe_name}.png', fullPage: false }}); }} catch(e) {{}}
+        }} else {{
+            console.log('No Continue button found');
+        }}
         
         // Wait for the textbox to be visible (page fully rendered)
         try {{
