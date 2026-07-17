@@ -376,9 +376,19 @@ class MessengerTerminal:
         
         return None
     
-    def create_playwright_script(self, message: str) -> str:
-        """Create Node.js Playwright script - types message into already-loaded conversation"""
+    def create_playwright_script(self, message: str, messenger_url: str = None) -> str:
+        """Create Node.js Playwright script - navigates to contact's URL and types message"""
         escaped_message = message.replace('\\', '\\\\').replace('`', '\\`').replace('$', '\\$')
+        
+        # Navigation code if URL provided
+        nav_code = ''
+        if messenger_url:
+            nav_code = f"""
+        // Navigate to this contact's conversation
+        console.log('Navigating to: {messenger_url}');
+        await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded' }});
+        console.log('Page loaded, waiting for composer...');
+        await page.waitForTimeout(3000);"""
         
         return f'''const {{ chromium }} = require('playwright');
 
@@ -398,26 +408,22 @@ class MessengerTerminal:
         }}
         if (!page) page = context.pages()[0];
         
-        console.log('Connected. URL:', page.url());
-        
-        // Wait for page to settle
-        await page.waitForTimeout(2000);
+        console.log('Connected. Current URL:', page.url());
+        {nav_code}
         
         // Find the message composer
-        // Messenger uses Lexical editor: div[role=textbox] > ... > <p><br>
         console.log('Looking for message composer...');
         
         const textbox = page.locator('div[role="textbox"]').first();
         await textbox.waitFor({{ timeout: 15000 }});
         console.log('Found textbox');
         
-        // Click to focus the composer
+        // Click to focus
         console.log('Clicking composer...');
         await textbox.click();
         await page.waitForTimeout(500);
         
-        // Use keyboard.type() - this simulates real keystrokes
-        // which works with Lexical editor (fill() and locator.type() do not)
+        // Use keyboard.type() - simulates real keystrokes
         console.log('Typing message...');
         await page.keyboard.type(`{escaped_message}`, {{ delay: 10 }});
         
@@ -431,8 +437,7 @@ class MessengerTerminal:
         process.exit(1);
     }}
 }})();
-'''
-    
+'''    
     def send_message_to_open_chrome(self, contact: Contact, message: str, dry_run: bool = False) -> bool:
         """Navigate existing Chrome to contact's conversation and type message"""
         
@@ -446,13 +451,12 @@ class MessengerTerminal:
             print(f"Contact: {contact.fb_name}")
             print(f"URL: {contact.messenger_url}")
             print(f"{'='*60}")
-            print("\nINSTRUCTIONS:")
-            print(f"1. In Chrome, go to: {contact.messenger_url}")
-            print("   (or click the URL above to navigate)")
-            print("2. Wait for the conversation to load")
-            print("3. If you see a 'Continue' button, CLICK IT")
-            print("4. Come back here and press ENTER")
-            print("\nNOTE: Do NOT type the message - automation will do that!")
+            print("\nAutomation will:")
+            print(f"  1. Navigate Chrome to {contact.fb_name}'s conversation")
+            print("  2. Wait for you to handle any Continue button")
+            print("  3. Type the message automatically")
+            print("\nPress ENTER to start automation")
+            print("   (or 's' to skip, 'q' to quit): ")
             print(f"{'='*60}\n")
             
             confirm = input("Press ENTER when ready for automation to type\n   (or 's' to skip, 'q' to quit): ").strip().lower()
@@ -465,10 +469,10 @@ class MessengerTerminal:
                 print("   Quitting batch...")
                 return None
             
-            # Run Playwright to type the message in the EXISTING Chrome window
-            print("\nTyping message...")
+            # Run Playwright to navigate to this contact and type the message
+            print("\nNavigating to contact and typing message...")
             
-            script_content = self.create_playwright_script(message)
+            script_content = self.create_playwright_script(message, contact.messenger_url)
             temp_script = DATA_DIR / "temp_send.js"
             temp_script.write_text(script_content, encoding='utf-8')
             
