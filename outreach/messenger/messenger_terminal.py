@@ -457,20 +457,17 @@ class MessengerTerminal:
             nav_code = f"""
         // Navigate to this contact's conversation
         console.log('Navigating to: {messenger_url}');
-        await page.goto('{messenger_url}', {{ waitUntil: 'networkidle', timeout: 15000 }}).catch(e => {{
-            console.log('Network idle timeout, trying domcontentloaded...');
-            await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded', timeout: 10000 }}).catch(e2 => {{
-                console.log('Navigation still slow, continuing anyway...');
-            }});
+        await page.goto('{messenger_url}', {{ waitUntil: 'domcontentloaded', timeout: 10000 }}).catch(e => {{
+            console.log('Navigation slow, continuing anyway...');
         }});
-        console.log('Page loaded, waiting for full render...');
+        console.log('Page loaded, waiting for render...');
         
-        // Wait for the textbox to actually be visible (page fully rendered)
+        // Wait for the textbox to be visible (page fully rendered)
         try {{
             await page.waitForSelector('div[role="textbox"]', {{ state: 'visible', timeout: 15000 }});
-            console.log('Textbox is visible, page fully rendered');
+            console.log('Textbox visible, page rendered');
         }} catch(e) {{
-            console.log('Textbox not visible yet, waiting 5 more seconds...');
+            console.log('Textbox not found, waiting 5s...');
             await page.waitForTimeout(5000);
         }}"""
         
@@ -541,39 +538,29 @@ class MessengerTerminal:
             # Check if Chrome is still open, relaunch if closed
             if not self.ensure_chrome_open(contact.messenger_url):
                 print("   Could not relaunch Chrome! Skipping...")
-                self.update_csv_status(contact, success=False, error="Chrome not responding")
+                self.mark_contact_bad(contact, "Chrome not responding")
                 self.error_count += 1
                 return False
             
-            print(f"\n{'='*60}")
-            print(f"Contact: {contact.fb_name}")
-            print(f"URL: {contact.messenger_url}")
-            print(f"{'='*60}")
-            print("\nAutomation will:")
-            print(f"  1. Navigate Chrome to {contact.fb_name}'s conversation")
-            print("  2. Wait for you to handle any Continue button")
-            print("  3. Type the message automatically")
-            print("\nPress ENTER to start automation")
-            print("   (or 's' to skip, 'q' to quit): ")
-            print(f"{'='*60}\n")
-            
-            confirm = input("Press ENTER when ready for automation to type\n   (or 's' to skip, 'b' to mark as bad profile, 'q' to quit): ").strip().lower()
+            print(f"\n[{self.sent_count + self.error_count + 1}] {contact.fb_name} — {contact.messenger_url}")
+            print("   Navigate + type + send automatically. Press 's' to skip, 'b' for bad, 'q' to quit.")
+            confirm = input("   Press ENTER to send, or s/b/q: ").strip().lower()
             
             if confirm == 's':
-                print("   Skipping...")
+                print("   Skipped.")
                 return False
             
             if confirm == 'b':
-                print("   Marking as bad profile...")
+                print("   Marked as bad.")
                 self.mark_contact_bad(contact, "User marked as bad")
                 return False
             
             if confirm == 'q':
-                print("   Quitting batch...")
+                print("   Quitting.")
                 return None
             
-            # Run Playwright to navigate to this contact and type the message
-            print("\nNavigating to contact and typing message...")
+            # Run Playwright: navigate + type + send
+            print("   Sending...")
             
             script_content = self.create_playwright_script(message, contact.messenger_url)
             temp_script = DATA_DIR / "temp_send.js"
