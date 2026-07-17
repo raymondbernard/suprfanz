@@ -1,0 +1,51 @@
+rank,venue,address,borough,type,website,status,date_contacted,booking_contact,notes
+1,Otto's Shrunken Head,536 E 14th St,Manhattan (East Village),CONFIRMED,https://ottosshrunkenhead.com,,,,Fri Aug 7 2026 11pm slot - Krebs & Simone's Flip Flop & Fly
+2,BB King's Blues Club,237 W 42nd St,Manhattan (Times Square),HISTORICAL,https://www.bbking.com,,,,Closed - was Cosmic Ray's home base as Resident Band Leader
+3,Terra Blues,149 Bleecker St,Manhattan (Greenwich Village),FIT,https://www.terrablues.com,,,info@terrablues.com,Historic Greenwich Village blues venue. Live music nightly.
+4,The Iridium,44 W 63rd St,Manhattan (Upper West Side),FIT,https://www.theiridium.com,CONTACTED,2026-07-15,BMcKenna@lessings.com,Booking: Brian McKenna. Jazz/blues club.
+5,Blue Note,131 W 3rd St,Manhattan (Greenwich Village),FIT,https://www.bluenotejazz.com,,,club@bluenote.net,"Contact: club@bluenote.net OR via group reservations form. Phone: 212-475-8592. Hard booking, usually requires agent."
+6,Smoke Jazz & Supper Club,2751 Broadway,Manhattan (Upper West Side),FIT,https://www.smokejazz.com,CONTACTED,2026-07-15,smokejazzclub@smokejazz.com,Jazz/blues venue with supper club format.
+7,55 Bar,55 Christopher St,Manhattan (West Village),FIT,https://www.55bar.com,,,,SQUARESPACE EXPIRED - venue may be closed. Verify before outreach.
+8,The Bitter End,147 Bleecker St,Manhattan (Greenwich Village),FIT,https://www.bitterend.com,CONTACTED,2026-07-15,info@bitterend.com,"info@bitterend.com. If sending an EPK, they specifically request you include a contact phone number. Iconic live room."
+9,The Cutting Room,44 E 32nd St,Manhattan (Murray Hill),FIT,https://www.thecuttingroomnyc.com,CONTACTED,2026-07-15,booking@thecuttingroomnyc.com,Live music venue.
+10,Arlene's Grocery,95 Stanton St,Manhattan (Lower East Side),FIT,https://www.arlenesgrocery.com,CONTACTED,2026-07-15,info@arlenesgrocery.net,Live music.
+11,Pianos,158 Ludlow St,Manhattan (Lower East Side),FIT,https://www.pianosnyc.com,CONTACTED,2026-07-15,booking@pianosnyc.com,Multi-stage indie room. Cosmic Ray has played here before.
+12,The Groove,125 MacDougal St,Manhattan (Greenwich Village),FIT,,,,,No website found - verify venue status. Live music.
+13,Rockwood Music Hall,196 Allen St,Manhattan (Lower East Side),FIT,https://www.rockwoodmusichall.com,CONTACTED,2026-07-15,info@rockwoodmusichall.com,DOMAIN ISSUE - try rockwoodmusichall.com or check socials. Stage 3 is best for one-man shows.
+14,Cafe Wha?,115 MacDougal St,Manhattan (Greenwich Village),FIT,https://www.cafewha.com,CONTACTED,2026-07-15,CONTACT@CAFEWHA.COM,Historic Greenwich Village venue. Use CONTACT@CAFEWHA.COM for booking.
+15,The Bowery Electric,327 Bowery,Manhattan (Lower East Side),FIT,https://www.boweryelectric.com,CONTACTED,2026-07-15,booking@theboweryelectric.com,Live music. Cosmic Ray has played here before. Alt: booking@bowerypalace.com
+16,Mercury Lounge,217 E Houston St,Manhattan (Lower East Side),FIT,https://www.mercuryloungenyc.com,CONTACTED,2026-07-15,info@mercuryloungenyc.com,Indie/rock venue. Cosmic Ray has played here before.
+17,The Knitting Factory,74 Leonard St,Manhattan (Tribeca),FIT,https://www.knittingfactory.com,CONTACTED,2026-07-15,KFGcontact@knittingfactory.com,Multi-genre live room. Alt: info@knittingfactorymgmt.com
+18,Drom,85 Avenue A,Manhattan (East Village),FIT,https://www.dromnyc.com,CONTACTED,2026-07-15,info@dromnyc.com,"East Village live music. Contact: info@dromnyc.com OR via artist booking form."
+19,Barbes,376 9th St,Brooklyn (Park Slope),FIT,https://www.barbesbrooklyn.com,CONTACTED,2026-07-15,BarbesBookings@gmail.com,Brooklyn world-music/blues bar. Send streamable link.
+20,The Bell House,149 7th St,Brooklyn (Gowanus),FIT,https://www.thebellhouseny.com,CONTACTED,2026-07-15,info@thebellhouseny.com,Brooklyn live music.
+21,Arthur's Tavern,[FILL ADDRESS],Manhattan,FIT,[FILL WEBSITE],CONTACTED,2026-07-15,info@arthurstavern.nyc,"[FILL - please provide address, website, and any booking info]"
+22,The Red Lion,151 Bleecker St,Manhattan (Greenwich Village),FIT,https://redlionnyc.com,CONTACTED,2026-07-15,info@redlionnyc.com,Blues-friendly pub. Pitch solo/duo. Call or email for booking. Phone: 212-260-9797
+23,Skinny Dennis,152 Metropolitan Ave,Brooklyn (Williamsburg),FIT,https://skinnydennis.com,CONTACTED,2026-07-15,booking@skinnydennisbrooklyn.com,"Honky-tonk bar, country/blues focus. Pitch solo/duo. For live music & band inquiries. Alt: skinnydennisbooking@gmail.com"
+24,Sunny's Bar,253 Conover St,Brooklyn (Red Hook),FIT,https://sunnysredhook.com,CONTACTED,2026-07-15,info@sunnysredhook.com,Legendary waterfront dive. Saturday bluegrass/jams. Pitch solo/duo.
+25,Pete's Candy Store,709 Lorimer St,Brooklyn (Williamsburg),FIT,https://petescandystore.com,CONTACTED,2026-07-15,info@petescandystore.com,"Intimate back room, free music series. Pitch solo/duo."
+26,Zinc Bar,90 W Houston St,Manhattan (Greenwich Village),FIT,https://zincbar.com,CONTACTED,2026-07-15,info@zincbar.com,"Jazz/blues club, underground. Pitch solo/trio."
+27,Smalls Jazz Club,183 W 10th St,Manhattan (Greenwich Village),FIT,https://smallsjazzclub.com,CONTACTED,2026-07-15,musician@smallslive.com,Legendary basement jazz club. Hard booking. Pitch solo/duo jazz-blues.
+28,Mezzrow,163 W 10th St,Manhattan (Greenwich Village),FIT,https://mezzrow.com,CONTACTED,2026-07-15,booking@mezzrow.com,"Intimate listening room, sister to Smalls. Jazz focus. Pitch solo/duo."
+29,The Way Station,413 Vanderbilt Ave,Brooklyn (Prospect Heights),FIT,https://thewaystationbk.com,CONTACTED,2026-07-15,info@thewaystationbk.com,Geeky bar with live music. Pitch solo/duo.
+30,Union Pool,484 Union Ave,Brooklyn (Williamsburg),FIT,https://unionpool.com,CONTACTED,2026-07-15,info@unionpool.com,Rock/indie venue with bar. Pitch trio/full band.
+31,Good Room,98 Meserole Ave,Brooklyn (Greenpoint),FIT,https://goodroombk.com,,,info@goodroombk.com,DJs and live music. Pitch any config. Contact via info@ for booking inquiries.
+32,Sidewalk Cafe,94 Avenue A,Manhattan (East Village),FIT,https://sidewalknyc.com,CONTACTED,2026-07-15,booking@sidewalkny.com,Cosmic Ray has played here before. Antifolk/roots venue.
+33,Berlin,25 Avenue A,Manhattan (East Village),FIT,https://berlin.nyc,CONTACTED,2026-07-15,berlinundera@gmail.com,"Berlin Under A. Downstairs at 2A Bar. Live music venue, state-of-the-art sound, full backline. Perfect for cosmic blues. Use: berlinundera@gmail.com"
+34,Bowery Palace,[NEED ADDRESS],Manhattan,FIT,https://www.bowerypalace.com,CONTACTED,2026-07-15,booking@bowerypalace.com,"Formerly Bowery Electric. Alt: booking@theboweryelectric.com. Website minimal. Need: address, phone."
+35,Hard Rock Cafe NYC,1501 Broadway,Manhattan (Times Square),FIT,https://www.hardrock.com/cafes/new-york/,CONTACTED,2026-07-15,newyork.rocks@hardrock.com,"Times Square location with live music stage. Contact: newyork.rocks@hardrock.com OR New_York_Social@hardrock.com"
+36,Fat Black Pussycat,130 W 3rd St,Manhattan (Greenwich Village),FIT,https://www.fatblackpussycat.com,CONTACTED,2026-07-15,info@fatblackpussycat.com,Historic Village bar with live blues/jazz. Small stage. Contact via email or walk-in.
+37,Connolly's,121 W 45th St,Manhattan (Times Square),FIT,https://www.connollysnyc.com,CONTACTED,2026-07-15,manager@connollyscorner.com,Irish pub with live music nightly. Multiple rooms. Contact: manager@connollyscorner.com for bookings.
+38,Irish Exit,978 2nd Ave,Manhattan (Midtown East),FIT,,CONTACTED,2026-07-15,hello@irishexit.com,"Midtown Irish pub with live music. Contact: hello@irishexit.com OR victoria@irishexitnyc.com for private events."
+39,Plug Uglies,257 3rd Ave,Manhattan (Gramercy),FIT,https://www.plugugliesnyc.com,CONTACTED,2026-07-15,info@plugugliesnyc.com,Gramercy pub with live music. Contact for acoustic/blues sets.
+40,The Craic,60 W 39th St,Manhattan (Midtown),FIT,https://www.thecraicnyc.com,CONTACTED,2026-07-15,info@thecraicnyc.com,Midtown Irish pub with live music. Call or email for booking info.
+41,12th Street Ale House,192 3rd Ave,Manhattan (Gramercy),CLOSED,,,,,"PERMANENTLY CLOSED - Do not contact."
+42,Gaffers Pub,154 E 55th St,Manhattan (Midtown),FIT,,CONTACTED,2026-07-15,info@gafferspub.com,Midtown pub with live music. Email for booking.
+43,The Long Room,58 W 39th St,Manhattan (Midtown),FIT,https://www.thelongroomnyc.com,CONTACTED,2026-07-15,info@thelongroomnyc.com,Midtown Irish pub with live music. Contact via email.
+44,Brady's Bar,158 E 33rd St,Manhattan (Midtown),FIT,,CONTACTED,2026-07-15,bradysbar-82@live.com,"Neighborhood Irish pub with live music. Contact: bradysbar-82@live.com OR via their contact form."
+45,The Whiskey Ward,121 Essex St,Manhattan (Lower East Side),FIT,,CONTACTED,2026-07-15,info@thewhiskeyward.com,Lower East Side whiskey bar with live music. Contact for blues/rock slots.
+46,Fontana's,122 Eldridge St,Manhattan (Lower East Side),FIT,,CONTACTED,2026-07-15,info@fontanasnyc.com,Historic LES venue with live music. Email for booking info.
+47,National Underground,159 E Houston St,Manhattan (Lower East Side),FIT,https://www.nationalunderground.com,CONTACTED,2026-07-15,info@nationalunderground.com,Live music venue and bar. Americana/blues focus. Contact via email.
+48,The Back Room,102 Norfolk St,Manhattan (Lower East Side),FIT,https://www.thebackroomnyc.com,CONTACTED,2026-07-15,info@thebackroomnyc.com,Speakeasy-style bar with live music. Inquire about jazz/blues nights.
+49,Le Poisson Rouge,158 Bleecker St,Manhattan (Greenwich Village),FIT,https://www.lepoissonrouge.com,CONTACTED,2026-07-15,info@lepoissonrouge.com,Multi-genre music venue. Hard booking but worth trying. Use info@ for inquiries.
+50,Joe's Pub,425 Lafayette St,Manhattan (East Village),FIT,https://www.joespub.com,CONTACTED,2026-07-15,info@joespub.com,Intimate venue at The Public Theater. Professional booking.

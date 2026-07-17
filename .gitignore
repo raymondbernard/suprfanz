@@ -1,0 +1,11 @@
+venv/
+outreach/archive/
+outreach/messenger/node_modules/
+outreach/messenger/__pycache__/
+outreach/messenger/temp_send.js
+outreach/messenger/_launch_chrome.bat
+outreach/messenger/*.log
+outreach/messenger/debug_*.png
+__pycache__/
+*.pyc
+.openclaw-workspace-state.json

@@ -1,0 +1,12 @@
+# Facebook Messenger Terminal Requirements
+# Install with: pip install -r requirements.txt
+
+# No external dependencies required - uses only Python standard library!
+# 
+# Requirements:
+# - Python 3.7+
+# - Node.js (for Playwright automation)
+# - Playwright npm package
+
+# Optional for enhanced logging
+colorama>=0.4.0

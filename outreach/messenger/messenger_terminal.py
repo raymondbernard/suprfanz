@@ -1,0 +1,897 @@
+#!/usr/bin/env python3
+"""
+Messenger Terminal - Robust Facebook Messenger Automation Controller
+=====================================================================
+A comprehensive terminal application for controlling Facebook Messenger outreach
+with duplicate prevention, rate limiting, and detailed logging.
+
+Features:
+- Duplicate message prevention (tracks sent messages)
+- Configurable batch sizes and delays
+- Dry-run mode for testing
+- Interactive message preview
+- Comprehensive logging
+- Resume capability
+- Error tracking and recovery
+"""
+
+import subprocess
+import time
+import random
+import csv
+import json
+import os
+import sys
+import logging
+import urllib.request
+from pathlib import Path
+from dataclasses import dataclass, asdict
+from typing import List, Optional, Dict, Tuple
+from datetime import datetime
+from collections import defaultdict
+
+# Configuration
+CHROME_EXE = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+USER_DATA_DIR = Path.home() / "AppData" / "Local" / "Google" / "Chrome" / "User Data"
+PROFILE = "Profile 3"
+DATA_DIR = Path(__file__).parent.resolve()
+CSV_PATH = DATA_DIR / "fbfriends.csv"
+LOG_PATH = DATA_DIR / "messenger_terminal.log"
+STATE_PATH = DATA_DIR / "messenger_state.json"
+HISTORY_PATH = DATA_DIR / "message_history.json"
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_PATH),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger('MessengerTerminal')
+
+
+@dataclass
+class Contact:
+    """Represents a Facebook contact"""
+    fb_usr_id: str
+    fb_first_name: str
+    fb_last_name: str
+    fb_name: str
+    fb_profile_id: str
+    message_sent: str
+    sent_at: str
+    last_error: str
+    
+    @property
+    def messenger_url(self) -> str:
+        """Generate Messenger URL for this contact"""
+        profile_id = self.fb_profile_id.lstrip('/')
+        return f"https://www.messenger.com/t/{profile_id}"
+    
+    @property
+    def is_sent(self) -> bool:
+        """Check if message has been sent"""
+        return self.message_sent.lower() == 'true' and bool(self.sent_at)
+    
+    @property
+    def full_name(self) -> str:
+        """Get full name"""
+        return f"{self.fb_first_name} {self.fb_last_name}".strip() or self.fb_name
+
+
+@dataclass
+class Event:
+    """Represents an event to promote"""
+    title: str
+    url: str
+    description: str
+    date: str = ""
+    venue: str = ""
+
+
+@dataclass
+class MessageSent:
+    """Tracks a sent message"""
+    contact_id: str
+    contact_name: str
+    sent_at: str
+    message_hash: str
+    event_url: str
+
+
+class MessageHistory:
+    """Manages message history to prevent duplicates"""
+    
+    def __init__(self, history_file: Path):
+        self.history_file = history_file
+        self.history: Dict[str, List[MessageSent]] = defaultdict(list)
+        self.load()
+    
+    def load(self):
+        """Load message history from file"""
+        if self.history_file.exists():
+            try:
+                with open(self.history_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    for contact_id, records in data.items():
+                        self.history[contact_id] = [
+                            MessageSent(**record) for record in records
+                        ]
+                logger.info(f"Loaded message history for {len(self.history)} contacts")
+            except Exception as e:
+                logger.error(f"Failed to load history: {e}")
+    
+    def save(self):
+        """Save message history to file"""
+        try:
+            data = {}
+            for contact_id, records in self.history.items():
+                data[contact_id] = [asdict(record) for record in records]
+            
+            with open(self.history_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2)
+        except Exception as e:
+            logger.error(f"Failed to save history: {e}")
+    
+    def has_sent_to(self, contact_id: str, event_url: str = None) -> bool:
+        """Check if we've sent to this contact"""
+        if contact_id not in self.history:
+            return False
+        
+        if event_url:
+            return any(
+                record.event_url == event_url 
+                for record in self.history[contact_id]
+            )
+        
+        return len(self.history[contact_id]) > 0
+    
+    def record_sent(self, contact: Contact, event_url: str, message: str):
+        """Record a sent message"""
+        record = MessageSent(
+            contact_id=contact.fb_profile_id,
+            contact_name=contact.fb_name,
+            sent_at=datetime.utcnow().isoformat(),
+            message_hash=hash(message) & 0xFFFFFFFF,
+            event_url=event_url
+        )
+        self.history[contact.fb_profile_id].append(record)
+        self.save()
+
+
+class MessengerTerminal:
+    """Main terminal application"""
+    
+    def __init__(self):
+        self.event = Event(
+            title="Cosmic Blues Band Live",
+            url="https://www.facebook.com/events/971902445574502",
+            description="A night of blues and roots music with the Cosmic Blues Band!",
+            date="",
+            venue=""
+        )
+        self.history = MessageHistory(HISTORY_PATH)
+        self.config = self.load_config()
+        self.sent_count = 0
+        self.error_count = 0
+        self.session_start = datetime.now()
+        
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+    
+    def load_config(self) -> Dict:
+        """Load or create configuration"""
+        config_path = DATA_DIR / "config.json"
+        default_config = {
+            "batch_size": 5,
+            "min_delay": 30,
+            "max_delay": 120,
+            "page_load_wait": 60,
+            "typing_delay": 3,
+            "auto_confirm": False,
+            "message_styles": [
+                "personal",
+                "casual", 
+                "exciting",
+                "fomo",
+                "warm"
+            ]
+        }
+        
+        if config_path.exists():
+            try:
+                with open(config_path, 'r') as f:
+                    return {**default_config, **json.load(f)}
+            except:
+                pass
+        
+        return default_config
+    
+    def save_config(self):
+        """Save configuration"""
+        config_path = DATA_DIR / "config.json"
+        with open(config_path, 'w') as f:
+            json.dump(self.config, f, indent=2)
+    
+    def clear_screen(self):
+        """Clear terminal screen"""
+        os.system('cls' if os.name == 'nt' else 'clear')
+    
+    def print_header(self):
+        """Print application header"""
+        print("=" * 70)
+        print("  FACEBOOK MESSENGER AUTOMATION TERMINAL v2.0")
+        print("=" * 70)
+        print(f"  Session Started: {self.session_start.strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"  Data Directory: {DATA_DIR.absolute()}")
+        print(f"  Event: {self.event.title}")
+        print("=" * 70)
+        print()
+    
+    def load_contacts(self, limit: int = 0, only_pending: bool = True) -> List[Contact]:
+        """Load contacts from CSV"""
+        contacts = []
+        
+        if not CSV_PATH.exists():
+            logger.error(f"CSV file not found: {CSV_PATH}")
+            return contacts
+        
+        try:
+            with open(CSV_PATH, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    if only_pending and row.get('message_sent') == 'true':
+                        continue
+                    
+                    profile_id = row.get('fb_profile_id', '').lstrip('/')
+                    if self.history.has_sent_to(profile_id, self.event.url):
+                        continue
+                    
+                    contact = Contact(
+                        fb_usr_id=row.get('fb_usr_id', ''),
+                        fb_first_name=row.get('fb_first_name', ''),
+                        fb_last_name=row.get('fb_last_name', ''),
+                        fb_name=row.get('fb_name', ''),
+                        fb_profile_id=profile_id,
+                        message_sent=row.get('message_sent', ''),
+                        sent_at=row.get('sent_at', ''),
+                        last_error=row.get('last_error', '')
+                    )
+                    contacts.append(contact)
+                    
+                    if limit > 0 and len(contacts) >= limit:
+                        break
+        except Exception as e:
+            logger.error(f"Error loading contacts: {e}")
+        
+        return contacts
+    
+    def generate_message(self, contact: Contact, style: str = None) -> str:
+        """Generate a personalized message"""
+        first_name = contact.fb_first_name or contact.fb_name.split()[0]
+        url = self.event.url
+        
+        templates = {
+            "personal": [
+                f"Hey {first_name}!\n\nPutting together a blues show and immediately thought of you. Come hang! Also, hitting \"Interested\" on the event page helps other blues fans discover it.\n\n{url}",
+                f"Hi {first_name}!\n\nWe've got a blues night coming up that I thought you'd dig. Would love to see you there! If you can, click \"Interested\" on the event page—it really helps spread the word.\n\n{url}",
+            ],
+            "casual": [
+                f"Hey {first_name}!\n\nHope you're doing well! I'm organizing a blues show and wanted to invite you. Check it out when you get a chance, and if you're interested, click the \"Interested\" button on the event page - it helps with visibility!\n\n{url}",
+            ],
+            "exciting": [
+                f"Hey {first_name}! Big news - we're putting together an amazing blues night! Think you'd really love the vibe. Come through! And if you click \"Interested\" on the event page, it helps other blues lovers find us.\n\n{url}",
+            ],
+            "fomo": [
+                f"Hi {first_name}!\n\nDon't miss out on this blues night we've got coming up! Great music, good times. Would love to have you there. Click \"Interested\" on the event page to help spread the word to other blues fans!\n\n{url}",
+            ],
+            "warm": [
+                f"Hi {first_name}! Thinking of you and wanted to personally invite you to our upcoming blues show. It would mean a lot to have you there. If you can, click \"Interested\" on the event page - every bit helps!\n\n{url}",
+            ],
+            "supportive": [
+                f"Hey {first_name}!\n\nAs a fellow music lover, I wanted to reach out about our blues show. Your support would mean the world to us! Click \"Interested\" on the event page to help us reach more blues fans.\n\n{url}",
+            ],
+            "community": [
+                f"Hi {first_name}!\n\nWe're building something special with this blues show and would love for you to be part of it. Come join the community! Help us spread the word by clicking \"Interested\" on the event page.\n\n{url}",
+            ],
+            "direct": [
+                f"Hey {first_name},\n\nBlues show coming up - you're invited! Click \"Interested\" on the event page to help with visibility.\n\n{url}",
+            ],
+            "curious": [
+                f"Hey {first_name}!\n\nEver been to a live blues show that just hit different? We're creating one of those nights. Curious if you'd be into it? Click \"Interested\" on the event page and help other blues fans discover it too!\n\n{url}",
+            ],
+            "favor": [
+                f"Hi {first_name}!\n\nQuick favor - would you mind checking out our upcoming blues event? I'd love your support! Clicking \"Interested\" on the event page really helps with visibility for blues fans in the area.\n\n{url}",
+            ]
+        }
+        
+        if style and style in templates:
+            messages = templates[style]
+        else:
+            allowed_styles = self.config.get('message_styles', list(templates.keys()))
+            available = [s for s in allowed_styles if s in templates]
+            if not available:
+                available = list(templates.keys())
+            messages = templates[random.choice(available)]
+        
+        return random.choice(messages)
+    
+    def update_csv_status(self, contact: Contact, success: bool, error: str = None):
+        """Update CSV with send status"""
+        if not CSV_PATH.exists():
+            return
+        
+        try:
+            rows = []
+            with open(CSV_PATH, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                fieldnames = reader.fieldnames
+                for row in reader:
+                    if row.get('fb_profile_id') == contact.fb_profile_id:
+                        row['message_sent'] = 'true' if success else 'false'
+                        row['sent_at'] = datetime.utcnow().isoformat() if success else row.get('sent_at', '')
+                        row['last_error'] = error if error else ''
+                    rows.append(row)
+            
+            with open(CSV_PATH, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(rows)
+                
+        except Exception as e:
+            logger.error(f"Failed to update CSV: {e}")
+    
+    def launch_chrome(self, url: str):
+        """Launch Chrome with debug port"""
+        
+        user_data = str(Path.home() / "AppData" / "Local" / "Google" / "Chrome" / "User Data")
+        
+        print("   Launching Chrome...")
+        
+        # Use PowerShell Start-Process - the ONLY method that reliably opens Chrome on this system
+        args_str = f"--user-data-dir={user_data} --profile-directory={PROFILE} --start-maximized --disable-blink-features=AutomationControlled --remote-debugging-port=9222 --remote-allow-origins=* --no-first-run --no-default-browser-check --no-restore-last-session {url}"
+        
+        subprocess.Popen([
+            'powershell', '-Command',
+            f"Start-Process -FilePath '{CHROME_EXE}' -ArgumentList '{args_str}'"
+        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Wait for debug port
+        print("   Waiting for Chrome debug port...")
+        for i in range(20):
+            time.sleep(2)
+            try:
+                urllib.request.urlopen("http://127.0.0.1:9222/json/version", timeout=2)
+                print(f"   Chrome is ready! ({(i+1)*2}s)")
+                return True
+            except:
+                if i < 19:
+                    print(f"   waiting ({(i+1)*2}s)...")
+                else:
+                    print("   WARNING: Debug port not responding!")
+                    print("   Make sure you ran via run_messenger_terminal.bat")
+                    print("   Or manually close Chrome and try again.")
+                    return False
+        
+        return None
+    
+    def create_playwright_script(self, message: str) -> str:
+        """Create Node.js Playwright script - types message into already-loaded conversation"""
+        escaped_message = message.replace('\\', '\\\\').replace('`', '\\`').replace('$', '\\$')
+        
+        return f'''const {{ chromium }} = require('playwright');
+
+(async () => {{
+    console.log('Connecting to Chrome...');
+    
+    try {{
+        const browser = await chromium.connectOverCDP('http://127.0.0.1:9222');
+        const context = browser.contexts()[0];
+        
+        // Find the messenger page
+        let page = null;
+        for (const p of context.pages()) {{
+            try {{
+                if (p.url().includes('messenger.com')) {{ page = p; break; }}
+            }} catch(e) {{}}
+        }}
+        if (!page) page = context.pages()[0];
+        
+        console.log('Connected. URL:', page.url());
+        
+        // Wait for page to settle
+        await page.waitForTimeout(2000);
+        
+        // Find the message composer
+        // Messenger uses Lexical editor: div[role=textbox] > ... > <p><br>
+        console.log('Looking for message composer...');
+        
+        const textbox = page.locator('div[role="textbox"]').first();
+        await textbox.waitFor({{ timeout: 15000 }});
+        console.log('Found textbox');
+        
+        // Click to focus the composer
+        console.log('Clicking composer...');
+        await textbox.click();
+        await page.waitForTimeout(500);
+        
+        // Use keyboard.type() - this simulates real keystrokes
+        // which works with Lexical editor (fill() and locator.type() do not)
+        console.log('Typing message...');
+        await page.keyboard.type(`{escaped_message}`, {{ delay: 10 }});
+        
+        console.log('SUCCESS: Message typed!');
+        console.log('Review in Messenger, then press Enter to send.');
+        
+        await browser.close();
+        
+    }} catch (error) {{
+        console.error('ERROR:', error.message);
+        process.exit(1);
+    }}
+}})();
+'''
+    
+    def send_message_to_open_chrome(self, contact: Contact, message: str, dry_run: bool = False) -> bool:
+        """Navigate existing Chrome to contact's conversation and type message"""
+        
+        if dry_run:
+            print(f"\n[DRY RUN] Would send to: {contact.fb_name}")
+            print(f"Message: {message[:100]}...")
+            return True
+        
+        try:
+            print(f"\n{'='*60}")
+            print(f"Contact: {contact.fb_name}")
+            print(f"URL: {contact.messenger_url}")
+            print(f"{'='*60}")
+            print("\nINSTRUCTIONS:")
+            print(f"1. In Chrome, go to: {contact.messenger_url}")
+            print("   (or click the URL above to navigate)")
+            print("2. Wait for the conversation to load")
+            print("3. If you see a 'Continue' button, CLICK IT")
+            print("4. Come back here and press ENTER")
+            print("\nNOTE: Do NOT type the message - automation will do that!")
+            print(f"{'='*60}\n")
+            
+            confirm = input("Press ENTER when ready for automation to type\n   (or 's' to skip, 'q' to quit): ").strip().lower()
+            
+            if confirm == 's':
+                print("   Skipping...")
+                return False
+            
+            if confirm == 'q':
+                print("   Quitting batch...")
+                return None
+            
+            # Run Playwright to type the message in the EXISTING Chrome window
+            print("\nTyping message...")
+            
+            script_content = self.create_playwright_script(message)
+            temp_script = DATA_DIR / "temp_send.js"
+            temp_script.write_text(script_content, encoding='utf-8')
+            
+            result = subprocess.run(
+                ['node', str(temp_script)],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                timeout=120,
+                cwd=str(DATA_DIR)
+            )
+            
+            if result.returncode == 0:
+                print("\nMessage typed successfully!")
+                print("\nIMPORTANT: Review the message in Messenger.")
+                print("   If it looks good, manually press Enter to send it.")
+                input("\nPress ENTER when done...")
+                
+                self.history.record_sent(contact, self.event.url, message)
+                self.update_csv_status(contact, success=True)
+                self.sent_count += 1
+                return True
+            else:
+                error = result.stderr or "Unknown error"
+                print(f"\nAutomation failed: {error}")
+                print("\n   You may need to manually type the message.")
+                input("\nPress ENTER when done...")
+                self.update_csv_status(contact, success=False, error=error)
+                self.error_count += 1
+                return False
+                
+        except subprocess.TimeoutExpired:
+            print("\nTimeout - message may not have been sent")
+            input("\nPress ENTER to continue...")
+            self.update_csv_status(contact, success=False, error="Timeout")
+            self.error_count += 1
+            return False
+        except Exception as e:
+            print(f"\nError: {e}")
+            input("\nPress ENTER to continue...")
+            self.update_csv_status(contact, success=False, error=str(e))
+            self.error_count += 1
+            return False
+        finally:
+            temp_script = DATA_DIR / "temp_send.js"
+            if temp_script.exists():
+                temp_script.unlink()
+    
+    def send_message(self, contact: Contact, message: str, dry_run: bool = False) -> bool:
+        """Send message to a contact"""
+        
+        if dry_run:
+            print(f"\n[DRY RUN] Would send to: {contact.fb_name}")
+            print(f"Message: {message[:100]}...")
+            return True
+        
+        chrome_process = None
+        try:
+            print(f"\n{'='*60}")
+            print(f"Opening Chrome for: {contact.fb_name}")
+            print(f"Messenger URL: {contact.messenger_url}")
+            print(f"{'='*60}")
+            
+            chrome_process = self.launch_chrome(contact.messenger_url)
+            
+            print("\nChrome is opening...")
+            print("\nINSTRUCTIONS:")
+            print("1. Wait for the Messenger page to load")
+            print("2. If you see a 'Continue' or 'Continue as' button, CLICK IT")
+            print("3. Wait for the conversation to fully load (see the message input box)")
+            print("4. Then come back here and press ENTER")
+            print("\nNOTE: Do NOT type the message - automation will do that!")
+            print(f"{'='*60}\n")
+            
+            # Wait for user to manually handle Continue button
+            confirm = input("👉 Press ENTER when you're ready for automation to type the message\n   (or 's' to skip this contact, 'q' to quit): ").strip().lower()
+            
+            if confirm == 's':
+                print("   Skipping this contact...")
+                return False
+            
+            if confirm == 'q':
+                print("   Quitting batch...")
+                return None  # Signal to quit batch
+            
+            # Now run Playwright to type the message
+            print("\n🤖 Connecting to Chrome and typing message...")
+            
+            script_content = self.create_playwright_script(message)
+            temp_script = DATA_DIR / "temp_send.js"
+            temp_script.write_text(script_content, encoding='utf-8')
+            
+            result = subprocess.run(
+                ['node', str(temp_script)],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                timeout=120,
+                cwd=str(DATA_DIR)
+            )
+            
+            if result.returncode == 0:
+                print("\n✅ Message typed successfully!")
+                print("\n⚠️  IMPORTANT: Review the message in Messenger.")
+                print("   If it looks good, manually press Enter to send it.")
+                print("   Then close Chrome or press Enter here to continue.")
+                input("\n👉 Press ENTER when done...")
+                
+                self.history.record_sent(contact, self.event.url, message)
+                self.update_csv_status(contact, success=True)
+                self.sent_count += 1
+                return True
+            else:
+                error = result.stderr or "Unknown error"
+                print(f"\n❌ Automation failed: {error}")
+                print("\n   You may need to manually type the message.")
+                input("\n👉 Press ENTER when done...")
+                self.update_csv_status(contact, success=False, error=error)
+                self.error_count += 1
+                return False
+                
+        except subprocess.TimeoutExpired:
+            print("\n⏱️  Timeout - message may not have been sent")
+            input("\n👉 Press ENTER to continue...")
+            self.update_csv_status(contact, success=False, error="Timeout")
+            self.error_count += 1
+            return False
+        except Exception as e:
+            print(f"\n❌ Error: {e}")
+            input("\n👉 Press ENTER to continue...")
+            self.update_csv_status(contact, success=False, error=str(e))
+            self.error_count += 1
+            return False
+        finally:
+            # Don't terminate Chrome - let user close it manually or it stays for next message
+            # Just clean up temp script
+            temp_script = DATA_DIR / "temp_send.js"
+            if temp_script.exists():
+                temp_script.unlink()
+    
+    def run_batch(self, contacts: List[Contact], dry_run: bool = False, 
+                  batch_size: int = None, confirm_each: bool = False):
+        """Run a batch of messages"""
+        if batch_size is None:
+            batch_size = self.config['batch_size']
+        
+        total = len(contacts)
+        to_send = min(total, batch_size) if batch_size > 0 else total
+        
+        print(f"\n{'='*70}")
+        print(f"  BATCH: {to_send} messages")
+        print(f"  Mode: {'DRY RUN' if dry_run else 'LIVE'}")
+        print(f"  Delay: {self.config['min_delay']}-{self.config['max_delay']}s between messages")
+        print(f"{'='*70}\n")
+        
+        if not dry_run and not confirm_each:
+            confirm = input("This will send LIVE messages. Type 'yes' to confirm: ").strip().lower()
+            if confirm != 'yes':
+                print("   Cancelled.")
+                return
+        
+        # Launch Chrome ONCE for the entire batch (not per contact)
+        if not dry_run and contacts:
+            first_url = contacts[0].messenger_url
+            print(f"\n{'='*70}")
+            print(f"  Opening Chrome for the batch...")
+            print(f"{'='*70}")
+            self.launch_chrome(first_url)
+            print("\n  Chrome is open. Keep it open for all messages.")
+            print("  You'll navigate to each contact's conversation within Chrome.")
+            print(f"{'='*70}")
+        
+        for i, contact in enumerate(contacts[:to_send], 1):
+            print(f"\n{'─'*70}")
+            print(f"  Message {i}/{to_send}: {contact.fb_name}")
+            print(f"{'─'*70}")
+            
+            message = self.generate_message(contact)
+            
+            if confirm_each and not dry_run:
+                print(f"\nTo: {contact.fb_name}")
+                print(f"Message preview:\n{'─'*40}")
+                print(message)
+                print(f"{'─'*40}")
+                confirm = input("\nSend? (y/n/q): ").strip().lower()
+                if confirm == 'q':
+                    print("   Quitting batch...")
+                    break
+                if confirm != 'y':
+                    print("   Skipped.")
+                    continue
+            
+            # Navigate to this contact's conversation in the EXISTING Chrome window
+            success = self.send_message_to_open_chrome(contact, message, dry_run)
+            
+            # Check if user wants to quit batch
+            if success is None:
+                print("\nBatch cancelled by user.")
+                break
+            
+            if i < to_send:
+                delay = random.randint(self.config['min_delay'], self.config['max_delay'])
+                print(f"\n   Waiting {delay}s before next message...")
+                time.sleep(delay)
+        
+        print(f"\n{'='*70}")
+        print(f"  BATCH COMPLETE")
+        print(f"  Sent: {self.sent_count} | Errors: {self.error_count}")
+        print(f"  You can close Chrome now.")
+        print(f"{'='*70}\n")
+    
+    def preview_messages(self, count: int = 5):
+        """Preview messages without sending"""
+        contacts = self.load_contacts(limit=count)
+        
+        print(f"\n{'='*70}")
+        print(f"  MESSAGE PREVIEW (showing {min(count, len(contacts))} of {len(contacts)} pending)")
+        print(f"{'='*70}\n")
+        
+        for i, contact in enumerate(contacts[:count], 1):
+            message = self.generate_message(contact)
+            print(f"\n{i}. To: {contact.fb_name}")
+            print(f"   Profile: {contact.fb_profile_id}")
+            print(f"   Message:\n   {'─'*50}")
+            for line in message.split('\n'):
+                print(f"   {line}")
+            print(f"   {'─'*50}")
+        
+        print(f"\n{'='*70}\n")
+    
+    def show_statistics(self):
+        """Show statistics"""
+        all_contacts = self.load_contacts(only_pending=False)
+        pending = self.load_contacts(only_pending=True)
+        
+        sent_in_csv = sum(1 for c in all_contacts if c.is_sent)
+        sent_in_history = len(self.history.history)
+        
+        print(f"\n{'='*70}")
+        print(f"  STATISTICS")
+        print(f"{'='*70}\n")
+        print(f"  Total Contacts:       {len(all_contacts)}")
+        print(f"  Pending (unsent):     {len(pending)}")
+        print(f"  Marked as sent (CSV): {sent_in_csv}")
+        print(f"  In message history:   {sent_in_history}")
+        print(f"  Session messages:     {self.sent_count}")
+        print(f"  Session errors:       {self.error_count}")
+        print(f"\n  Configuration:")
+        print(f"    Batch size:        {self.config['batch_size']}")
+        print(f"    Min delay:         {self.config['min_delay']}s")
+        print(f"    Max delay:         {self.config['max_delay']}s")
+        print(f"    Page load wait:    {self.config['page_load_wait']}s")
+        print(f"    Auto-confirm:      {self.config['auto_confirm']}")
+        print(f"{'='*70}\n")
+    
+    def settings_menu(self):
+        """Settings configuration menu"""
+        while True:
+            print(f"\n{'='*70}")
+            print(f"  SETTINGS")
+            print(f"{'='*70}")
+            print(f"\n  Current Configuration:")
+            print(f"    1. Batch size:        {self.config['batch_size']}")
+            print(f"    2. Min delay:         {self.config['min_delay']}s")
+            print(f"    3. Max delay:         {self.config['max_delay']}s")
+            print(f"    4. Page load wait:    {self.config['page_load_wait']}s")
+            print(f"    5. Auto-confirm:      {self.config['auto_confirm']}")
+            print(f"    6. Message styles:    {', '.join(self.config['message_styles'])}")
+            print(f"\n  Event:")
+            print(f"    7. Event title:       {self.event.title}")
+            print(f"    8. Event URL:         {self.event.url}")
+            print(f"\n  9. Save and exit")
+            print(f"  0. Exit without saving")
+            print(f"{'='*70}")
+            
+            choice = input("\nSelect option (0-9): ").strip()
+            
+            if choice == '1':
+                val = input(f"Enter batch size (current: {self.config['batch_size']}): ").strip()
+                if val.isdigit():
+                    self.config['batch_size'] = int(val)
+            elif choice == '2':
+                val = input(f"Enter min delay in seconds: ").strip()
+                if val.isdigit():
+                    self.config['min_delay'] = int(val)
+            elif choice == '3':
+                val = input(f"Enter max delay in seconds: ").strip()
+                if val.isdigit():
+                    self.config['max_delay'] = int(val)
+            elif choice == '4':
+                val = input(f"Enter page load wait in seconds: ").strip()
+                if val.isdigit():
+                    self.config['page_load_wait'] = int(val)
+            elif choice == '5':
+                val = input("Auto-confirm? (y/n): ").strip().lower()
+                self.config['auto_confirm'] = val == 'y'
+            elif choice == '6':
+                print("\nAvailable styles: personal, casual, exciting, fomo, warm, supportive, community, direct, curious, favor")
+                val = input("Enter styles (comma-separated): ").strip()
+                if val:
+                    self.config['message_styles'] = [s.strip() for s in val.split(',')]
+            elif choice == '7':
+                val = input(f"Enter event title: ").strip()
+                if val:
+                    self.event.title = val
+            elif choice == '8':
+                val = input(f"Enter event URL: ").strip()
+                if val:
+                    self.event.url = val
+            elif choice == '9':
+                self.save_config()
+                print("Settings saved!")
+                break
+            elif choice == '0':
+                break
+    
+    def reset_history(self):
+        """Reset message history (use with caution)"""
+        print(f"\nWARNING: This will clear the message history!")
+        print(f"   This may allow sending to contacts that were already messaged.")
+        confirm = input("\nType 'RESET' to confirm: ").strip()
+        
+        if confirm == 'RESET':
+            if HISTORY_PATH.exists():
+                HISTORY_PATH.rename(HISTORY_PATH.with_suffix('.json.backup'))
+                print("   History backed up and cleared.")
+            self.history = MessageHistory(HISTORY_PATH)
+        else:
+            print("   Cancelled.")
+    
+    def main_menu(self):
+        """Main application menu"""
+        while True:
+            self.clear_screen()
+            self.print_header()
+            
+            pending = len(self.load_contacts(only_pending=True))
+            
+            print(f"  Status: {pending} contacts pending | {self.sent_count} sent this session")
+            print()
+            print("  MAIN MENU:")
+            print()
+            print("    1. Preview messages (dry run)")
+            print("    2. Send test to 1 contact")
+            print("    3. Send batch (with confirmation)")
+            print("    4. Send batch (auto-confirm)")
+            print("    5. View statistics")
+            print("    6. Settings")
+            print("    7. Reset history (danger)")
+            print("    8. Exit")
+            print()
+            print("─" * 70)
+            
+            choice = input("\nSelect option (1-8): ").strip()
+            
+            if choice == '1':
+                count = input("How many to preview? (default 5): ").strip()
+                count = int(count) if count.isdigit() else 5
+                self.preview_messages(count)
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '2':
+                contacts = self.load_contacts(limit=1)
+                if contacts:
+                    self.run_batch(contacts, dry_run=False, batch_size=1, confirm_each=True)
+                else:
+                    print("No contacts available!")
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '3':
+                batch = input(f"Batch size? (default {self.config['batch_size']}): ").strip()
+                batch_size = int(batch) if batch.isdigit() else self.config['batch_size']
+                contacts = self.load_contacts()
+                if contacts:
+                    self.run_batch(contacts, dry_run=False, batch_size=batch_size, confirm_each=True)
+                else:
+                    print("No contacts available!")
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '4':
+                batch = input(f"Batch size? (default {self.config['batch_size']}): ").strip()
+                batch_size = int(batch) if batch.isdigit() else self.config['batch_size']
+                contacts = self.load_contacts()
+                if contacts:
+                    self.run_batch(contacts, dry_run=False, batch_size=batch_size, confirm_each=False)
+                else:
+                    print("No contacts available!")
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '5':
+                self.show_statistics()
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '6':
+                self.settings_menu()
+                
+            elif choice == '7':
+                self.reset_history()
+                input("\nPress ENTER to continue...")
+                
+            elif choice == '8':
+                print("\nGoodbye!")
+                break
+                
+            else:
+                print("Invalid option!")
+                time.sleep(1)
+
+
+def main():
+    """Entry point"""
+    try:
+        app = MessengerTerminal()
+        app.main_menu()
+    except KeyboardInterrupt:
+        print("\n\nInterrupted. Goodbye!")
+    except Exception as e:
+        logger.error(f"Fatal error: {e}", exc_info=True)
+        print(f"\nFatal error: {e}")
+        raise
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,165 @@
+# RESEARCH RESULTS - Venue Contacts Found
+
+**Research Date:** July 15, 2026  
+**Status:** New contacts discovered
+
+---
+
+## ✅ NEW CONTACTS FOUND
+
+### 1. THE RED LION
+- **Phone:** 212-260-9797 ✓
+- **Website:** redlionnyc.com
+- **Address:** 151 Bleecker St, Greenwich Village
+- **Action:** CALL TODAY
+- **Script:** "Hi, this is Cosmic Ray, former Resident Band Leader at B.B. King's Blues Club (~10 years). I run a cosmic blues project and I'm looking to book fall dates. Can I talk to whoever handles live music?"
+
+---
+
+### 2. SMOKE JAZZ & SUPPER CLUB
+- **Phone:** 212-864-6662 ✓
+- **Website:** smokejazz.com
+- **Address:** 2751 Broadway, Upper West Side
+- **Action:** CALL TODAY
+- **Note:** Jazz/blues venue with supper club format
+
+---
+
+### 3. BARBES
+- **Email:** BarbesBookings@gmail.com ✓
+- **Website:** barbesbrooklyn.com
+- **Address:** 376 9th St, Brooklyn
+- **Action:** SEND EMAIL
+- **Note:** "Send email with streamable music link. No CDs. Very small space, residential area. Prefers acoustic, no rock bands, no electric bass."
+- **Email Template:**
+```
+Subject: Cosmic blues booking inquiry - fall 2026
+
+Hi,
+
+I'm Cosmic Ray, former Resident Band Leader at B.B. King's Blues Club NYC (~10 years). I play cosmic blues and I'm interested in booking Barbès for September-December 2026.
+
+I can do acoustic-friendly configurations. Here's a link to my music:
+https://www.youtube.com/watch?v=XKqRV3OGQdo
+
+Instagram: @cosmicbluesband
+Phone: 929-361-7136
+
+Let me know if you'd like to discuss further.
+
+Thanks,
+Ray
+```
+
+---
+
+### 4. MERCURY LOUNGE
+- **Booking:** Via Mercury East Presents
+- **Website:** mercuryeastpresents.com/mercurylounge
+- **Action:** Check website for submission process
+- **Note:** Cosmic Ray has played here before
+
+---
+
+## 🌐 WEB FORM ONLY (No Direct Email/Phone Found)
+
+| Venue | Website | Action |
+|-------|---------|--------|
+| Cafe Wha? | cafewha.com | Contact form |
+| Drom | dromnyc.com | Contact form |
+| The Knitting Factory | knittingfactory.com | Contact form |
+| Sunny's Bar | sunnysredhook.com | Contact form |
+| Pete's Candy Store | petescandystore.com | Party form |
+| Arlene's Grocery | arlenesgrocery.com | Website down |
+
+---
+
+## ⚠️ PROBLEMATIC VENUES
+
+| Venue | Issue | Status |
+|-------|-------|--------|
+| 55 Bar | Squarespace expired | Likely closed |
+| The Groove | No website found | Needs verification |
+| Skinny Dennis | 404 error | Website issues |
+| Smalls Jazz Club | Contact page 404 | Alternative needed |
+| Mezzrow | Contact page 404 | Alternative needed |
+| The Way Station | Domain hijacked by spam | **DO NOT VISIT** |
+| Union Pool | Timed out | Try again later |
+| Good Room | Fetch failed | Try again later |
+| The Bell House | Extraction failed | Try again later |
+
+---
+
+## 📊 UPDATED VENUE COUNT
+
+| Category | Count | New Finds |
+|----------|-------|-----------|
+| **Email Ready** | 5 | +2 (Barbes, Berlin, Iridium, Zinc, Red Lion) |
+| **Phone Ready** | 4 | +2 (Red Lion, Smoke Jazz, Terra Blues, need more) |
+| **Web Form** | 6 | +5 |
+| **Needs Research** | 12 | Reduced from 15 |
+| **Problematic** | 9 | New category |
+
+---
+
+## 🎯 IMMEDIATE ACTIONS (Do Today)
+
+1. **Send Email:** info@berlin.nyc ✓
+2. **Send Email:** BMcKenna@lessings.com ✓
+3. **Send Email:** info@zincbar.com ✓
+4. **Send Email:** BarbesBookings@gmail.com ✓ **(NEW)**
+5. **Call:** 212-777-7776 (Terra Blues) ✓
+6. **Call:** 212-260-9797 (The Red Lion) ✓ **(NEW)**
+7. **Call:** 212-864-6662 (Smoke Jazz) ✓ **(NEW)**
+
+**Total: 7 contacts today**
+
+---
+
+## 📋 UPDATED CSV DATA
+
+Add these to cosmic-blues-venues.csv:
+
+```csv
+22,The Red Lion,151 Bleecker St,Manhattan (Greenwich Village),FIT,https://redlionnyc.com,,,,Phone: 212-260-9797 - Blues-friendly pub. Call for booking.
+6,Smoke Jazz & Supper Club,2751 Broadway,Manhattan (Upper West Side),FIT,https://www.smokejazz.com,,,,Phone: 212-864-6662 - Jazz/blues venue with supper club format.
+19,Barbes,376 9th St,Brooklyn (Park Slope),FIT,https://www.barbesbrooklyn.com,,,,Email: BarbesBookings@gmail.com - Send streamable music link. Acoustic preferred.
+```
+
+---
+
+## 🔍 STILL NEEDS RESEARCH
+
+The following venues need contact info:
+- The Cutting Room (web form only for Broadway shows)
+- Cafe Wha? (form only)
+- Drom (form only)
+- The Knitting Factory (form only)
+- The Bell House
+- Skinny Dennis
+- Sunny's Bar (form only)
+- Pete's Candy Store (form only)
+- Smalls Jazz Club
+- Mezzrow
+- Union Pool
+- Good Room
+
+---
+
+## 💡 RESEARCH STRATEGY
+
+For venues with web forms only:
+1. Submit form with your info
+2. Include YouTube link
+3. Follow up via Instagram DM
+4. Visit in person if local
+
+For problematic venues:
+1. Search Instagram for venue name
+2. Check Google Maps for phone
+3. Visit in person to verify status
+4. Ask other venue bookers for contacts
+
+---
+
+**Next research batch:** Focus on Brooklyn venues and jazz clubs

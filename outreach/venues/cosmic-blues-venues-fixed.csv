@@ -1,0 +1,201 @@
+rank,venue,address,borough,type,website,status,date_contacted,booking_contact,notes
+51,The Django,2 Avenue of the Americas,Manhattan (Tribeca),FIT,https://www.2dtnyc.com,,,info@2dtnyc.com,"Jazz club under the Roxy Hotel. Live music nightly. Contact info@ for booking."
+52,The Django at the Roxy,2 6th Ave,Manhattan (Tribeca),FIT,https://www.theroxyhotel.com/django,,,django@theroxyhotel.com,"Jazz club in Roxy Hotel. Booking: django@theroxyhotel.com"
+53,Hotel Chantelle,92 Ludlow St,Manhattan (Lower East Side),FIT,https://www.hotelchantelle.com,,,info@hotelchantelle.com,Rooftop bar with live music. French-American venue.
+54,Montero Bar,73 Atlantic Ave,Brooklyn (Brooklyn Heights),FIT,,,,info@monterosbar.com,Long-standing Brooklyn dive bar. Live music occasionally.
+55,Little Branch,20 7th Ave S,Manhattan (West Village),FIT,,,,info@littlebranch.net,Speakeasy-style cocktail bar. Occasional live jazz.
+56,Ear Inn,326 Spring St,Manhattan (Soho),FIT,https://www.earinn.com,,,info@earinn.com,Historic bar with live music. Blues/jazz/roots focus.
+57,Sunshine Laundromat,925 Fulton St,Brooklyn (Clinton Hill),FIT,https://www.sunshinelaundromatbk.com,,,info@sunshinelaundromatbk.com,Bar/laundromat with live music. Hipster spot.
+58,The Commodore,366 Metropolitan Ave,Brooklyn (Williamsburg),FIT,https://www.commodoreny.com,,,info@commodoreny.com,Bar with live music. Southern comfort food.
+59,Skinny Dennis,152 Metropolitan Ave,Brooklyn (Williamsburg),FIT,https://www.skinnydennis.com,,,booking@skinnydennisbrooklyn.com,"Honky-tonk bar, country/blues focus. Already in list but worth re-contacting."
+60,Freddy's Bar,627 5th Ave,Brooklyn (Park Slope),FIT,https://www.freddysbar.com,,,info@freddysbar.com,Neighborhood bar with live music. Eclectic bookings.
+61,Barbes,376 9th St,Brooklyn (Park Slope),FIT,https://www.barbesbrooklyn.com,,,BarbesBookings@gmail.com,"Already contacted. World music/blues bar. Send streamable link."
+62,Hank's Saloon,345 Atlantic Ave,Brooklyn (Boerum Hill),CLOSED,,,,,"CLOSED - Was legendary dive bar with live country/blues."
+63,Branded Saloon,603 Vanderbilt Ave,Brooklyn (Prospect Heights),FIT,https://www.brandedsaloon.com,,,info@brandedsaloon.com,Wild West themed bar with live music. Americana/roots.
+64,The Way Station,413 Vanderbilt Ave,Brooklyn (Prospect Heights),FIT,https://www.thewaystationbk.com,,,info@thewaystationbk.com,"Already contacted. Geeky bar with live music. TARDIS bathroom."
+65,Lowlands,543 3rd Ave,Brooklyn (Gowanus),FIT,https://www.lowlandsbar.com,,,info@lowlandsbar.com,Gowanus bar with live music. Americana focus.
+66,The Bell House,149 7th St,Brooklyn (Gowanus),FIT,https://www.thebellhouseny.com,,,info@thebellhouseny.com,"Already contacted. Large venue with two rooms."
+67,Union Hall,702 Union St,Brooklyn (Park Slope),FIT,https://www.unionhallny.com,,,info@unionhallny.com,"Live music venue downstairs, bar upstairs. Bocce courts."
+68,The Rock Shop,249 4th Ave,Brooklyn (Park Slope),FIT,,,,info@therockshopny.com,Live music venue. Indie rock but books blues too.
+69,Barbès,376 9th St,Brooklyn (Park Slope),FIT,https://www.barbesbrooklyn.com,,,BarbesBookings@gmail.com,Duplicate entry - same as #61.
+70,Shrine,2271 Adam Clayton Powell Jr Blvd,Manhattan (Harlem),FIT,https://www.shrinenyc.com,,,info@shrinenyc.com,"Harlem world music/jazz venue. Intimate space."
+71,Ginny's Supper Club,310 Lenox Ave,Manhattan (Harlem),FIT,https://www.ginnyssupperclub.com,,,info@redroosterharlem.com,"Harlem supper club below Red Rooster. Jazz/blues/soul."
+72,Silvana,300 W 116th St,Manhattan (Harlem),FIT,https://www.silvana-nyc.com,,,info@silvana-nyc.com,Harlem bar/cafe with live music. Intimate upstairs venue.
+73,The Cecil,210 W 118th St,Manhattan (Harlem),CLOSED,,,,,"CLOSED - Was upscale Harlem restaurant with jazz."
+74,Minton's Playhouse,206 W 118th St,Manhattan (Harlem),FIT,https://www.mintonsplayhouse.com,,,info@mintonsplayhouse.com,"Historic Harlem jazz club. Hard booking. Bebop birthplace."
+75,Smoke Jazz Club,2751 Broadway,Manhattan (Upper West Side),FIT,https://www.smokejazz.com,,,smokejazzclub@smokejazz.com,"Already contacted. Jazz club with supper."
+76,Alice's Tea Cup,102 W 73rd St,Manhattan (Upper West Side),FIT,,,,info@alicesteacup.com,"Multiple locations. May not book live music. Verify first."
+77,Prohibition,503 Columbus Ave,Manhattan (Upper West Side),FIT,https://www.prohibitionnyc.com,,,info@prohibitionnyc.com,"Upper West Side bar/restaurant. Live music some nights."
+78,Jake's Dilemma,429 Amsterdam Ave,Manhattan (Upper West Side),FIT,https://www.jakesdilemma.com,,,info@jakesdilemma.com,"College bar. Occasional live music. Lower priority."
+79,The Dead Poet,450 Amsterdam Ave,Manhattan (Upper West Side),FIT,https://www.thedeadpoguet.com,,,info@thedeadpoguet.com,"Literary themed bar. Occasional acoustic nights."
+80,Amity Hall,982 Amsterdam Ave,Manhattan (Upper West Side),FIT,https://www.amityhalluptown.com,,,info@amityhalluptown.com,"Bar with live music. College crowd."
+81,Refinery Rooftop,63 W 38th St,Manhattan (Midtown),FIT,https://www.therefineryrooftop.com,,,info@therefineryrooftop.com,"Hotel rooftop bar. Occasional live music."
+82,The Press Lounge,653 11th Ave,Manhattan (Hell's Kitchen),FIT,https://www.thepresslounge.com,,,info@thepresslounge.com,"Ink48 Hotel rooftop. Jazz/brunch sometimes."
+83,Piano's,158 Ludlow St,Manhattan (Lower East Side),FIT,https://www.pianosnyc.com,,,booking@pianosnyc.com,"Already contacted. Multi-stage indie room."
+84,The Delancey,168 Delancey St,Manhattan (Lower East Side),FIT,https://www.thedelancey.com,,,info@thedelancey.com,"Bar with live music. Three levels including rooftop."
+85,Beauty Bar,231 E 14th St,Manhattan (East Village),FIT,https://www.beautybar.com,,,info@beautybar.com,"Salon-themed bar. DJs more than live but worth trying."
+86,Niagara,112 Avenue A,Manhattan (East Village),FIT,,,,info@niagaranyc.com,Dive bar with occasional live music.
+87,Iggy's,132 Ludlow St,Manhattan (Lower East Side),FIT,,,,info@iggysnyc.com,"Karaoke/live music. Occasional bands."
+88,Arlene's Grocery,95 Stanton St,Manhattan (Lower East Side),FIT,https://www.arlenesgrocery.com,,,info@arlenesgrocery.net,"Already contacted. Rock venue."
+89,Cake Shop,152 Ludlow St,Manhattan (Lower East Side),CLOSED,,,,,"CLOSED - Was iconic DIY venue/cafe."
+90,Rockwood Music Hall,196 Allen St,Manhattan (Lower East Side),FIT,https://www.rockwoodmusichall.com,,,info@rockwoodmusichall.com,"Already contacted. Three stages."
+91,The Living Room,134 Metropolitan Ave,Brooklyn (Williamsburg),CLOSED,,,,,"CLOSED - Was legendary songwriter venue."
+92,Mike's Piano Bar,1584 Second Ave,Manhattan (Upper East Side),FIT,,,,info@mikespianobar.com,Upper East Side piano bar. May book solo acts.
+93,Brandy's Piano Bar,235 E 84th St,Manhattan (Upper East Side),FIT,https://www.brandysnyc.com,,,info@brandysnyc.com,"Piano bar, Broadway crowd. Solo piano/vocal."
+94,Don't Tell Mama,343 W 46th St,Manhattan (Theater District),FIT,https://www.donttellmamanyc.com,,,info@donttellmamanyc.com,"Theater district piano bar. Cabaret/open mic."
+95,Marie's Crisis,59 Grove St,Manhattan (Greenwich Village),FIT,,,,info@mariescrisis.com,"Legendary sing-along piano bar. Not typical booking."
+96,Rise Bar,859 9th Ave,Manhattan (Hell's Kitchen),FIT,https://www.risebarnyc.com,,,info@risebarnyc.com,"Piano bar, mostly drag shows but occasional live music."
+97,Sidewalk Cafe,94 Avenue A,Manhattan (East Village),FIT,https://www.sidewalknyc.com,,,booking@sidewalkny.com,"Already contacted. Antifolk/roots."
+98,Manhattan Inn,632 Manhattan Ave,Brooklyn (Greenpoint),CLOSED,,,,,"CLOSED - Was Greenpoint venue with piano."
+99,The Gibson,108 Bedford Ave,Brooklyn (Williamsburg),FIT,https://www.thegibsonbk.com,,,info@thegibsonbk.com,"Williamsburg cocktail bar. Occasional live music."
+100,St. Mazie,345 Grand St,Brooklyn (Williamsburg),FIT,https://www.stmazie.com,,,info@stmazie.com,"Williamsburg bar/restaurant. Live music downstairs."
+61,Buddy Guy's Legends,700 S Wabash Ave,Chicago (Loop),FIT,https://www.buddyguy.com,,,info@buddyguy.com,Legendary Chicago blues club owned by Buddy Guy. World-class venue.
+62,Kingston Mines,2548 N Halsted St,Chicago (Lincoln Park),FIT,https://www.kingstonmines.com,,,booking@kingstonmines.com,Chicago's premier blues nightclub. Two stages. Open late.
+63,Rosa's Lounge,3420 W Armitage Ave,Chicago (Logan Square),FIT,https://www.rosaslounge.com,,,info@rosaslounge.com,Family-owned neighborhood blues club. Intimate setting.
+64,House of Blues Chicago,329 N Dearborn St,Chicago (River North),FIT,https://www.houseofblues.com/chicago,,,booking@houseofblues.com,Major venue chain. Gospel brunch and concerts.
+65,Blue Chicago,536 N Clark St,Chicago (River North),FIT,https://www.bluechicago.com,,,info@bluechicago.com,Urban blues venue. Live music 5 nights a week.
+66,Lee's Unleaded Blues,7401 S South Chicago Ave,Chicago (South Shore),FIT,https://www.leesunleadedblues.com,,,leesunleadedblues@gmail.com,Southside Chicago blues club. Authentic neighborhood spot.
+67,The Green Mill,4802 N Broadway,Chicago (Uptown),FIT,https://www.greenmilljazz.com,,,booking@greenmilljazz.com,Historic jazz club. Al Capone's old haunt. Jazz/blues focus.
+68,Andy J's Pizza,959 W Webster Ave,Chicago (Lincoln Park),FIT,,,,andyjs@andyjspizza.com,Neighborhood spot with live blues.
+69,B.L.U.E.S.,2519 N Halsted St,Chicago (Lincoln Park),FIT,https://www.chicagobluesbar.com,,,info@chicagobluesbar.com,Intimate blues club. Great for solo/duo.
+70,Velvet Lounge,67 E Cermak Rd,Chicago (South Loop),FIT,,,,velvetloungechicago@gmail.com,Jazz/blues venue. Underground vibe.
+71,Antone's Nightclub,305 E 5th St,Austin (Downtown),FIT,https://www.antonesnightclub.com,,,booking@antonesnightclub.com,Austin's home of the blues. Historic venue. TX blues focus.
+72,The Continental Club,1315 S Congress Ave,Austin (South Congress),FIT,https://www.continentalclub.com,,,booking@continentalclub.com,Legendary Austin rock/blues venue.
+73,Broken Spoke,3201 S Lamar Blvd,Austin (South Austin),FIT,https://www.brokenspokeaustin.com,,,info@brokenspokeaustin.com,Texas honky-tonk. Country/blues/roots.
+74,Cactus Cafe,2300 Speedway,Austin (UT Campus),FIT,https://www.cactuscafe.org,,,cactuscafe@austin.utexas.edu,Intimate listening room at UT. Americana/blues.
+75,The Saxon Pub,1320 S Lamar Blvd,Austin (South Austin),FIT,https://www.thesaxonpub.com,,,booking@thesaxonpub.com,Singer-songwriter venue. Americana/roots/blues.
+76,White Horse,500 Comal St,Austin (East Austin),FIT,https://www.thewhitehorseaustin.com,,,booking@thewhitehorseaustin.com,Honky-tonk with live music. Country/blues focus.
+77,Donn's Depot,1600 W 5th St,Austin (Clarksville),FIT,https://www.donnsdepot.com,,,donnsdepot@yahoo.com,Train depot converted to venue. Blues/country.
+78,Skylark Lounge,2039 Airport Blvd,Austin (East Austin),FIT,https://www.skylarkloungeaustin.com,,,booking@skylarkloungeaustin.com,East Austin blues bar. Local talent.
+79,Strange Brew Lounge Side,5326 Manchaca Rd,Austin (South Austin),FIT,https://www.strangebrewloungeside.com,,,booking@strangebrewloungeside.com,Coffee shop/venue. Acoustic/electric blues.
+80,Evangeline Cafe,8106 Brodie Ln,Austin (South Austin),FIT,https://www.evangelinecafe.com,,,booking@evangelinecafe.com,Cajun/Creole cafe with live music. Zydeco/blues.
+81,The Fillmore,1805 Geary Blvd,San Francisco (Western Addition),FIT,https://www.thefillmore.com,,,booking@thefillmore.com,Historic rock venue. Major acts.
+82,Slim's,333 11th St,San Francisco (SoMa),FIT,https://www.slimspresents.com,,,booking@slimspresents.com,Rock/blues club. Bay Area institution.
+83,The Saloon,1232 Grant Ave,San Francisco (North Beach),FIT,https://www.thesaloon.com,,,info@thesaloon.com,San Francisco's oldest blues bar. Historic venue.
+84,Biscuits & Blues,401 Mason St,San Francisco (Union Square),FIT,https://www.biscuitsandblues.com,,,booking@biscuitsandblues.com,Restaurant/blues club. Southern cuisine.
+85,Bottom of the Hill,1233 17th St,San Francisco (Potrero Hill),FIT,https://www.bottomofthehill.com,,,booking@bottomofthehill.com,Indie/rock venue. Also books roots/blues.
+86,Brick & Mortar Music Hall,1710 Mission St,San Francisco (Mission),FIT,https://www.brickandmortarmusic.com,,,booking@brickandmortarmusic.com,Multi-genre venue. Intimate room.
+87,Ivy Room,860 San Pablo Ave,Albany (Bay Area),FIT,https://www.ivyroom.com,,,booking@ivyroom.com,East Bay music venue. Americana/blues/roots.
+88,Freight & Salvage,2020 Addison St,Berkeley (Bay Area),FIT,https://www.freightandsalvage.org,,,booking@freightandsalvage.org,Legendary folk/roots venue. Listening room.
+89,The Starry Plough,3101 Shattuck Ave,Berkeley (Bay Area),FIT,https://www.thestarryplough.com,,,booking@thestarryplough.com,Irish pub with live music. Celtic/roots/blues.
+90,Eli's Mile High Club,3629 Martin Luther King Jr Way,Oakland (Bay Area),FIT,https://www.elismilehighclub.com,,,booking@elismilehighclub.com,East Bay institution. Blues/rock/soul.
+91,The Troubadour,9081 Santa Monica Blvd,Los Angeles (West Hollywood),FIT,https://www.troubadour.com,,,booking@troubadour.com,Legendary LA venue. Singer-songwriter heritage.
+92,The Echo,1822 Sunset Blvd,Los Angeles (Echo Park),FIT,https://www.theecho.com,,,booking@theecho.com,Indie/rock venue. Also books roots acts.
+93,El Cid,4212 Sunset Blvd,Los Angeles (Silver Lake),FIT,https://www.elcidla.com,,,info@elcidla.com,Historic Spanish dinner theater. Live music.
+94,The Satellite,1717 Silver Lake Blvd,Los Angeles (Silver Lake),FIT,https://www.thesatellitela.com,,,booking@thesatellitela.com,Indie venue. Eclectic bookings.
+95,Harvelle's,1432 4th St,Santa Monica (LA Area),FIT,https://www.harvelles.com,,,booking@harvelles.com,Blues/jazz club since 1931. Historic spot.
+96,The Mint,6010 W Pico Blvd,Los Angeles (Mid-City),FIT,https://www.themintla.com,,,booking@themintla.com,Live music venue. Blues/rock/jam bands.
+97,Genghis Cohen,740 N Fairfax Ave,Los Angeles (Fairfax),FIT,https://www.genghiscohen.com,,,booking@genghiscohen.com,Chinese restaurant/live music. Eclectic.
+98,Zebulon,2478 Fletcher Dr,Los Angeles (Atwater Village),FIT,https://www.zebulon.la,,,booking@zebulon.la,Intimate music venue. Experimental/roots.
+99,The Piano Bar,6421 Selma Ave,Los Angeles (Hollywood),FIT,https://www.thepianobarhollywood.com,,,booking@thepianobarhollywood.com,Cocktail bar with live music. Jazz/blues/piano.
+100,Bar Lubitsch,7702 Santa Monica Blvd,Los Angeles (West Hollywood),FIT,https://www.barlubitsch.com,,,info@barlubitsch.com,Russian-themed bar. Occasional live music.
+101,Continental Club,3700 Main St,Houston (Midtown),FIT,https://www.continentalclub.com/houston,,,booking@continentalclub.com,Austin's legendary club - Houston location.
+102,The Bronze Peacock,1201 San Jacinto St,Houston (Downtown),FIT,https://www.houseofblues.com/houston,,,booking@houseofblues.com,House of Blues intimate room. Blues focus.
+103,Fitzgerald's,2706 White Oak Dr,Houston (Heights),FIT,https://www.fitzlivemusic.com,,,booking@fitzlivemusic.com,Historic Houston venue. Blues/rock/roots.
+104,The White Oak Music Hall,2915 N Main St,Houston (Near Northside),FIT,https://www.whiteoakmusichall.com,,,booking@whiteoakmusichall.com,Multi-room venue. National and local acts.
+105,Blues Ancestral Hall,5701 Hillcroft Ave,Houston (Southwest),FIT,,,,info@bluesancestralhall.com,Blues heritage venue. Community focused.
+106,McGonigel's Mucky Duck,2425 Norfolk St,Houston (Montrose),FIT,https://www.muckyduck.com,,,booking@muckyduck.com,Listening room. Americana/roots/blues.
+107,Dosey Doe,25911 I-45 N,The Woodlands (Houston Area),FIT,https://www.doseydoe.com,,,booking@doseydoe.com,Texas music venue. Big Barn setting.
+108,Anderson Fair,2007 Grant Ave,Houston (Montrose),FIT,https://www.andersonfair.com,,,booking@andersonfair.com,Historic listening room. Songwriter venue.
+109,The Flat,1701 Commonwealth St,Houston (Montrose),FIT,,,,theflathouston@gmail.com,Dive bar with live music. Blues/rock.
+110,Shady Acres Saloon,112 W 19th St,Houston (Heights),FIT,https://www.shadyacressaloon.com,,,info@shadyacressaloon.com,Country/blues venue. Local talent.
+101,Buddy Guy's Legends,700 S Wabash Ave,Chicago (Loop),FIT,https://www.buddyguy.com,,,info@buddyguy.com,Legendary Chicago blues club owned by Buddy Guy. World-class venue.
+102,Kingston Mines,2548 N Halsted St,Chicago (Lincoln Park),FIT,https://www.kingstonmines.com,,,booking@kingstonmines.com,Chicago's premier blues nightclub. Two stages. Open late.
+103,Rosa's Lounge,3420 W Armitage Ave,Chicago (Logan Square),FIT,https://www.rosaslounge.com,,,info@rosaslounge.com,Family-owned neighborhood blues club. Intimate setting.
+104,House of Blues Chicago,329 N Dearborn St,Chicago (River North),FIT,https://www.houseofblues.com/chicago,,,booking@houseofblues.com,Major venue chain. Gospel brunch and concerts.
+105,Blue Chicago,536 N Clark St,Chicago (River North),FIT,https://www.bluechicago.com,,,info@bluechicago.com,Urban blues venue. Live music 5 nights a week.
+106,Lee's Unleaded Blues,7401 S South Chicago Ave,Chicago (South Shore),FIT,https://www.leesunleadedblues.com,,,leesunleadedblues@gmail.com,Southside Chicago blues club. Authentic neighborhood spot.
+107,The Green Mill,4802 N Broadway,Chicago (Uptown),FIT,https://www.greenmilljazz.com,,,booking@greenmilljazz.com,Historic jazz club. Al Capone's old haunt. Jazz/blues focus.
+108,Andy J's Pizza,959 W Webster Ave,Chicago (Lincoln Park),FIT,,,,andyjs@andyjspizza.com,Neighborhood spot with live blues.
+109,B.L.U.E.S.,2519 N Halsted St,Chicago (Lincoln Park),FIT,https://www.chicagobluesbar.com,,,info@chicagobluesbar.com,Intimate blues club. Great for solo/duo.
+110,Velvet Lounge,67 E Cermak Rd,Chicago (South Loop),FIT,,,,velvetloungechicago@gmail.com,Jazz/blues venue. Underground vibe.
+111,Antone's Nightclub,305 E 5th St,Austin (Downtown),FIT,https://www.antonesnightclub.com,,,booking@antonesnightclub.com,Austin's home of the blues. Historic venue. TX blues focus.
+112,The Continental Club,1315 S Congress Ave,Austin (South Congress),FIT,https://www.continentalclub.com,,,booking@continentalclub.com,Legendary Austin rock/blues venue.
+113,Broken Spoke,3201 S Lamar Blvd,Austin (South Austin),FIT,https://www.brokenspokeaustin.com,,,info@brokenspokeaustin.com,Texas honky-tonk. Country/blues/roots.
+114,Cactus Cafe,2300 Speedway,Austin (UT Campus),FIT,https://www.cactuscafe.org,,,cactuscafe@austin.utexas.edu,Intimate listening room at UT. Americana/blues.
+115,The Saxon Pub,1320 S Lamar Blvd,Austin (South Austin),FIT,https://www.thesaxonpub.com,,,booking@thesaxonpub.com,Singer-songwriter venue. Americana/roots/blues.
+116,White Horse,500 Comal St,Austin (East Austin),FIT,https://www.thewhitehorseaustin.com,,,booking@thewhitehorseaustin.com,Honky-tonk with live music. Country/blues focus.
+117,Donn's Depot,1600 W 5th St,Austin (Clarksville),FIT,https://www.donnsdepot.com,,,donnsdepot@yahoo.com,Train depot converted to venue. Blues/country.
+118,Skylark Lounge,2039 Airport Blvd,Austin (East Austin),FIT,https://www.skylarkloungeaustin.com,,,booking@skylarkloungeaustin.com,East Austin blues bar. Local talent.
+119,Strange Brew Lounge Side,5326 Manchaca Rd,Austin (South Austin),FIT,https://www.strangebrewloungeside.com,,,booking@strangebrewloungeside.com,Coffee shop/venue. Acoustic/electric blues.
+120,Evangeline Cafe,8106 Brodie Ln,Austin (South Austin),FIT,https://www.evangelinecafe.com,,,booking@evangelinecafe.com,Cajun/Creole cafe with live music. Zydeco/blues.
+121,The Fillmore,1805 Geary Blvd,San Francisco (Western Addition),FIT,https://www.thefillmore.com,,,booking@thefillmore.com,Historic rock venue. Major acts.
+122,Slim's,333 11th St,San Francisco (SoMa),FIT,https://www.slimspresents.com,,,booking@slimspresents.com,Rock/blues club. Bay Area institution.
+123,The Saloon,1232 Grant Ave,San Francisco (North Beach),FIT,https://www.thesaloon.com,,,info@thesaloon.com,San Francisco's oldest blues bar. Historic venue.
+124,Biscuits & Blues,401 Mason St,San Francisco (Union Square),FIT,https://www.biscuitsandblues.com,,,booking@biscuitsandblues.com,Restaurant/blues club. Southern cuisine.
+125,Bottom of the Hill,1233 17th St,San Francisco (Potrero Hill),FIT,https://www.bottomofthehill.com,,,booking@bottomofthehill.com,Indie/rock venue. Also books roots/blues.
+126,Brick & Mortar Music Hall,1710 Mission St,San Francisco (Mission),FIT,https://www.brickandmortarmusic.com,,,booking@brickandmortarmusic.com,Multi-genre venue. Intimate room.
+127,Ivy Room,860 San Pablo Ave,Albany (Bay Area),FIT,https://www.ivyroom.com,,,booking@ivyroom.com,East Bay music venue. Americana/blues/roots.
+128,Freight & Salvage,2020 Addison St,Berkeley (Bay Area),FIT,https://www.freightandsalvage.org,,,booking@freightandsalvage.org,Legendary folk/roots venue. Listening room.
+129,The Starry Plough,3101 Shattuck Ave,Berkeley (Bay Area),FIT,https://www.thestarryplough.com,,,booking@thestarryplough.com,Irish pub with live music. Celtic/roots/blues.
+130,Eli's Mile High Club,3629 Martin Luther King Jr Way,Oakland (Bay Area),FIT,https://www.elismilehighclub.com,,,booking@elismilehighclub.com,East Bay institution. Blues/rock/soul.
+131,The Troubadour,9081 Santa Monica Blvd,Los Angeles (West Hollywood),FIT,https://www.troubadour.com,,,booking@troubadour.com,Legendary LA venue. Singer-songwriter heritage.
+132,The Echo,1822 Sunset Blvd,Los Angeles (Echo Park),FIT,https://www.theecho.com,,,booking@theecho.com,Indie/rock venue. Also books roots acts.
+133,El Cid,4212 Sunset Blvd,Los Angeles (Silver Lake),FIT,https://www.elcidla.com,,,info@elcidla.com,Historic Spanish dinner theater. Live music.
+134,The Satellite,1717 Silver Lake Blvd,Los Angeles (Silver Lake),FIT,https://www.thesatellitela.com,,,booking@thesatellitela.com,Indie venue. Eclectic bookings.
+135,Harvelle's,1432 4th St,Santa Monica (LA Area),FIT,https://www.harvelles.com,,,booking@harvelles.com,Blues/jazz club since 1931. Historic spot.
+136,The Mint,6010 W Pico Blvd,Los Angeles (Mid-City),FIT,https://www.themintla.com,,,booking@themintla.com,Live music venue. Blues/rock/jam bands.
+137,Genghis Cohen,740 N Fairfax Ave,Los Angeles (Fairfax),FIT,https://www.genghiscohen.com,,,booking@genghiscohen.com,Chinese restaurant/live music. Eclectic.
+138,Zebulon,2478 Fletcher Dr,Los Angeles (Atwater Village),FIT,https://www.zebulon.la,,,booking@zebulon.la,Intimate music venue. Experimental/roots.
+139,The Piano Bar,6421 Selma Ave,Los Angeles (Hollywood),FIT,https://www.thepianobarhollywood.com,,,booking@thepianobarhollywood.com,Cocktail bar with live music. Jazz/blues/piano.
+140,Bar Lubitsch,7702 Santa Monica Blvd,Los Angeles (West Hollywood),FIT,https://www.barlubitsch.com,,,info@barlubitsch.com,Russian-themed bar. Occasional live music.
+141,Continental Club,3700 Main St,Houston (Midtown),FIT,https://www.continentalclub.com/houston,,,booking@continentalclub.com,Austin's legendary club - Houston location.
+142,The Bronze Peacock,1201 San Jacinto St,Houston (Downtown),FIT,https://www.houseofblues.com/houston,,,booking@houseofblues.com,House of Blues intimate room. Blues focus.
+143,Fitzgerald's,2706 White Oak Dr,Houston (Heights),FIT,https://www.fitzlivemusic.com,,,booking@fitzlivemusic.com,Historic Houston venue. Blues/rock/roots.
+144,The White Oak Music Hall,2915 N Main St,Houston (Near Northside),FIT,https://www.whiteoakmusichall.com,,,booking@whiteoakmusichall.com,Multi-room venue. National and local acts.
+145,Blues Ancestral Hall,5701 Hillcroft Ave,Houston (Southwest),FIT,,,,info@bluesancestralhall.com,Blues heritage venue. Community focused.
+146,McGonigel's Mucky Duck,2425 Norfolk St,Houston (Montrose),FIT,https://www.muckyduck.com,,,booking@muckyduck.com,Listening room. Americana/roots/blues.
+147,Dosey Doe,25911 I-45 N,The Woodlands (Houston Area),FIT,https://www.doseydoe.com,,,booking@doseydoe.com,Texas music venue. Big Barn setting.
+148,Anderson Fair,2007 Grant Ave,Houston (Montrose),FIT,https://www.andersonfair.com,,,booking@andersonfair.com,Historic listening room. Songwriter venue.
+149,The Flat,1701 Commonwealth St,Houston (Montrose),FIT,,,,theflathouston@gmail.com,Dive bar with live music. Blues/rock.
+150,Shady Acres Saloon,112 W 19th St,Houston (Heights),FIT,https://www.shadyacressaloon.com,,,info@shadyacressaloon.com,Country/blues venue. Local talent.
+151,The Django,2 Avenue of the Americas,Manhattan (Tribeca),FIT,https://www.2dtnyc.com,,,info@2dtnyc.com,Jazz club under the Roxy Hotel. Live music nightly.
+152,The Django at the Roxy,2 6th Ave,Manhattan (Tribeca),FIT,https://www.theroxyhotel.com/django,,,django@theroxyhotel.com,Jazz club in Roxy Hotel.
+153,Hotel Chantelle,92 Ludlow St,Manhattan (Lower East Side),FIT,https://www.hotelchantelle.com,,,info@hotelchantelle.com,Rooftop bar with live music. French-American venue.
+154,Montero Bar,73 Atlantic Ave,Brooklyn (Brooklyn Heights),FIT,,,,info@monterosbar.com,Long-standing Brooklyn dive bar. Live music occasionally.
+155,Little Branch,20 7th Ave S,Manhattan (West Village),FIT,,,,info@littlebranch.net,Speakeasy-style cocktail bar. Occasional live jazz.
+156,Ear Inn,326 Spring St,Manhattan (Soho),FIT,https://www.earinn.com,,,info@earinn.com,Historic bar with live music. Blues/jazz/roots focus.
+157,Sunshine Laundromat,925 Fulton St,Brooklyn (Clinton Hill),FIT,https://www.sunshinelaundromatbk.com,,,info@sunshinelaundromatbk.com,Bar/laundromat with live music. Hipster spot.
+158,The Commodore,366 Metropolitan Ave,Brooklyn (Williamsburg),FIT,https://www.commodoreny.com,,,info@commodoreny.com,Bar with live music. Southern comfort food.
+159,Freddy's Bar,627 5th Ave,Brooklyn (Park Slope),FIT,https://www.freddysbar.com,,,info@freddysbar.com,Neighborhood bar with live music. Eclectic bookings.
+160,Black Rabbit,91 Greenpoint Ave,Brooklyn (Greenpoint),FIT,https://www.blackrabbitrnyc.com,,,info@blackrabbitrnyc.com,Speakeasy-style bar. Live music on weekends.
+161,The Richardson,451 Graham Ave,Brooklyn (Williamsburg),FIT,https://www.therichardsonnyc.com,,,info@therichardsonnyc.com,Cocktail bar with occasional live music.
+162,The Gibson,108 Bedford Ave,Brooklyn (Williamsburg),FIT,https://www.thegibsonbk.com,,,info@thegibsonbk.com,Williamsburg cocktail bar. Occasional live music.
+163,St. Mazie,345 Grand St,Brooklyn (Williamsburg),FIT,https://www.stmazie.com,,,info@stmazie.com,Williamsburg bar/restaurant. Live music downstairs.
+164,The Cobra Club,6 Wyckoff Ave,Brooklyn (Bushwick),FIT,https://www.thecobraclub.com,,,booking@thecobraclub.com,Rock/metal bar with live music.
+165,Trans Pecos,915 Wyckoff Ave,Brooklyn (Ridgewood),FIT,https://www.transpecosridgewood.com,,,booking@transpecosridgewood.com,Experimental music venue. Eclectic bookings.
+166,The Footlight,465 Seneca Ave,Queens (Ridgewood),FIT,https://www.thefootlightbar.com,,,booking@thefootlightbar.com,Queens bar with live music. Local talent.
+167,The Shillelagh Tavern,47-22 30th Ave,Queens (Astoria),FIT,https://www.theshillelaghta.com,,,info@theshillelaghta.com,Irish pub with live music. Americana/roots.
+168,Q.E.D.,27-16 23rd Ave,Queens (Astoria),FIT,https://www.qedastoria.com,,,booking@qedastoria.com,Comedy/music venue. Acoustic-friendly.
+169,The Bonnie,29-12 23rd Ave,Queens (Astoria),FIT,https://www.thebonnie.com,,,info@thebonnie.com,Astoria cocktail bar. Occasional live music.
+170,The Ditty,29-04 Ditmars Blvd,Queens (Astoria),FIT,https://www.thedittynyc.com,,,info@thedittynyc.com,Neighborhood bar with live music.
+171,The Sparrow Tavern,24-01 29th St,Queens (Astoria),FIT,https://www.thesparrowtavern.com,,,info@thesparrowtavern.com,Bar with live music. Americana/indie.
+172,The Wolfhound,39-16 30th Ave,Queens (Astoria),FIT,https://www.thewolfhoundnyc.com,,,info@thewolfhoundnyc.com,Irish pub with live music.
+173,The Quays,45-02 30th Ave,Queens (Astoria),FIT,https://www.thequaysnyc.com,,,info@thequaysnyc.com,Irish pub with traditional music sessions.
+174,Rockaway Brewing Company,46-01 5th St,Queens (Long Island City),FIT,https://www.rockawaybrewco.com,,,events@rockawaybrewco.com,Brewery with live music events.
+175,LIC Bar,45-58 Vernon Blvd,Queens (Long Island City),FIT,https://www.licbar.com,,,info@licbar.com,Long Island City neighborhood bar. Live music.
+176,The Court Square Diner,45-25 Jackson Ave,Queens (Long Island City),FIT,https://www.courtsquarediner.com,,,info@courtsquarediner.com,Diner/bar with occasional live music.
+177,The Creek and The Cave,10-93 Jackson Ave,Queens (Long Island City),FIT,https://www.creeklic.com,,,booking@creeklic.com,Comedy/music venue. Live performances.
+178,The Pencil Factory,122 West St,Brooklyn (Greenpoint),FIT,https://www.thepencillfactory.com,,,info@thepencillfactory.com,Bar with live music. Roots/rock focus.
+179,The Lot Radio,17 Nassau Ave,Brooklyn (Greenpoint),FIT,https://www.thelotradio.com,,,info@thelotradio.com,Radio station/bar. Live DJ sets and music.
+180,Pete's Candy Store,709 Lorimer St,Brooklyn (Williamsburg),FIT,https://www.petescandystore.com,,,info@petescandystore.com,Intimate back room. Free music series.
+181,The Way Station,413 Vanderbilt Ave,Brooklyn (Prospect Heights),FIT,https://www.thewaystationbk.com,,,info@thewaystationbk.com,Geeky bar with live music. Solo/duo friendly.
+182,Barbès,376 9th St,Brooklyn (Park Slope),FIT,https://www.barbesbrooklyn.com,,,booking@barbesbrooklyn.com,World music/blues bar. Send streamable link.
+183,Union Pool,484 Union Ave,Brooklyn (Williamsburg),FIT,https://www.unionpool.com,,,info@unionpool.com,Rock/indie venue with bar. Trio/full band.
+184,The Bell House,149 7th St,Brooklyn (Gowanus),FIT,https://www.thebellhouseny.com,,,info@thebellhouseny.com,Brooklyn live music venue. Two rooms.
+185,Music Hall of Williamsburg,66 N 6th St,Brooklyn (Williamsburg),FIT,https://www.musichallofwilliamsburg.com,,,booking@musichallofwilliamsburg.com,Major venue. National acts.
+186,Baby's All Right,146 Broadway,Brooklyn (Williamsburg),FIT,https://www.babysallright.com,,,booking@babysallright.com,Indie venue/restaurant. Eclectic bookings.
+187,Rough Trade NYC,64 N 9th St,Brooklyn (Williamsburg),FIT,https://www.roughtradenyc.com,,,events@roughtradenyc.com,Record store/venue. Live performances.
+188,The Knitting Factory,361 Metropolitan Ave,Brooklyn (Williamsburg),FIT,https://www.knittingfactory.com,,,booking@knittingfactory.com,Multi-genre venue. Live music nightly.
+189,Brooklyn Bowl,61 Wythe Ave,Brooklyn (Williamsburg),FIT,https://www.brooklynbowl.com,,,booking@brooklynbowl.com,Bowling alley/venue. Live music and events.
+190,Output,74 Wythe Ave,Brooklyn (Williamsburg),CLOSED,,,,,"CLOSED - Was electronic music venue."
+191,Glasslands Gallery,289 Kent Ave,Brooklyn (Williamsburg),CLOSED,,,,,"CLOSED - Former DIY venue."
+192,Death by Audio,49 S 2nd St,Brooklyn (Williamsburg),CLOSED,,,,,"CLOSED - Former DIY venue."
+193,The Gutter,200 N 14th St,Brooklyn (Williamsburg),FIT,https://www.thegutterbrooklyn.com,,,booking@thegutterbrooklyn.com,Bowling alley/bar. Live music occasionally.
+194,Santos Party House,96 Lafayette St,Manhattan (Chinatown),CLOSED,,,,,"CLOSED - Was multi-level venue."
+195,The Delancey,168 Delancey St,Manhattan (Lower East Side),FIT,https://www.thedelancey.com,,,booking@thedelancey.com,Three-level venue. Live music on roof.
+196,Rockwood Music Hall,196 Allen St,Manhattan (Lower East Side),FIT,https://www.rockwoodmusichall.com,,,info@rockwoodmusichall.com,Three stages. Stage 3 best for one-man shows.
+197,The Living Room,154 Ludlow St,Manhattan (Lower East Side),CLOSED,,,,,"CLOSED - Was singer-songwriter venue. Reopened elsewhere?"
+198,Pianos,158 Ludlow St,Manhattan (Lower East Side),FIT,https://www.pianosnyc.com,,,booking@pianosnyc.com,Multi-stage indie room. Cosmic Ray played here.
+199,Arlene's Grocery,95 Stanton St,Manhattan (Lower East Side),FIT,https://www.arlenesgrocery.com,,,info@arlenesgrocery.net,Live music venue. Rock/indie focus.
+200,The Bitter End,147 Bleecker St,Manhattan (Greenwich Village),FIT,https://www.bitterend.com,,,info@bitterend.com,Iconic live room. Info@ for booking.
