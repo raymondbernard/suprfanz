@@ -317,8 +317,28 @@ class MessengerTerminal:
         
         return random.choice(messages)
     
+    def is_chrome_connected(self) -> bool:
+        """Check if Chrome debug port is still responding"""
+        try:
+            urllib.request.urlopen("http://127.0.0.1:9222/json/version", timeout=3)
+            return True
+        except:
+            return False
+    
+    def ensure_chrome_open(self, url: str = None):
+        """Check if Chrome is open, relaunch if closed"""
+        if self.is_chrome_connected():
+            return True
+        
+        print("\n   Chrome was closed! Relaunching...")
+        if url:
+            self.launch_chrome(url)
+        else:
+            self.launch_chrome("https://www.messenger.com")
+        return self.is_chrome_connected()
+    
     def update_csv_status(self, contact: Contact, success: bool, error: str = None):
-        """Update CSV with send status"""
+        """Update CSV with send status - matches by profile_id (handles leading slash)"""
         if not CSV_PATH.exists():
             return
         
@@ -328,17 +348,24 @@ class MessengerTerminal:
                 reader = csv.DictReader(f)
                 fieldnames = reader.fieldnames
                 for row in reader:
-                    if row.get('fb_profile_id') == contact.fb_profile_id:
-                        row['message_sent'] = 'true' if success else 'false'
-                        row['sent_at'] = datetime.utcnow().isoformat() if success else row.get('sent_at', '')
-                        row['last_error'] = error if error else ''
+                    # Match by profile_id - handle leading slash differences
+                    row_profile = row.get('fb_profile_id', '').lstrip('/')
+                    contact_profile = contact.fb_profile_id.lstrip('/')
+                    if row_profile == contact_profile and row_profile:
+                        if success:
+                            row['message_sent'] = 'true'
+                            row['sent_at'] = datetime.utcnow().isoformat()
+                            row['last_error'] = ''
+                        else:
+                            row['message_sent'] = 'false'
+                            row['last_error'] = error if error else ''
                     rows.append(row)
             
             with open(CSV_PATH, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
                 writer.writerows(rows)
-                
+                    
         except Exception as e:
             logger.error(f"Failed to update CSV: {e}")
     
@@ -452,6 +479,13 @@ class MessengerTerminal:
             return True
         
         try:
+            # Check if Chrome is still open, relaunch if closed
+            if not self.ensure_chrome_open(contact.messenger_url):
+                print("   Could not relaunch Chrome! Skipping...")
+                self.update_csv_status(contact, success=False, error="Chrome not responding")
+                self.error_count += 1
+                return False
+            
             print(f"\n{'='*60}")
             print(f"Contact: {contact.fb_name}")
             print(f"URL: {contact.messenger_url}")
