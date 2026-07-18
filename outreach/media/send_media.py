@@ -276,8 +276,8 @@ class SendMedia:
             print("\nNo contacts to email!")
             return
         
-        # Ask mode
-        auto = input("\nAuto-send? [y/N]: ").strip().lower()
+        # Ask mode - check command line arg first
+        auto = 'y' if '--auto' in sys.argv else input("\nAuto-send? [y/N]: ").strip().lower()
         self.auto_send = (auto == 'y')
         
         if self.auto_send:
