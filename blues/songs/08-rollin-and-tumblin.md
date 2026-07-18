@@ -18,6 +18,26 @@ https://www.youtube.com/watch?v=JQSmGE1Kmnk
 |-----|------|------|------|------|
 | Chord | G7 | C7 | G7 | D7 — G7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Well, I rolled and I tumbled, cried the whole night long
+Well, I rolled and I tumbled, cried the whole night long
+Well, I woke up this mornin', didn't know right from wrong
+
+Well, I told my baby, before I left that town
+Well, I told my baby, before I left that town
+Well, don't you let nobody, tear my barrelhouse down
+
+Well, ahh, mmm-hmmm, owww, oww ooo, aww, oww, oh
+Aaa, mmm-hmmm, oww, oh oh oh owww, oww ooo, aww, oww, oh
+
+Well, if the river was whiskey, and I was a divin' duck
+Well, if the river was whiskey, and I was a divin' duck
+Well, I would dive to the bottom, never would I come up
+
+Well, I could a had a religion, this bad old same day
+Well, I could a had a religion, this bad old same day
+Well, all whiskey and women, would not let me pray
 ## Notes
 - Delta blues classic — Muddy Waters' first hit (1941)
 - Slide guitar in open G tuning (D G D G B D)

@@ -10,7 +10,7 @@
 https://www.youtube.com/watch?v=V_ONyukSLqA
 
 ## Structure
-- Intro riff (4 bars)
+- Intro riff (8 bars)
 - 12-bar blues form × multiple verses
 - Guitar solo (2 choruses)
 - Outro
@@ -25,9 +25,32 @@ https://www.youtube.com/watch?v=V_ONyukSLqA
 G:  G  Bb B  Bb G  F  G  (repeated across I chord)
 ```
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Well, I'm going down
+I'm going down to the river
+I'm going down
+I'm going down to the river
+
+**(Bar 1, beat 1)** I'm gonna take my guitar
+And I'm gonna play for the fish
+I'm going down
+I'm going down to the river
+
+**(Bar 1, beat 1)** I'm going down, down, down, down
+I'm going down, down, down, down
+I'm going down, down, down, down
+I'm going down, down, down, down
+
+**(Bar 1, beat 1)** Well, I'm going down
+I'm going down to the river
+I'm gonna take my guitar
+And I'm gonna play for the fish
+
 ## Notes
 - Freddie King classic — covered by everyone
 - Guitar-driven, riff-based blues
 - Shuffle feel — swing the 8th notes
 - Great vehicle for extended guitar soloing
 - Crowd pleaser when played with energy
+- **Vocal starts on the 1** — "Well" hits on beat 1 of bar 1

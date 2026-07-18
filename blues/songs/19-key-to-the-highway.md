@@ -21,6 +21,48 @@ https://www.youtube.com/watch?v=SjaqQJaqh-s
 |-----|------|------|------|------|
 | Chord | A7 | E7 | A7 | D7 — A7 — E7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Gonna move out on the highway
+Gonna move out on the highway
+Gonna move out on the highway
+Make my home in the woods
+
+I'm gonna move out on the highway
+Gonna move out on the highway
+Gonna move out on the highway
+Make my home in the woods
+
+**(Bar 1, beat 1)** I'm gonna ride through the city
+Gonna ride through the city
+Gonna ride through the city
+When the sun goes down
+
+I'm gonna ride through the city
+Gonna ride through the city
+Gonna ride through the city
+When the sun goes down
+
+**(Bar 1, beat 1)** I'm gonna walk up the highway
+Gonna walk up the highway
+Gonna walk up the highway
+In the midnight rain
+
+I'm gonna walk up the highway
+Gonna walk up the highway
+Gonna walk up the highway
+In the midnight rain
+
+**(Bar 1, beat 1)** I've got the key to the highway
+Got the key to the highway
+Got the key to the highway
+And I'm gonna leave here slow
+
+I've got the key to the highway
+Got the key to the highway
+Got the key to the highway
+And I'm gonna leave here slow
+
 ## Notes
 - Classic "leaving town" blues — "I'm gonna walk on"
 - 8-bar form, not 12-bar — shorter cycle
@@ -29,3 +71,4 @@ https://www.youtube.com/watch?v=SjaqQJaqh-s
 - Perfect for late-set when you want to cool things down
 - Great guitar showcase — emotional soloing over simple changes
 - Good for senior audiences — gentle, familiar
+- **Vocal starts on the 1** — "Gonna" hits on beat 1 of bar 1

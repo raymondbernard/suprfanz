@@ -19,6 +19,26 @@ https://www.youtube.com/watch?v=XWLvm11MAaM
 |-----|------|-----|------|-------|--------|
 | Chord | E7 | A7 | E7 | B7 | E7 — B7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Well, I'm a king bee, buzzin' around your hive
+Well, I'm a king bee, buzzin' around your hive
+Well, I can make honey, baby, let me come inside
+
+I'm young and able to buzz all night long
+I'm young and able to buzz all night long
+Well, when you hear me buzzin', baby, some stingin' is going on
+
+Well, buzz a while
+Sting it, then
+
+Well, I'm a king bee, want you to be my queen
+Well, I'm a king bee, want you to be my queen
+Together, we can make honey, the world haven't never seen
+
+Well, I'm a king bee, can buzz all night long
+Well, I'm a king bee, can buzz all night long
+Well, I can buzz better, baby, when your man is gone
 ## Notes
 - Muddy Waters at his best
 - Playful, suggestive lyrics — crowd loves it

@@ -21,6 +21,26 @@
 |-----|------|-----|------|-------|--------|
 | Chord | Fm | Bbm7 | Fm | Cm7 | Fm — C7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** I put a spell on you because you're mine
+Stop the things you do
+Mwahahaha, watch out!
+I ain't lyin', yeah
+I can't stand no runnin' around
+I can't stand no puttin' me down
+I put a spell on you because you're mine
+Oh yeah
+
+Stop the things you do
+Mwahahaha, watch out!
+I ain't lyin'
+I love you, I love you, I love you, baby, how
+I don't care if you don't want me, I'm yours right now
+I put a spell on you because you're mine
+
+Mine! Mine! Ow! Ooh!
+Oh, oh you're mine!
 ## Notes
 - Screamin' Jay Hawkins — the theatrical blues originator
 - Minor key — spooky, dramatic, intense

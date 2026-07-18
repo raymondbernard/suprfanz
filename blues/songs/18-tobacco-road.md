@@ -19,6 +19,37 @@ https://www.youtube.com/watch?v=O4Sfh8LFMaw
 |-----|------|-----|------|-------|--------|
 | Chord | G7 | C7 | G7 | D7 | G7 — D7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** I was born in a lump
+Mama died, and Daddy got drunk
+Left me here to die or grow
+In the middle of Tobacco Road
+
+Grew up in a rusty shack
+All I owned was hangin' on my back
+Only Lord knows how I loathe
+This place called Tobacco Road
+
+But it's home
+The only life I ever known
+But the Lord knows I loathe
+Tobacco Road
+
+Gonna leave and get a job
+With the help and the grace of God
+Save my money, get rich and old
+Bring it back to Tobacco Road
+
+Bring dynamite and a crane
+Blow it up and start all over again
+Build a town be proud to show
+Keep the name Tobacco Road
+
+'Cause it's home
+The only life I ever known
+I despise you 'cause you're filthy
+But I loves you 'cause your home
 ## Notes
 - Written by John D. Loudermilk, made famous by Nashville Teens (1964)
 - Blues-rock energy — raw, driving

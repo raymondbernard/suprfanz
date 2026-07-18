@@ -22,6 +22,20 @@ https://drive.google.com/file/d/0BzM616129GamS2k4MF9FbVp2QW8/view?usp=sharing
 |-----|---|---|---|---|---|---|---|---|---|----|----|----|
 | Chord | G7 | G7 | G7 | G7 | C9 | C9 | G7 | G7 | Am7 | Dm7 | G7 | D7#9 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Call it stormy Monday, but I say Tuesday's just as bad
+Call it stormy Monday, but I say Tuesday's just as bad
+
+**(Bar 1, beat 1)** Wednesday is worse, and Thursday's oh so sad
+The eagle flies on Friday, Saturday I go out to play
+Sunday I go to church, then I kneel down and I pray
+
+**(Bar 1, beat 1)** Lord have mercy, Lord have mercy on me
+Lord have mercy, Lord have mercy on me
+
+**(Bar 1, beat 1)** Though I'm tryin' to find my baby, won't somebody send her home to me
+
 ## Notes
 - THE slow blues standard — every blues player knows it
 - Jazz-influenced chords (Am7, Dm7, D7#9) make it special
@@ -31,3 +45,4 @@ https://drive.google.com/file/d/0BzM616129GamS2k4MF9FbVp2QW8/view?usp=sharing
 - Perfect for senior audiences — slow, soulful, familiar
 - The chord chart above is available as a Google Drive PDF
 - Stretch it out — this is a song to savor, not rush
+- **Vocal starts on the 1** — "Call" hits on beat 1 of bar 1

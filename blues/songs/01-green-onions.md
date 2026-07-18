@@ -30,6 +30,12 @@ G7:  G  B  D  F
 C7:  C  E  G  Bb
 ```
 
+## Lyrics (vocal enters on the 1)
+
+**INSTRUMENTAL — NO VOCALS**
+
+This is an instrumental organ/guitar groove. No lyrics. The organ riff IS the melody.
+
 ## Notes
 - Instrumental — no vocals
 - Signature organ riff is the hook

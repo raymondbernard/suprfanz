@@ -18,6 +18,22 @@ https://www.youtube.com/watch?v=4crO6moMBto
 |-----|------|-----|------|-------|--------|
 | Chord | E7 | A7 | E7 | B7 | E7 — B7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Alabama train, Alabama train,
+Take me home, Alabama train.
+
+Way up in New Jersey, a long way from my home,
+Ain't Got nobody to love me, yes I'd better go on home.
+
+My Alabama train, Alabama train,
+Alabama train, why don't you take me home.
+
+Way up in New Jersey, on a long way from home,
+Got nobody to love me, yes I'd better go on back home.
+
+My Alabama train, take me home,
+Alabama train, back where I belong.
 ## Notes
 - Elmore James — slide guitar master
 - Train imagery is classic blues — "riding the rails"

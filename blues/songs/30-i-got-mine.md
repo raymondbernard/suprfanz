@@ -19,6 +19,35 @@ https://www.youtube.com/watch?v=DZa-EXC7ST4
 - Main riff: B → E → B → F# (variations)
 - Roughly blues-based but not standard 12-bar
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Yeah!
+
+I was a moving man in my younger days
+But I've grown out of my rambling ways
+I left that road so far behind
+Now I know, oh baby
+
+I got mine
+I got mine
+I got mine
+Oh baby, I got mine
+
+Oh baby, when I rolled, I rolled deep
+So much so, I couldn't get no sleep
+Rock and roll hustle all the time
+Now I know, oh baby
+
+I got mine
+I got mine
+I got mine
+Oh baby, I got mine
+
+Whoa, I got mine
+I got mine
+I got mine
+Oh baby, I got mine
+Hey-aye!
 ## Notes
 - The Black Keys — modern blues-rock
 - Dan Auerbach brings blues into the 21st century

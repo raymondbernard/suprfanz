@@ -19,6 +19,37 @@
 |-----|------|-----|------|-------|--------|
 | Chord | Bb7 | Eb7 | Bb7 | F7 | Bb7 — F7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** Now-ow, if you wanna love that woman
+A-you love her with a thrill
+'Cause-a if you don't
+A-some other man will
+
+You've got to love her with a feeling
+You got to love her with a feeling
+Love her with a feeling, man
+Or don't you love at all
+
+She shakes all over
+A-when she walks
+She made a blind man see
+She made a, a dumb man talk
+
+You know she love me with a feeling
+A-love me with a feeling
+Love me with a feeling, baby
+Or don't you love at all
+
+The cops took her in
+How that woman didn't need no bail
+How she wiggled one time for the judge
+And the judge put the cops in jail
+
+You know you love me with a feeling
+A-love me with a feeling
+Love me with a feeling, baby
+Or don't you love at all
 ## Notes
 - Taj Mahal's rootsy, warm-hearted take on blues
 - Good vocal showcase — soulful delivery

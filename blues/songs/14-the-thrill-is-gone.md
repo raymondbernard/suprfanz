@@ -19,6 +19,48 @@ https://www.youtube.com/watch?v=oica5jG7FpU
 |-----|------|-----|------|-------|--------|
 | Chord | Gbm | Cbm7 | Gbm | Dbm7 | Gbm — Db7 |
 
+## Lyrics (vocal enters on the 1)
+
+**(Bar 1, beat 1)** The thrill is gone away
+The thrill is gone away
+The thrill is gone away
+The thrill is gone away from me
+
+**(Bar 1, beat 1)** The thrill is gone away
+The thrill is gone away
+The thrill is gone away
+The thrill is gone away from me
+
+**(Bar 1, beat 1)** I'm gonna pack my things and go
+I'm gonna pack my things and go
+I'm gonna pack my things and go
+I'm gonna pack my things and go away
+
+**(Bar 1, beat 1)** You know you done me wrong
+You know you done me wrong
+You know you done me wrong
+You know you done me wrong, baby
+
+**(Bar 1, beat 1)** The thrill is gone
+The thrill is gone
+The thrill is gone
+The thrill is gone away from me
+
+**(Bar 1, beat 1)** I'm gonna pack my things and go
+I'm gonna pack my things and go
+I'm gonna pack my things and go
+I'm gonna pack my things and go away
+
+**(Bar 1, beat 1)** You know you done me wrong
+You know you done me wrong
+You know you done me wrong
+You know you done me wrong, baby
+
+**(Bar 1, beat 1)** The thrill is gone
+The thrill is gone
+The thrill is gone
+The thrill is gone away from me
+
 ## Notes
 - B.B. King's signature song — won a Grammy, made him a star
 - Minor key blues — moodier than standard blues
@@ -28,3 +70,4 @@ https://www.youtube.com/watch?v=oica5jG7FpU
 - Emotional, dramatic, the ultimate "blues is feeling sad" song
 - Gb is an unusual key — gives it a distinctive, dark color
 - Can capo up or play in F if Gb is uncomfortable
+- **Vocal starts on the 1** — "The" hits on beat 1 of bar 1
