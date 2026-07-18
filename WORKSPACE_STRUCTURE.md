@@ -3,100 +3,75 @@
 ## Root Files
 ```
 workspace/
-├── AGENTS.md              ← Agent instructions
-├── HEARTBEAT.md           ← Heartbeat config
-├── IDENTITY.md            ← Agent identity
-├── README.md              ← Messenger terminal docs
-├── SOUL.md                ← Agent persona
-├── TOOLS.md               ← Tool notes
-├── USER.md                ← User info
-├── run_messenger.bat      ← Quick launcher for Messenger Terminal
-├── openclaw-workspace-state.json
-│
-├── docs/                  ← Setup guides & summaries
-├── memory/                ← Daily memory logs
-├── skills/                ← Custom skills
-├── cosmic-blues-nyc/      ← NYC venue data
-├── cosmic-ray-epk/        ← Electronic Press Kit
-├── venv/                  ← Python virtual environment
-│
-└── outreach/              ← All outreach work
-    ├── email/             ← Email automation scripts
-    ├── messenger/         ← Facebook Messenger automation
-    ├── venues/            ← Venue CSV databases
-    ├── docs/              ← Outreach plans & scripts
-    └── archive/           ← Old files, Facebook data dump, stage plot
+├── AGENTS.md, SOUL.md, USER.md, etc.    ← Core agent files
+├── run_messenger.bat                     ← Quick launcher for Messenger
+├── WORKSPACE_STRUCTURE.md                ← This map
+└── openclaw-workspace-state.json
 ```
 
-## outreach/email/
-All email sending and Gmail automation scripts.
+## Outreach Campaigns (kept separate)
+
+### outreach/email/ — Venue Booking
+Scripts to email venue talent buyers about booking the band.
 ```
-auto_send_all.py           send_corrected.py        send_gmail.py
-omnipotent_all_venues.py   send_corrected_emails.py send_simple.py
-open_chrome_simple.py      SEND_EMAILS_NOW.py       SEND_ALL.bat
-open_gmail_simple.py       SEND_ALL_VENUES.py       SEND_4_EMAILS.bat
-open_gmail.py              open_gmail.bat           RUN_NOW.bat
-RUN_OMNIPOTENT.bat
+├── SEND_ALL.bat            ← Launcher
+├── SEND_ALL_VENUES.py      ← Gmail automation script
+└── README.md
 ```
 
-## outreach/messenger/
-Facebook Messenger automation terminal and all related files.
+### outreach/messenger/ — Facebook Messenger Outreach
+Send personalized FB messages to friends about events/residency.
 ```
-messenger_terminal.py      ← Main terminal app (v2.0)
-run_messenger_terminal.bat ← Full launcher with checks
-start_messenger.bat        ← Quick launcher
-fbfriends.csv              ← Contact database
-README_MESSENGER_TERMINAL.md
-requirements.txt
-package.json / package-lock.json
-node_modules/              ← Playwright dependency
-contacts/                  ← Contact CSV files
-messenger_skill.py         ← Older skill (still usable)
-messenger_skill_old.py     ← Original version
-+ various .js test/ helper scripts
+├── messenger_terminal.py          ← Main terminal app
+├── run_messenger_terminal.bat     ← Launcher (kills Chrome, cleans locks)
+├── send_v3.js                     ← Auto-send script (100 contacts, auto-relaunch)
+├── send_simple.js                 ← Simple auto-send
+├── fbfriends.csv                  ← Contact database (3123 contacts)
+├── message_history.json           ← Sent history (duplicate prevention)
+├── config.json                    ← Settings
+└── debug_screenshots/             ← Before/after screenshots
 ```
 
-**Run it:** `run_messenger.bat` (from workspace root)
-
-## outreach/venues/
-Venue contact databases (CSV).
+### outreach/media/ — Press & Media Outreach
+Send press releases + EPK to blues magazines, radio, podcasts, blogs.
 ```
-cosmic-blues-venues.csv              cosmic-blues-venues-NYC.csv
-cosmic-blues-venues-COMPLETE.csv     cosmic-blues-venues-NYC-FINAL.csv
-cosmic-blues-venues-fixed.csv        cosmic-blues-venues-NYC-ONLY.csv
-cosmic-blues-venues-REPAIRED.csv     cosmic-blues-venues-new-50.csv
-cosmic-blues-venues-NYC-FINAL.csv    new-venues-50-renumbered.csv
-                                      nyc-venues-50-more.csv
+├── media_contacts.csv     ← 105 media contacts
+├── press_release.md       ← Press release + 3 email templates
+├── submission_guide.md    ← How to submit to each outlet
+├── send_media.py          ← Gmail sending script
+├── send_media.bat        ← Launcher
+└── README.md
 ```
 
-## outreach/docs/
-Outreach plans, scripts, and research notes.
+### outreach/residency/ — Silvana Harlem Residency Campaign
+Separate campaign for the upcoming residency at Silvana (sister to Shrine).
 ```
-MASTER-OUTREACH-PLAN.md    ALL_SOCIAL_SCRIPTS.txt    READY-TO-GO.txt
-COSMICBLUES-SKILL.md       ALL_WEBFORM_CONTENT.txt   RESEARCH-RESULTS-FOUND.txt
-EMAIL-TODAY.md             AUTOMATION-README.txt     REVISED-STRATEGY.md
-ALL_PHONE_SCRIPTS.txt      CHECKLIST.txt             SEND_ALL_SUMMARY.txt
-ALL_RESEARCH_TASKS.txt     COMPLETE-OUTREACH-ALL-VENUES.txt
-DO-TODAY.txt               OUTREACH_SUMMARY.txt
-NEW-VENUES.md              README.txt
+├── harlem_contacts.csv       ← 16 Harlem-specific contacts
+├── residency_config.json     ← Config (venue, messaging, etc.)
+└── README.md                 ← Full campaign plan + templates
 ```
 
-## outreach/archive/
-Old files, Facebook data export, and stage plot.
+### outreach/venues/ — Venue CSV Database
 ```
-facebook-cosmicraymusic-*.zip   (1.9 GB Facebook data export)
-stageplot.pptx                  (2.1 MB)
-fix_*.py / diagnose_*.py        (old fix scripts)
-ALL-EMAILS.md                   BERLIN-OUTREACH.md
-COPY-PASTE-EMAILS.txt           BERLIN-VENUE.md
-VENUE-RESEARCH.md
-facebook-cosmicraymusic-*/      (unzipped Facebook data)
+└── cosmic-blues-venues*.csv   ← NYC venue contact databases (10 files)
 ```
 
-## docs/
-Setup guides and workflow summaries.
+### outreach/docs/ — Outreach Plans & Research
 ```
-BATCH_FILE_CLEANUP.md
-MESSENGER_AUTOMATION_SETUP.md
-MESSENGER_WORKFLOW_UPDATE.md
+└── *.md, *.txt               ← Plans, scripts, research notes (19 files)
+```
+
+### outreach/archive/ — Old Files
+```
+└── *.py, *.md, *.zip         ← Archived scripts, Facebook data dump, stage plot
+```
+
+## Other Directories
+```
+docs/                  ← Setup guides and summaries
+memory/                ← Daily memory logs
+skills/                ← Custom skills (messenger, cosmicblues, etc.)
+cosmic-blues-nyc/      ← NYC venue data
+cosmic-ray-epk/        ← Electronic Press Kit
+venv/                  ← Python virtual environment
 ```
