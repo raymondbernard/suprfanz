@@ -1,0 +1,21 @@
+{
+  "account": {"email": "", "password": ""},
+  "primary_applicant": {
+    "first_name": "", "last_name": "", "middle_initial": "",
+    "dob": "YYYY-MM-DD", "ssn": "XXX-XX-XXXX",
+    "phone": "(XXX) XXX-XXXX", "email": "",
+    "address": "", "apt": "", "city": "New York", "state": "NY",
+    "zip": "", "borough": "Manhattan", "community_board": ""
+  },
+  "household": [],
+  "income": {"annual_income": 0, "sources": [], "employment": []},
+  "preferences": {
+    "community_board": true, "nycha_resident": false,
+    "senior_62": false, "municipal_employee": false,
+    "mobility_assist": false, "vision_hearing": false
+  },
+  "eligibility": {
+    "ami_tiers": ["ELI", "VLI", "LI"],
+    "max_rent": 0, "unit_types": ["studio", "1BR"]
+  }
+}

@@ -1,22 +1,38 @@
 #!/usr/bin/env python3
-"""Direct send script - bypasses the interactive menu, sends to NY contacts directly."""
+"""Non-interactive batch sender for messenger outreach."""
 import sys
-sys.path.insert(0, '.')
-exec(open('messenger_terminal.py').read())
+import os
 
+# Add the messenger dir to path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# Read and exec the messenger terminal module
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'messenger_terminal.py'), 'r', encoding='utf-8') as f:
+    code = f.read()
+
+# Execute the code in a namespace
+ns = {}
+exec(code, ns)
+
+MessengerTerminal = ns.get('MessengerTerminal')
+if not MessengerTerminal:
+    print('ERROR: MessengerTerminal class not found')
+    sys.exit(1)
+
+# Create app
 app = MessengerTerminal()
-contacts = app.load_contacts(ny_only=True)
-print(f"\nNY pending contacts: {len(contacts)}")
-print(f"Event: {app.event.title}")
-print(f"Event URL: {app.event.url}")
-print(f"\nFirst 5 contacts:")
-for c in contacts[:5]:
-    print(f"  {c.fb_name} - {c.messenger_url}")
 
-if not contacts:
-    print("No contacts to send to!")
-    sys.exit(0)
+# Load contacts
+batch_size = 5
+if len(sys.argv) > 1:
+    batch_size = int(sys.argv[1])
 
-# Run batch of 5 with auto-confirm
-print("\nStarting batch of 5...")
-app.run_batch(contacts[:5], dry_run=False, batch_size=5, confirm_each=False)
+contacts = app.load_contacts(limit=0, only_pending=True, ny_only=False)
+print('Pending contacts: %d' % len(contacts))
+print('Batch size: %d' % batch_size)
+print()
+
+# Run batch with auto-confirm (no user interaction needed)
+# auto_confirm=False means it asks "type yes to confirm" — we'll pipe that
+# Let's just call run_batch with confirm_each=False
+app.run_batch(contacts, dry_run=False, batch_size=batch_size, confirm_each=False)

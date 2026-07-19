@@ -14,52 +14,64 @@ https://www.youtube.com/watch?v=oica5jG7FpU
 - Guitar solo (signature vibrato)
 - String pad accompaniment in original
 
-## Chord Progression (12-bar blues in Gb)
+## Chord Progression (12-bar blues in Gb, minor)
+
+**Nashville Notation:** i — iv7 — i — vᵐ7 — i / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | Gbm | Cbm7 | Gbm | Dbm7 | Gbm — Db7 |
+| Nashville | i | iv7 | i | vᵐ7 | i — V7 |
+| Key of Gb | Gbm | Cbm7 | Gbm | Dbm7 | Gbm — Db7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** The thrill is gone away
-The thrill is gone away
-The thrill is gone away
-The thrill is gone away from me
+### Verse 1 (i)
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away from me
 
-**(Bar 1, beat 1)** The thrill is gone away
-The thrill is gone away
-The thrill is gone away
-The thrill is gone away from me
+### Verse 2 (i)
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away
+**[i]** The thrill is gone away from me
 
-**(Bar 1, beat 1)** I'm gonna pack my things and go
-I'm gonna pack my things and go
-I'm gonna pack my things and go
-I'm gonna pack my things and go away
+### Verse 3 (i → iv7 → i → vᵐ7 → i)
+**[i]** I'm gonna pack my things and go
+**[i]** I'm gonna pack my things and go
+**[iv7]** I'm gonna pack my things and go
+**[vᵐ7]** I'm gonna pack my things and **[i]** go away
 
-**(Bar 1, beat 1)** You know you done me wrong
-You know you done me wrong
-You know you done me wrong
-You know you done me wrong, baby
+### Verse 4 (i → iv7 → i → vᵐ7 → i)
+**[i]** You know you done me wrong
+**[i]** You know you done me wrong
+**[iv7]** You know you done me wrong
+**[vᵐ7]** You know you done me wrong, **[i]** baby
 
-**(Bar 1, beat 1)** The thrill is gone
-The thrill is gone
-The thrill is gone
-The thrill is gone away from me
+### Verse 5 (i)
+**[i]** The thrill is gone
+**[i]** The thrill is gone
+**[i]** The thrill is gone
+**[i]** The thrill is gone away from me
 
-**(Bar 1, beat 1)** I'm gonna pack my things and go
-I'm gonna pack my things and go
-I'm gonna pack my things and go
-I'm gonna pack my things and go away
+### Verse 6 (i → iv7 → i → vᵐ7 → i)
+**[i]** I'm gonna pack my things and go
+**[i]** I'm gonna pack my things and go
+**[iv7]** I'm gonna pack my things and go
+**[vᵐ7]** I'm gonna pack my things and **[i]** go away
 
-**(Bar 1, beat 1)** You know you done me wrong
-You know you done me wrong
-You know you done me wrong
-You know you done me wrong, baby
+### Verse 7 (i → iv7 → i → vᵐ7 → i)
+**[i]** You know you done me wrong
+**[i]** You know you done me wrong
+**[iv7]** You know you done me wrong
+**[vᵐ7]** You know you done me wrong, **[i]** baby
 
-**(Bar 1, beat 1)** The thrill is gone
-The thrill is gone
-The thrill is gone
-The thrill is gone away from me
+### Verse 8 (i)
+**[i]** The thrill is gone
+**[i]** The thrill is gone
+**[i]** The thrill is gone
+**[i]** The thrill is gone away from me
 
 ## Notes
 - B.B. King's signature song — won a Grammy, made him a star

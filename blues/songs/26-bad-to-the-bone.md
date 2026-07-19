@@ -22,40 +22,52 @@ G:  G  G  Bb Bb B  B  Bb Bb G  G  (repeated)
 ```
 
 ## Chord Progression (12-bar blues in G)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | G7 | C7 | G7 | D7 | G7 — D7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of G | G7 | C7 | G7 | D7 | G7 — D7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Bad to the bone
-Bad to the bone
-Bad to the bone
-B-B-B-B-B-B-B-B-B-Bad to the bone
+### Intro / Riff (I7)
+**[I7]** Bad to the bone
+**[I7]** Bad to the bone
+**[I7]** Bad to the bone
+**[IV7]** B-B-B-B-B-B-B-B-B-Bad **[V7]** to the bone **[I7]**
 
-**(Bar 1, beat 1)** On the day I was born
-The angels all gathered around
-They got down on their knees
-And they said, "Lord, have mercy on this boy"
+### Verse 1 (I7)
+**[I7]** On the day I was born
+**[I7]** The angels all gathered around
+**[IV7]** They got down on their knees
+**[I7]** And they said, "Lord, have mercy on this boy"
+**[V7]** [I7]
 
-**(Bar 1, beat 1)** He's gonna be bad
-He's gonna be bad to the bone
-Bad to the bone
-B-B-B-B-B-B-B-B-B-Bad to the bone
+### Chorus (I7)
+**[I7]** He's gonna be bad
+**[I7]** He's gonna be bad to the bone
+**[IV7]** Bad to the bone
+**[I7]** B-B-B-B-B-B-B-B-B-Bad to the bone **[V7]** [I7]
 
-**(Bar 1, beat 1)** I broke a thousand hearts
-Before I met you
-I'll break a thousand more, baby
-Before I am through
+### Verse 2 (I7)
+**[I7]** I broke a thousand hearts
+**[I7]** Before I met you
+**[IV7]** I'll break a thousand more, baby
+**[I7]** Before I am through
+**[V7]** [I7]
 
-**(Bar 1, beat 1)** I wanna be yours
-I wanna be yours
-I wanna be yours, baby
-I wanna be yours
+### Bridge (IV7)
+**[IV7]** I wanna be yours
+**[IV7]** I wanna be yours
+**[I7]** I wanna be yours, baby
+**[V7]** I wanna be yours **[I7]**
 
-**(Bar 1, beat 1)** I'm bad to the bone
-Bad to the bone
-B-B-B-B-B-B-B-B-B-Bad to the bone
+### Outro (I7)
+**[I7]** I'm bad to the bone
+**[I7]** Bad to the bone
+**[IV7]** B-B-B-B-B-B-B-B-B-Bad **[V7]** to the bone **[I7]**
 
 ## Notes
 - George Thorogood's signature song — everyone knows it

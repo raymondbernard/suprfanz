@@ -16,40 +16,50 @@ https://www.youtube.com/watch?v=E09t5mJECqg
 - Stop-time breaks
 
 ## Chord Progression
-- Main vamp: E7 throughout (boogie pattern)
-- Occasional: A7 — E7 — B7 — E7 (turnaround)
 
-## Lyrics (vocal enters on the 1)
+**Nashville Notation:** I7 vamp throughout — occasional IV7 — I7 — V7 — I7 turnaround
 
-**(Bar 1, beat 1)** Boom, boom, boom, boom
-Gonna shoot you right down
-Right off your feet
-Take you home with me
-Put you in my house
+| Section | Main Vamp | Turnaround |
+|---------|-----------|-----------|
+| Nashville | I7 (throughout) | IV7 — I7 — V7 — I7 |
+| Key of E | E7 (throughout) | A7 — E7 — B7 — E7 |
 
-Boom, boom, boom, boom
-I love to see you walk
-Get that wiggle in your hip
-Make me want to drop
-Right out of my tree
+## Lyrics
 
-**(Bar 1, beat 1)** Boom, boom, boom, boom
-I got the nerve to shoot you down
-Right off your feet
-Take you home with me
-Put you in my house
+### Verse 1 (I7 vamp)
+**[I7]** Boom, boom, boom, boom
+**[I7]** Gonna shoot you right down
+**[I7]** Right off your feet
+**[I7]** Take you home with me
+**[I7]** Put you in my house
 
-Boom, boom, boom, boom
-I love to see you strut
-Get that wiggle in your walk
-Make me want to jump
-Right out of my tree
+### Verse 2 (I7 vamp)
+**[I7]** Boom, boom, boom, boom
+**[I7]** I love to see you walk
+**[I7]** Get that wiggle in your hip
+**[I7]** Make me want to drop
+**[I7]** Right out of my tree
 
-**(Bar 1, beat 1)** Boom, boom, boom, boom
-Hey, hey, hey, hey
-Hey, hey, hey, hey
-Hey, hey, hey, hey
-Hey, hey, hey, hey
+### Verse 3 (I7 vamp)
+**[I7]** Boom, boom, boom, boom
+**[I7]** I got the nerve to shoot you down
+**[I7]** Right off your feet
+**[I7]** Take you home with me
+**[I7]** Put you in my house
+
+### Verse 4 (I7 vamp)
+**[I7]** Boom, boom, boom, boom
+**[I7]** I love to see you strut
+**[I7]** Get that wiggle in your walk
+**[I7]** Make me want to jump
+**[I7]** Right out of my tree
+
+### Outro (I7 vamp → IV7 — I7 — V7 — I7 turnaround)
+**[I7]** Boom, boom, boom, boom
+**[I7]** Hey, hey, hey, hey
+**[I7]** Hey, hey, hey, hey
+**[IV7]** Hey, hey, hey, hey
+**[V7]** Hey, hey, hey, **[I7]** hey
 
 ## Notes
 - John Lee Hooker's biggest hit — "Boom boom boom boom"

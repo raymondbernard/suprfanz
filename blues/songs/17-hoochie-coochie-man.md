@@ -16,53 +16,63 @@ https://www.youtube.com/watch?v=fQ4NFsw4bOU
 - Return to verse
 
 ## Chord Progression (12-bar blues in A)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | A7 | D7 | A7 | E7 | A7 — E7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of A | A7 | D7 | A7 | E7 | A7 — E7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** The gypsy woman told my mother
-Before I was born
-You got a boy child's comin'
-He's gonna be a son of a gun
-He gonna make pretty women's
-Jump and shout
-Then the world wanna know
-What this all about
+### Verse 1 (I7)
+**[I7]** The gypsy woman told my mother
+**[I7]** Before I was born
+**[I7]** You got a boy child's comin'
+**[I7]** He's gonna be a son of a gun
+**[IV7]** He gonna make pretty women's
+**[I7]** Jump and shout
+**[V7]** Then the world wanna know
+**[I7]** What this all about
 
-But you know I'm him
-Everybody knows I'm him
-Well you know I'm the hoochie coochie man
-Everybody knows I'm him
+### Chorus (I7)
+**[I7]** But you know I'm him
+**[I7]** Everybody knows I'm him
+**[V7]** Well you know I'm the hoochie coochie man
+**[I7]** Everybody knows I'm him
 
-**(Bar 1, beat 1)** I got a black cat bone
-I got a mojo too
-I got the Johnny Concheroo
-I'm gonna mess with you
-I'm gonna make you girls
-Lead me by my hand
-Then the world will know
-The hoochie coochie man
+### Verse 2 (I7)
+**[I7]** I got a black cat bone
+**[I7]** I got a mojo too
+**[I7]** I got the Johnny Concheroo
+**[I7]** I'm gonna mess with you
+**[IV7]** I'm gonna make you girls
+**[I7]** Lead me by my hand
+**[V7]** Then the world will know
+**[I7]** The hoochie coochie man
 
-But you know I'm him
-Everybody knows I'm him
-Oh you know I'm the hoochie coochie man
-Everybody knows I'm him
+### Chorus (I7)
+**[I7]** But you know I'm him
+**[I7]** Everybody knows I'm him
+**[V7]** Oh you know I'm the hoochie coochie man
+**[I7]** Everybody knows I'm him
 
-**(Bar 1, beat 1)** On the seventh hour
-On the seventh day
-On the seventh month
-The seven doctors say
-He was born for good luck
-And that you'll see
-I got seven hundred dollars
-Don't you mess with me
+### Verse 3 (I7)
+**[I7]** On the seventh hour
+**[I7]** On the seventh day
+**[I7]** On the seventh month
+**[I7]** The seven doctors say
+**[IV7]** He was born for good luck
+**[I7]** And that you'll see
+**[V7]** I got seven hundred dollars
+**[I7]** Don't you mess with me
 
-But you know I'm him
-Everybody knows I'm him
-Well you know I'm the hoochie coochie man
-Everybody knows I'm him
+### Chorus (I7)
+**[I7]** But you know I'm him
+**[I7]** Everybody knows I'm him
+**[V7]** Well you know I'm the hoochie coochie man
+**[I7]** Everybody knows I'm him
 
 ## Notes
 - Willie Dixon wrote it, Muddy Waters made it an anthem

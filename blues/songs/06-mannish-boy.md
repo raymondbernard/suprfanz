@@ -16,46 +16,59 @@ https://www.youtube.com/watch?v=zVp3C_Kro0A
 - Guitar solo
 
 ## Chord Progression
-- Main vamp: A7 throughout
-- Occasional move: D7 — A7 — E7 — A7 (turnaround)
 
-## Lyrics (vocal enters on the 1)
+**Nashville Notation:** I7 (vamp) — occasional IV7 — I7 — V7 — I7 (turnaround)
 
-**(Bar 1, beat 1)** Yeah, yeah, yeah, yeah...
-Everything's gonna be alright, this morning
-Yeah, yeah, yeah, yeah...
-Everything's gonna be alright, this morning
+| Section | Main Vamp | Turnaround |
+|---------|-----------|-----------|
+| Nashville | I7 | IV7 — I7 — V7 — I7 |
+| Key of A | A7 | D7 — A7 — E7 — A7 |
 
-Oh, I'm a man
-I spell M-A... N... boy
-I'm a man
-I spell M-A... N... boy
+## Lyrics
 
-**(Bar 1, beat 1)** Oh, there was a woman in my room
-She didn't think I'd go
-But I went on and left her
-Oh, on my road
+### Intro / Refrain (I7 vamp)
+**[I7]** Yeah, yeah, yeah, yeah...
+**[I7]** Everything's gonna be alright, this morning
+**[I7]** Yeah, yeah, yeah, yeah...
+**[I7]** Everything's gonna be alright, this morning
 
-Yeah, yeah, yeah, yeah...
-Everything's gonna be alright, this morning
+### Verse 1 (I7)
+**[I7]** Oh, I'm a man
+**[I7]** I spell M-A... N... boy
+**[I7]** I'm a man
+**[I7]** I spell M-A... N... boy
 
-I'm a man
-I spell M-A... N... boy
-I'm a man
-I spell M-A... N... boy
+### Verse 2 (I7)
+**[I7]** Oh, there was a woman in my room
+**[I7]** She didn't think I'd go
+**[IV7]** But I went on and left her
+**[V7]** Oh, on my road
 
-**(Bar 1, beat 1)** Now when I was a young boy
-My mother told me
-Son, you're gonna be a man
-But you gotta be free
+### Refrain (I7 vamp)
+**[I7]** Yeah, yeah, yeah, yeah...
+**[I7]** Everything's gonna be alright, this morning
 
-Yeah, yeah, yeah, yeah...
-Everything's gonna be alright, this morning
+### Verse 3 (I7)
+**[I7]** I'm a man
+**[I7]** I spell M-A... N... boy
+**[I7]** I'm a man
+**[I7]** I spell M-A... N... boy
 
-I'm a man
-I spell M-A... N... boy
-I'm a man
-I spell M-A... N... boy
+### Verse 4 (I7)
+**[I7]** Now when I was a young boy
+**[I7]** My mother told me
+**[IV7]** Son, you're gonna be a man
+**[V7]** But you gotta be free
+
+### Refrain (I7 vamp)
+**[I7]** Yeah, yeah, yeah, yeah...
+**[I7]** Everything's gonna be alright, this morning
+
+### Outro (I7)
+**[I7]** I'm a man
+**[I7]** I spell M-A... N... boy
+**[I7]** I'm a man
+**[I7]** I spell M-A... N... boy
 
 ## Notes
 - "I'm a man" — classic male swagger blues

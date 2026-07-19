@@ -15,40 +15,56 @@ https://www.youtube.com/watch?v=IPwKZSHwg5A
 - Solo section
 
 ## Chord Progression (12-bar blues in C)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | C7 | F7 | C7 | G7 | C7 — G7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of C | C7 | F7 | C7 | G7 | C7 — G7 |
 
 ## Signature Slide Riff
 ```
-C:  C  E  G  Bb C  (slide up to C, riff on top)
+[I7] C:  C  E  G  Bb C  (slide up to C, riff on top)
 ```
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** I'm gon' get up in the mornin', I believe I'll dust my broom
-I'm gon' get up in the mornin', I believe I'll dust my broom
-Girlfriend, the black man you been lovin', girlfriend, can't get my room
+### Verse 1 (I7)
+**[I7]** I'm gon' get up in the mornin', I believe I'll dust my broom
+**[I7]** I'm gon' get up in the mornin', I believe I'll dust my broom
+**[IV7]** Girlfriend, the black man you been lovin',
+**[V7]** girlfriend, can't get my room
 
-I'm gon' write a letter, telephone every town I know
-I'm gon' write a letter, telephone every town I know
-If I can't find her in West Helena, she must be in East Monroe I know
+### Verse 2 (I7)
+**[I7]** I'm gon' write a letter, telephone every town I know
+**[I7]** I'm gon' write a letter, telephone every town I know
+**[IV7]** If I can't find her in West Helena,
+**[V7]** she must be in East Monroe I know
 
-I don't want no woman, wants every downtown man she meet
-I don't want no woman, wants every downtown man she meet
-She's a no good doney, they shouldn't 'low her on the street
+### Verse 3 (I7)
+**[I7]** I don't want no woman, wants every downtown man she meet
+**[I7]** I don't want no woman, wants every downtown man she meet
+**[IV7]** She's a no good doney,
+**[V7]** they shouldn't 'low her on the street
 
-I believe, I believe I'll go back home
-I believe, I believe I'll go back home
-You can mistreat me here, babe, but you can't when I go home
+### Verse 4 (I7)
+**[I7]** I believe, I believe I'll go back home
+**[I7]** I believe, I believe I'll go back home
+**[IV7]** You can mistreat me here, babe,
+**[V7]** but you can't when I go home
 
-And I'm gettin' up in the mornin', I believe I'll dust my broom
-I'm gettin' up in the mornin', I believe I'll dust my broom
-Girlfriend, the black man you been lovin', girlfriend, can't get my room
+### Verse 5 (I7)
+**[I7]** And I'm gettin' up in the mornin', I believe I'll dust my broom
+**[I7]** I'm gettin' up in the mornin', I believe I'll dust my broom
+**[IV7]** Girlfriend, the black man you been lovin',
+**[V7]** girlfriend, can't get my room
 
-I'm 'on' call up Chiney, see is my good gal over there
-I'm 'on' call up Chiney, see is my good gal over there
-If I can't find her on Philippine's Island, she must be in Ethiopia somewhere
+### Verse 6 (I7)
+**[I7]** I'm 'on' call up Chiney, see is my good gal over there
+**[I7]** I'm 'on' call up Chiney, see is my good gal over there
+**[IV7]** If I can't find her on Philippine's Island,
+**[V7]** she must be in Ethiopia somewhere
 ## Notes
 - Elmore James' signature song — the slide riff is iconic
 - Open D or open E tuning for slide (D A D F# A D / E A E G# B E)

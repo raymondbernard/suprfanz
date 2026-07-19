@@ -1,0 +1,9 @@
+{
+  "batch_size": 5,
+  "min_delay": 30,
+  "max_delay": 120,
+  "page_load_wait": 60,
+  "typing_delay": 3,
+  "auto_confirm": false,
+  "message_styles": ["personal", "casual", "exciting", "fomo", "warm", "supportive", "community", "direct", "curious", "favor", "nostalgic", "musician", "reconnect", "invite", "bluesfan"]
+}

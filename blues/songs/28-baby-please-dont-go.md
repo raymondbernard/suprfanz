@@ -15,46 +15,64 @@ https://www.youtube.com/watch?v=T3jutwDfUdo
 - Stop-time breaks
 
 ## Chord Progression (12-bar blues in F#)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | F#7 | B7 | F#7 | C#7 | F#7 — C#7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of F# | F#7 | B7 | F#7 | C#7 | F#7 — C#7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Baby, please don't go
-Baby, please don't go
-Baby, please don't go, down to New Orleans
-You know I love you so
+### Verse 1 (I7)
+**[I7]** Baby, please don't go
+**[I7]** Baby, please don't go
+**[I7]** Baby, please don't go, down to New Orleans
+**[IV7]** You know I love you so
+**[I7]** [V7] [I7]
 
-Before I be your dog
-Before I be your dog
-Before I be your dog
-I get you way'd out here, and let you walk alone
+### Verse 2 (I7)
+**[I7]** Before I be your dog
+**[I7]** Before I be your dog
+**[I7]** Before I be your dog
+**[IV7]** I get you way'd out here, and let you walk alone
+**[I7]** [V7] [I7]
 
-Turn your lamp down low
-Turn your lamp down low
-Turn your lamp down low
-I beg you all night long, baby, please don't go
+### Verse 3 (I7)
+**[I7]** Turn your lamp down low
+**[I7]** Turn your lamp down low
+**[I7]** Turn your lamp down low
+**[IV7]** I beg you all night long, baby, please don't go
+**[I7]** [V7] [I7]
 
-You brought me way down here
-You brought me way down here
-You brought me way down here
-About to Rolling Forks, you treat me like a dog
+### Verse 4 (I7)
+**[I7]** You brought me way down here
+**[I7]** You brought me way down here
+**[I7]** You brought me way down here
+**[IV7]** About to Rolling Forks, you treat me like a dog
+**[I7]** [V7] [I7]
 
-Baby, please don't go
-Baby, please don't go
-Baby, please don't go, back the New Orleans
-I beg you all night long
+### Verse 5 (I7)
+**[I7]** Baby, please don't go
+**[I7]** Baby, please don't go
+**[I7]** Baby, please don't go, back the New Orleans
+**[IV7]** I beg you all night long
+**[I7]** [V7] [I7]
 
-Before I be your dog
-Before I be your dog
-Before I be your dog
-I get you way'd out here, and let you walk alone
+### Verse 6 (I7)
+**[I7]** Before I be your dog
+**[I7]** Before I be your dog
+**[I7]** Before I be your dog
+**[IV7]** I get you way'd out here, and let you walk alone
+**[I7]** [V7] [I7]
 
-You know your man down gone
-You know your man down gone
-You know your man down gone
-To the country farm, with all the shackles on
+### Verse 7 (I7)
+**[I7]** You know your man down gone
+**[I7]** You know your man down gone
+**[I7]** You know your man down gone
+**[IV7]** To the country farm, with all the shackles on
+**[I7]** [V7] [I7]
 ## Notes
 - Delta blues classic — Muddy Waters made it electric
 - Them (Van Morrison) made it a rock song — much heavier

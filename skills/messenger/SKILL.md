@@ -4,353 +4,193 @@ description: "Automates Facebook Messenger outreach via Playwright with Chrome d
 user-invocable: true
 ---
 
-# Messenger
+# Messenger — Updated 2026-07-18 (Throttle Detection)
 
 ## Purpose
 
-Automates sending personalized Facebook Messenger messages to Facebook friends using Playwright. Reads contacts from CSV, navigates to each conversation, types customized event invitations, and tracks delivery to prevent duplicates.
+Automates sending personalized Facebook Messenger messages using Playwright with Chrome debug port. 30 varied message templates. JPEG screenshots at each step. Continue button detection. Conversation-only already-sent check. **Post-send delivery verification with throttle detection.**
 
 ---
 
-# Data Location
+# CRITICAL: Facebook Throttling — "Couldn't Send"
 
-```text
-./outreach/messenger/
-├── messenger_terminal.py          ← Main terminal application
-├── run_messenger_terminal.bat     ← Windows launcher (kills Chrome, cleans locks FIRST)
-├── fbfriends.csv                  ← Contact database
-├── message_history.json           ← Sent message history (duplicate prevention)
-├── config.json                    ← User settings
-├── package.json                   ← Node.js dependencies (Playwright)
-└── contacts/                      ← Contact CSV files
+## The Problem
+Facebook rate-limits Messenger message sending. When throttled, pressing Enter appears to work but the message shows **"Couldn't send"** in the conversation and **"Message failed to send"** in the sidebar. The script CANNOT blindly mark as SENT after pressing Enter.
+
+## Verification Loop (After Pressing Enter)
+
+```javascript
+// Poll for up to 10 seconds after pressing Enter
+let sendResult = 'UNKNOWN';
+for (let wait = 0; wait < 10; wait++) {
+    await page.waitForTimeout(1000);
+    const mainText = await page.locator('[role="main"]').first().evaluate(el => el.innerText).catch(() => '');
+    
+    // FAILURE indicators
+    if (mainText.match(/couldn't send|failed to send|unable to send|couldn't deliver|not delivered|message not sent/i)) {
+        sendResult = 'FAILED';
+        break;
+    }
+    
+    // Red error icons / resend buttons
+    const errorElements = await page.locator('[role="main"] [aria-label*="error" i], [role="main"] [aria-label*="failed" i], [role="main"] [aria-label*="resend" i], [role="main"] [aria-label*="retry" i], [role="main"] [aria-label*="Could not" i]').count();
+    if (errorElements > 0) {
+        sendResult = 'FAILED';
+        break;
+    }
+    
+    // SUCCESS — our event link appears in conversation
+    if (mainText.includes('971902445574502')) {
+        sendResult = 'SENT';
+        break;
+    }
+}
+
+// If UNKNOWN after 10s — mark as UNCONFIRMED (not SENT)
+if (sendResult === 'UNKNOWN') sendResult = 'UNCONFIRMED';
 ```
 
----
-
-# Input CSV
-
-```text
-fb_usr_id,fb_first_name,fb_last_name,fb_name,fb_profile_id,message_sent,sent_at,last_error
-```
-
-The `fb_profile_id` may have a leading `/` (e.g. `/jvipper`) — the code strips this when matching.
-
----
-
-# CRITICAL: Chrome Debug Port Setup
-
-## Why Chrome Won't Open the Debug Port
-
-Chrome silently ignores `--remote-debugging-port=9222` if ANY of these are true:
-
-1. **`--user-data-dir` is NOT set** — Chrome ignores the debug port entirely
-2. **`LOCK` file exists** in `Profile 3/` — stale lock from previous session
-3. **`DevToolsActivePort` file exists** in `Profile 3/` — Chrome thinks port is already active
-4. **`SingletonLock`/`SingletonCookie`/`SingletonSocket` exist** in User Data
-5. **Chrome is already running** without the debug port — new instance attaches to old process
-6. **`Current Session`/`Current Tabs` files exist** — Chrome restores old tabs (causes junk tabs)
-
-## The Complete Fix (in the .bat file BEFORE Python starts)
-
-### Step 1: Kill ALL Chrome Processes
-
-```batch
-taskkill /F /IM chrome.exe /T >nul 2>&1
-timeout /t 5 /nobreak >nul
-powershell -Command "Get-Process chrome -ErrorAction SilentlyContinue | Stop-Process -Force" >nul 2>&1
-timeout /t 3 /nobreak >nul
-```
-
-Must wait **at least 5 seconds** — Chrome takes a long time to release the LOCK file.
-
-### Step 2: Delete ALL Lock and Session Files
-
-```batch
-set "UD=%LOCALAPPDATA%\Google\Chrome\User Data"
-set "P3=%UD%\Profile 3"
-
-if exist "%P3%\LOCK" del /f /q "%P3%\LOCK" >nul 2>&1
-if exist "%P3%\DevToolsActivePort" del /f /q "%P3%\DevToolsActivePort" >nul 2>&1
-if exist "%P3%\Current Session" del /f /q "%P3%\Current Session" >nul 2>&1
-if exist "%P3%\Current Tabs" del /f /q "%P3%\Current Tabs" >nul 2>&1
-if exist "%UD%\SingletonLock" del /f /q "%UD%\SingletonLock" >nul 2>&1
-if exist "%UD%\SingletonCookie" del /f /q "%UD%\SingletonCookie" >nul 2>&1
-if exist "%UD%\SingletonSocket" del /f /q "%UD%\SingletonSocket" >nul 2>&1
-```
-
-### Step 3: Launch Chrome from Python using PowerShell Start-Process
-
-**`subprocess.Popen` with a list does NOT work for launching Chrome on Windows.** The ONLY reliable method is PowerShell's `Start-Process`:
+## Result Handling in Python
 
 ```python
-user_data = str(Path.home() / "AppData" / "Local" / "Google" / "Chrome" / "User Data")
-
-args_str = f"--user-data-dir={user_data} --profile-directory={PROFILE} --start-maximized --disable-blink-features=AutomationControlled --remote-debugging-port=9222 --remote-allow-origins=* --no-first-run --no-default-browser-check --no-restore-last-session {url}"
-
-subprocess.Popen([
-    'powershell', '-Command',
-    f"Start-Process -FilePath '{CHROME_EXE}' -ArgumentList '{args_str}'"
-], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+# ONLY 'sent' and 'already' mark as sent in CSV
+if result == 'sent':
+    update_csv(c['pid'], True)        # Mark as sent
+elif result == 'already':
+    update_csv(c['pid'], True)        # Already had event link
+elif result == 'failed':
+    update_csv(c['pid'], False, 'couldnt_send')  # DO NOT mark as sent
+elif result == 'unconfirmed':
+    update_csv(c['pid'], False, 'unconfirmed')  # DO NOT mark as sent
+elif result == 'bad':
+    update_csv(c['pid'], False, 'bad')           # Bad profile
 ```
 
-### Step 4: Wait for Debug Port
-
-```python
-for i in range(20):
-    time.sleep(2)
-    try:
-        urllib.request.urlopen("http://127.0.0.1:9222/json/version", timeout=2)
-        print(f"Chrome is ready! ({(i+1)*2}s)")
-        break
-    except:
-        pass
-```
-
-**IMPORTANT:** Use `http://127.0.0.1:9222` NOT `http://localhost:9222`.
+## Throttling Recovery Strategy
+- When `FAILED` (couldn't send): Facebook is throttling. Stop the batch.
+- Wait at least 1-2 hours before retrying.
+- Consider reducing batch size (5-10 at a time).
+- If multiple consecutive FAILED results, abort the entire batch.
+- Do NOT mark throttled messages as sent — they were never delivered.
 
 ---
 
-# CRITICAL: Check Chrome Before Each Contact
+# CRITICAL: Continue Button Detection
 
-Before processing each contact, check if Chrome is still alive:
+Facebook shows a "Continue" button on conversations not recently opened (E2E encryption prompt). Without clicking it, the textbox is NOT visible.
 
-```python
-def is_chrome_connected(self) -> bool:
-    try:
-        urllib.request.urlopen("http://127.0.0.1:9222/json/version", timeout=3)
-        return True
-    except:
-        return False
+## Fix — Use :has-text() Selector (3 attempts, 1.5s gaps)
 
-def ensure_chrome_open(self, url: str = None):
-    if self.is_chrome_connected():
-        return True
-    print("Chrome was closed! Relaunching...")
-    if url:
-        self.launch_chrome(url)
-    else:
-        self.launch_chrome("https://www.messenger.com")
-    return self.is_chrome_connected()
+```javascript
+for (let attempt = 0; attempt < 3; attempt++) {
+    const btn = page.locator('div[role="button"]:has-text("Continue"), button:has-text("Continue")');
+    const count = await btn.count();
+    for (let i = 0; i < count; i++) {
+        if (await btn.nth(i).isVisible().catch(() => false)) {
+            await btn.nth(i).click();
+            await page.waitForTimeout(2000);
+            break;
+        }
+    }
+    await page.waitForTimeout(1500);
+}
 ```
-
-If Chrome was closed (user accidentally closed it, crash, etc.), it automatically relaunches and continues from where it left off.
 
 ---
 
-# CRITICAL: Keep Chrome Open for Entire Batch
+# CRITICAL: Already-Sent Detection — Check ONLY Conversation Area
 
-**Do NOT open and close Chrome for each contact.** Chrome launches ONCE at batch start and stays open. For each contact, Playwright navigates the existing tab to the new conversation URL.
+## The Bug
+Checking `document.body.innerText` causes FALSE "already sent" because the sidebar chat list shows preview text from ALL conversations.
+
+## Fix — Check Only [role="main"]
+
+```javascript
+const msgArea = page.locator('[role="main"]');
+const msgText = await msgArea.first().evaluate(el => el.innerText).catch(() => '');
+if (msgText.includes('971902445574502')) {
+    // Actually already sent to THIS contact
+}
+```
 
 ---
 
-# CRITICAL: Typing into Messenger's Lexical Editor
+# CRITICAL: Screenshots — JPEG Not PNG
 
-## The Editor Structure
+Messenger pages have heavy fonts. PNG screenshots timeout (30s+). Use JPEG:
 
-```html
-<div role="textbox" contenteditable="true">
-  <div class="xzsf02u x1a2a7pz ...">
-    <p class="xat24cr xdj266r" dir="auto">
-      <br data-lexical-managed-linebreak="true">
-    </p>
-  </div>
-</div>
+```javascript
+await page.screenshot({ path: 'shot.jpg', type: 'jpeg', quality: 40 });
 ```
 
-## What Does NOT Work
+---
 
-- `locator.fill()` — Lexical ignores DOM value changes
-- `locator.type()` — Unreliable with Lexical
-- Setting `innerHTML` directly — Lexical doesn't pick up the change
-- `execCommand('insertText')` — Inconsistent
-
-## What DOES Work
+# CRITICAL: Typing into Lexical Editor
 
 ```javascript
 const textbox = page.locator('div[role="textbox"]').first();
-await textbox.waitFor({ timeout: 8000 });
 await textbox.click();
-await page.waitForTimeout(500);
-await page.keyboard.type(message, { delay: 10 });
+await page.waitForTimeout(300);
+await page.keyboard.type(message, { delay: 5 });
+await page.waitForTimeout(300);
+await page.keyboard.press('Enter');
 ```
 
-**`page.keyboard.type()` is the ONLY reliable method.**
+`page.keyboard.type()` is the ONLY reliable method. 5ms delay per character.
 
 ---
 
-# CRITICAL: Subprocess Encoding (Windows)
+# CRITICAL: CSV Writing — Handle Empty Fieldnames
 
 ```python
-result = subprocess.run(
-    ['node', str(temp_script)],
-    capture_output=True,
-    text=True,
-    encoding='utf-8',
-    errors='replace',
-    timeout=30,
-    cwd=str(DATA_DIR)
-)
-```
-
-Avoid emoji in Node.js console.log — use plain ASCII.
-
----
-
-# CRITICAL: CSV Profile ID Matching
-
-The CSV may store `fb_profile_id` with a leading `/` (e.g. `/jvipper`). The Contact object strips this. When updating CSV, match by stripping `/` from both sides:
-
-```python
-row_profile = row.get('fb_profile_id', '').lstrip('/')
-contact_profile = contact.fb_profile_id.lstrip('/')
-if row_profile == contact_profile and row_profile:
-    # update this row
-```
-
-Without this fix, CSV updates silently fail because `/jvipper != jvipper`.
-
----
-
-# Playwright Navigation to Each Contact
-
-Playwright navigates the existing Chrome tab to each contact's URL:
-
-```javascript
-await page.goto(messenger_url, { waitUntil: 'domcontentloaded', timeout: 10000 })
-    .catch(e => { console.log('Navigation slow, continuing anyway...'); });
-await page.waitForTimeout(2000);
-```
-
-Timeouts:
-- Navigation: 10 seconds (catches errors, continues)
-- Composer search: 8 seconds (exits with error if not found)
-- Total script: 30 seconds (Python kills if anything hangs)
-
----
-
-# Playwright Connection
-
-```javascript
-const { chromium } = require('playwright');
-
-const browser = await chromium.connectOverCDP('http://127.0.0.1:9222');
-const context = browser.contexts()[0];
-
-// Find the messenger page among open tabs
-let page = null;
-for (const p of context.pages()) {
-    try {
-        if (p.url().includes('messenger.com')) { page = p; break; }
-    } catch(e) {}
-}
-if (!page) page = context.pages()[0];
+fnames = [fn for fn in reader.fieldnames if fn and fn.strip()]
+w = csv.DictWriter(f, fieldnames=fnames, extrasaction='ignore')
 ```
 
 ---
 
-# Workflow
+# Chrome Debug Port Setup
 
-## 1. Launch via bat file
-
-```
-run_messenger_terminal.bat
-```
-
-The bat file:
-1. Kills ALL Chrome processes (waits 5+ seconds, force-kills remaining)
-2. Deletes LOCK, DevToolsActivePort, Current Session, Current Tabs, Singleton files
-3. Checks Python and Node.js dependencies
-4. Runs `python messenger_terminal.py`
-
-## 2. Load Contacts (Skip Already Sent)
-
-Read `./outreach/messenger/fbfriends.csv`. Skip where:
-- `message_sent == 'true'` in CSV
-- Contact exists in `message_history.json` for current event URL
-
-This provides **resume capability** — if you stop and restart, it continues where you left off.
-
-## 3. Generate Personalized Messages
-
-10 rotating styles: Personal, Casual, Favor Request, Exciting, FOMO, Curious, Community, Direct, Supportive, Warm.
-
-## 4. Launch Chrome ONCE
-
-Python uses `powershell Start-Process` to launch Chrome with debug port. Waits for port at `http://127.0.0.1:9222/json/version`.
-
-## 5. For Each Contact
-
-1. **Check Chrome debug port** — if closed, relaunch automatically
-2. **Playwright navigates** Chrome to the contact's Messenger URL
-3. User handles any Continue button manually
-4. User presses ENTER in terminal
-5. Playwright types message via `keyboard.type()` (10ms delay per char)
-6. User reviews message in Messenger
-7. User manually presses Enter in Messenger to send
-8. User presses ENTER in terminal to confirm
-9. **CSV updated**: `message_sent=true`, `sent_at=timestamp`
-10. **message_history.json updated**: records contact + event URL + timestamp
-11. **Chrome stays open** — move to next contact
-
-## 6. Batch Complete
-
-Terminal shows: sent count, error count. User closes Chrome manually.
+Same as before — kill Chrome, clean locks, launch via PowerShell Start-Process, wait for port 9222.
 
 ---
 
-# Duplicate Prevention (3 Layers)
+# Workflow (Per Contact)
 
-1. **CSV Check**: Skip where `message_sent == 'true'`
-2. **History File**: Check `message_history.json` for current event URL
-3. **Session Tracking**: Track sends during current session
-
-**Resume capability**: If you stop mid-batch and restart later, `load_contacts` automatically skips everyone already marked as sent in the CSV or history file. You continue exactly where you left off.
-
-To force re-send: set `message_sent` to `false` in CSV AND remove from `message_history.json`, or use "Reset History" in terminal.
+1. Navigate to `https://www.messenger.com/t/{profile_id}`
+2. Wait 2s
+3. BEFORE screenshot (JPEG q40)
+4. Check for Continue button (3 attempts, 1.5s gaps, :has-text("Continue"))
+5. If Continue clicked → continue screenshot
+6. Wait for textbox (7s timeout)
+7. Check if already sent — ONLY check [role="main"] area
+8. Type message via keyboard.type() (5ms delay)
+9. TYPED screenshot
+10. Press Enter
+11. **VERIFY SEND — poll 10s checking for "Couldn't send" or event link in conversation**
+12. AFTER screenshot
+13. **Only mark as SENT if: event link appears in conversation AND no failure indicators**
+14. If "Couldn't send" → mark as FAILED (NOT sent)
+15. If unknown after 10s → mark as UNCONFIRMED (NOT sent)
+16. Update CSV
 
 ---
 
-# Rate Limiting
+# Message Templates
 
-Between messages: 30-120 seconds (randomized), configurable via `config.json`.
-
----
-
-# Error Handling
-
-- Chrome closed mid-batch → auto-relaunch and continue
-- Navigation timeout (10s) → continue anyway, may still find composer
-- Composer not found (8s) → mark as error, move to next contact
-- Script timeout (30s) → Python kills process, mark as error
-- UnicodeDecodeError → fixed with `encoding='utf-8', errors='replace'`
-- Never mark a failed message as sent
-- Save CSV immediately after errors
+30 varied styles: personal, casual, exciting, fomo, warm, supportive, community, direct, curious, favor, nostalgic, musician, reconnect, invite, bluesfan. Each has 2 variations. Random selection per contact.
 
 ---
 
 # Safety Rules
 
-- Never send when `message_sent == true`
+- **NEVER mark as sent unless delivery is confirmed** (event link visible in conversation)
+- **Check for "Couldn't send" after EVERY send attempt**
 - Save CSV after every send (immediately)
-- Save errors immediately
-- Process sequentially
-- User reviews every message before sending
+- JPEG screenshots only (PNG times out)
+- Check only conversation area for already-sent (NOT sidebar)
+- Continue button: use :has-text("Continue"), 3 attempts
 - Keep Chrome open for entire batch
-- Check Chrome debug port before each contact
-- Rate limit between messages
-- Resume from where left off on restart
-
----
-
-# Configuration
-
-```json
-{
-  "batch_size": 5,
-  "min_delay": 30,
-  "max_delay": 120,
-  "page_load_wait": 60,
-  "auto_confirm": false,
-  "message_styles": ["personal", "casual", "exciting", "fomo", "warm"]
-}
-```
+- 25s timeout per contact
+- If 3+ consecutive FAILED results → abort batch (Facebook is throttling)
+- Wait 1-2 hours after throttling before retrying

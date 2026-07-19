@@ -16,44 +16,55 @@ https://www.youtube.com/watch?v=offeVk26Bn4
 - Return to verse
 
 ## Chord Progression (12-bar blues in A)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | A7 | D7 | A7 | E7 | A7 — E7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of A | A7 | D7 | A7 | E7 | A7 — E7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** I am a back door man
-I am a back door man
-Well, the men don't know
-But the little girls understand
+### Verse 1 (I7)
+**[I7]** I am a back door man
+**[I7]** I am a back door man
+**[IV7]** Well, the men don't know
+**[V7]** But the little girls understand
 
-When everybody's tryin' to sleep
-I'm somewhere making my midnight creep
-Yeah, in the morning the rooster crow
-Something tell me I got to go
+### Verse 2 (I7)
+**[I7]** When everybody's tryin' to sleep
+**[I7]** I'm somewhere making my midnight creep
+**[IV7]** Yeah, in the morning the rooster crow
+**[V7]** Something tell me I got to go
 
-I am a back door man
-I am a back door man
-Well, the men don't know
-But little girls understand
+### Chorus (I7)
+**[I7]** I am a back door man
+**[I7]** I am a back door man
+**[IV7]** Well, the men don't know
+**[V7]** But little girls understand
 
-They take me to the doctor, shot full o' holes
-Nurse cried, please save the soul
-Killed him for murder, first degree
-Judge wife cried, let the man go free
+### Verse 3 (I7)
+**[I7]** They take me to the doctor, shot full o' holes
+**[I7]** Nurse cried, please save the soul
+**[IV7]** Killed him for murder, first degree
+**[V7]** Judge wife cried, let the man go free
 
-I am a back door man
-I am a back door man
-Well, the men don't know
-But little girls understand
+### Chorus (I7)
+**[I7]** I am a back door man
+**[I7]** I am a back door man
+**[IV7]** Well, the men don't know
+**[V7]** But little girls understand
 
-Stand out there, cop's wife cried, don't take him down
-Rather be dead, six feets in the ground
-When you come home, you can eat pork and beans
-I eats mo' chicken any man seen
+### Verse 4 (I7)
+**[I7]** Stand out there, cop's wife cried, don't take him down
+**[I7]** Rather be dead, six feets in the ground
+**[IV7]** When you come home, you can eat pork and beans
+**[V7]** I eats mo' chicken any man seen
 
-I am back door man
-I am back door man
+### Outro (I7)
+**[I7]** I am back door man
+**[I7]** I am back door man
 ## Notes
 - Willie Dixon wrote it, Howlin' Wolf recorded it, The Doors made it famous
 - The Doors version adds organ, heavier rhythm, Jim Morrison's delivery

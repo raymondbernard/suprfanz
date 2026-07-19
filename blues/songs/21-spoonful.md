@@ -16,45 +16,57 @@
 - Riff-based verses
 
 ## Chord Progression (12-bar blues in E)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | E7 | A7 | E7 | B7 | E7 — B7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of E | E7 | A7 | E7 | B7 | E7 — B7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** It could be a spoonsful of diamonds,
-Could be a spoonful of gold,
-Just a little spoon of your precious love,
-Satisfies my soul.
+### Verse 1 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** It could be a spoonsful of diamonds,
+**[I7]** Could be a spoonful of gold,
+**[IV7]** Just a little spoon of your precious love,
+**[V7]** Satisfies my **[I7]** soul.
 
-Men lies about little,
-Some of them cries about little,
-Some of them dies about little,
-Everything fight about little spoonful.
+### Verse 2 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** Men lies about little,
+**[I7]** Some of them cries about little,
+**[IV7]** Some of them dies about little,
+**[V7]** Everything fight about little **[I7]** spoonful.
 
-It could be a spoonful of coffee,
-Could be a spoonful of tea,
-But a little spoon of your precious love,
-Good enough for me.
+### Verse 3 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** It could be a spoonful of coffee,
+**[I7]** Could be a spoonful of tea,
+**[IV7]** But a little spoon of your precious love,
+**[V7]** Good enough for **[I7]** me.
 
-Men lies about that,
-Some of them dies about that,
-Some of them cries about that,
-But everything fight about that spoonful.
+### Verse 4 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** Men lies about that,
+**[I7]** Some of them dies about that,
+**[IV7]** Some of them cries about that,
+**[V7]** But everything fight about that **[I7]** spoonful.
 
-That spoon, dat spoon, dat spoonful.
+### Bridge (I7)
+**[I7]** That spoon, dat spoon, dat spoonful.
 
-It could be a spoonsful of water,
-Saved from the deserts sand,
-But one spoon of them fortifies.
-Save you from another man.
+### Verse 5 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** It could be a spoonsful of water,
+**[I7]** Saved from the deserts sand,
+**[IV7]** But one spoon of them fortifies.
+**[V7]** Save you from another **[I7]** man.
 
-Men lies about that,
-Some of them cries about that,
-Some of them dies about that,
-Everybody fightin' about that spoonful.
+### Verse 6 (I7 → IV7 → I7 → V7 → I7)
+**[I7]** Men lies about that,
+**[I7]** Some of them cries about that,
+**[IV7]** Some of them dies about that,
+**[V7]** Everybody fightin' about that **[I7]** spoonful.
 
-That spoon, dat spoon, dat spoonful.
+### Outro (I7)
+**[I7]** That spoon, dat spoon, dat spoonful.
 ## Notes
 - Willie Dixon wrote it, Howlin' Wolf recorded it, Cream made it epic
 - "A spoonful" — suggestive, playful, classic blues double meaning

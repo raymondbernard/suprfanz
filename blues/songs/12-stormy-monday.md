@@ -18,23 +18,31 @@ https://drive.google.com/file/d/0BzM616129GamS2k4MF9FbVp2QW8/view?usp=sharing
 - Extended solos possible
 
 ## Chord Progression (12-bar blues in G with jazz subs)
+
+**Nashville Notation:** I7 — IV9 — I7 — iim7 — vᵐ7 — I7 — V7#9 (jazz substitutions)
+
 | Bar | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 |-----|---|---|---|---|---|---|---|---|---|----|----|----|
-| Chord | G7 | G7 | G7 | G7 | C9 | C9 | G7 | G7 | Am7 | Dm7 | G7 | D7#9 |
+| Nashville | I7 | I7 | I7 | I7 | IV9 | IV9 | I7 | I7 | iim7 | vᵐ7 | I7 | V7#9 |
+| Key of G | G7 | G7 | G7 | G7 | C9 | C9 | G7 | G7 | Am7 | Dm7 | G7 | D7#9 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Call it stormy Monday, but I say Tuesday's just as bad
-Call it stormy Monday, but I say Tuesday's just as bad
+### Verse 1 (I7)
+**[I7]** Call it stormy Monday, but I say Tuesday's just as bad
+**[I7]** Call it stormy Monday, but I say Tuesday's just as bad
 
-**(Bar 1, beat 1)** Wednesday is worse, and Thursday's oh so sad
-The eagle flies on Friday, Saturday I go out to play
-Sunday I go to church, then I kneel down and I pray
+### Verse 2 (I7 → IV9 → I7 → iim7 → vᵐ7 → I7)
+**[I7]** Wednesday is worse, and Thursday's oh so sad
+**[IV9]** The eagle flies on Friday, **[I7]** Saturday I go out to play
+**[iim7]** Sunday I go to church, **[vᵐ7]** then I kneel down and **[I7]** I pray
 
-**(Bar 1, beat 1)** Lord have mercy, Lord have mercy on me
-Lord have mercy, Lord have mercy on me
+### Verse 3 (I7)
+**[I7]** Lord have mercy, Lord have mercy on me
+**[I7]** Lord have mercy, Lord have mercy on me
 
-**(Bar 1, beat 1)** Though I'm tryin' to find my baby, won't somebody send her home to me
+### Verse 4 (I7 → V7#9)
+**[I7]** Though I'm tryin' to find my baby, **[V7#9]** won't somebody send her home to me
 
 ## Notes
 - THE slow blues standard — every blues player knows it

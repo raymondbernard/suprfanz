@@ -1,0 +1,37 @@
+lottery_id,lottery_name,lottery_status,development_type,borough,postcode,address,neighborhood,lottery_start_date,lottery_end_date,unit_count,studio_units,1br_units,2br_units,3br_units,4br_units,ami_extremely_low,ami_very_low,ami_low,ami_moderate,ami_middle,ami_above,mobility_percent,vision_hearing_percent,community_board_percent,municipal_employee_percent,nycha_percent,senior_percent,latitude,longitude,reporting_construction_type,community_board,bbl,bin
+7522,223 East 117th Street aka PETER JAY SHARP RESIDENCE,Active,Rental,MN,10035,223 EAST  117 STREET,MN1102,2026-07-01,2026-07-23,23,23,,,,,,,23,,,,5,2,,,,,40.798344,-73.938827,Preservation,111,1016670012,1085963
+7589,534 Third Avenue Apartments,Active,Rental,MN,10016,534 3rd Ave,MN0603,2026-06-15,2026-07-07,40,21,12,7,,,,16,16,,8,,5,2,20,10,,,40.74676,-73.977383,New Construction,106,1008910044,1000000
+7548,RIALTO WEST,Active,Rental,MN,10036,509 W 48th St,MN0402,2026-05-20,2026-07-20,133,32,36,53,12,,,39,31,47,16,,5,2,20,10,,,40.763565,-73.992997,Preservation,104,1010770029,1000000
+7563,Three Waterline Square aka 635 West 59th Street - Waiting List,Active,Rental,MN,10019,635 WEST   59 STREET,MN0701,2026-06-01,2026-06-23,55,,24,28,3,,,22,33,,,,,,,,,,40.772279,-73.991999,Preservation,107,1011710157,1089374
+7523,WILLOW TREE RESIDENCES,Active,Rental,MN,10017,225 E 45th St,MN0604,2026-05-05,2026-07-03,51,51,,,,,,,51,,,,5,2,20,10,,,40.752396,-73.97232,New Construction,106,1013190011,1000000
+7492,West Harlem Renaissance,Active,Rental,MN,10030,103-109 W 141st St,MN1002,2026-04-27,2026-05-28,21,,3,,18,,,6,15,,,,5,2,,,,,40.818117,-73.938574,Preservation,110,1020100024,1060089
+7492,West Harlem Renaissance,Active,Rental,MN,10030,121-123 W 144th St,MN1002,2026-04-27,2026-05-28,23,10,13,,,,,6,15,2,,,5,2,,,,,40.820219,-73.937767,Preservation,110,1020130020,1060166
+7566,104 Fleet Place Apartments,Active,Rental,BK,11201,104 Fleet Place,BK0202,2026-06-22,2026-07-14,20,5,5,10,,,,,20,,,,,,,,,,40.692615,-73.981782,New Construction,302,3020620018,3000000
+7529,163 Willoughby Street Apartments,Active,Rental,BK,11201,163 Willoughby St,BK0202,2026-07-06,2026-07-27,20,5,5,10,,,,,20,,,,,,,,,,40.692041,-73.982013,New Construction,302,,
+7519,165 Willoughby Street Apartments,Active,Rental,BK,11201,165 WILLOUGHBY STREET,BK0202,2026-04-27,2026-06-29,20,5,,15,,,,,20,,,,5,2,20,10,,,40.692038,-73.981948,New Construction,302,3020620024,3058263
+7462,170 Freeman Street Apartments,Active,Rental,BK,11222,170 FREEMAN STREET,BK0101,2026-04-13,2026-06-15,21,3,13,5,,,,,11,,10,,5,2,20,10,,,40.734481,-73.954532,New Construction,301,3025130006,3000000
+7517,2683 Atlantic Avenue Apartments,Active,Rental,BK,11207,2683 ATLANTIC AVENUE,BK0502,2026-05-21,2026-06-12,58,,,58,,,,23,24,9,2,,,,20,10,,,40.67588,-73.895281,New Construction,305,3036710038,3339353
+7562,275 20th Street Apartments,Active,Rental,BK,11215,275 20 STREET,BK0702,2026-06-03,2026-06-25,13,13,,,,,,3,,10,,,,,,,,,40.661323,-73.991851,Preservation,307,3008850058,3017170
+7561,282 4th Avenue Apartments,Active,Rental,BK,11215,282 4 AVENUE,BK0601,2026-06-01,2026-06-23,13,,6,7,,,,7,3,3,,,5,2,20,10,,,40.675603,-73.984357,New Construction,306,3004560032,3332112
+7584,343 Himrod Street Apartments,Active,Rental,BK,11237,343 Himrod St,BK0401,2026-06-29,2026-07-20,15,,,15,,,,5,10,,,,,,,,,,40.702473,-73.917535,Preservation,304,3032700024,3074538
+7473,645 Park Place Aka 711 Franklin Avenue Apartments,Active,Rental,BK,11216,645 Park Pl,BK0802,2026-06-25,2026-07-20,18,,12,6,,,,,15,,3,,5,2,20,5,,,40.674080000000004,-73.956202,New Construction,308,3012310001,3000000
+7572,COLUMBIA COMMONS I,Active,Rental,BK,11231,498 Columbia St,BK0601,2026-07-01,2026-08-28,239,68,86,85,,,,67,111,61,,,5,2,20,10,,,40.67453,-74.007769,Preservation,306,3005790003,3000000
+7333,HELP Hinsdale C,Active,Rental,BK,11207,314 Hinsdale St,BK0502,2026-05-14,2026-06-16,30,,,19,11,,,5,25,,,,5,2,20,10,,,40.667562,-73.899588,New Construction,305,3037660042,3000000
+7541,1004 Summit Avenue Apartments,Active,Rental,BX,10452,1004 SUMMIT AVENUE,BX0402,2026-06-18,2026-07-13,3,2,1,,,,,,3,,,,,,,,,,40.83348,-73.930035,New Construction,204,2025250002,2003456
+7485,1060 Prospect Avenue,Active,Rental,BX,10459,1060 Prospect Ave,BX0202,2026-06-15,2026-07-09,6,,3,3,,,,,6,,,,,,,,,,40.824614,-73.899556,New Construction,202,,
+7533,1143 Hoe Avenue Apartments,Active,Rental,BX,10459,1143 Hoe Ave,BX0303,2026-06-02,2026-06-24,10,1,5,3,1,,,,10,,,,,,,,,,40.827293,-73.890909,Preservation,203,2027450044,2000000
+7544,1407 Nelson Avenue Apartments,Active,Rental,BX,10452,1407 NELSON AVENUE,BX0403,2026-05-28,2026-06-18,5,1,,4,,,,,5,,,,,,,,,,40.842452,-73.922039,New Construction,204,2028740157,2008783
+7564,1422 Vyse Avenue,Active,Rental,BX,10459,1422 Vyse Ave,BX0303,2026-05-20,2026-06-11,3,1,2,,,,,,3,,,,,,,,,,40.830799,-73.889505,New Construction,203,2029940010,2010731
+7583,1938 Prospect Avenue Apartments,Active,Rental,BX,10457,1938 Prospect Ave,BX0602,2026-06-15,2026-07-07,3,2,1,,,,,,3,,,,,,,,,,40.843952,-73.889375,Preservation,206,2029560004,2000000
+7555,217 Bedford Park Boulevard Apartments,Active,Rental,BX,10458,217 Bedford Park Blvd,BX0702,2026-05-26,2026-06-16,6,6,,,,,,,6,,,,,,,,,,40.871674,-73.887304,New Construction,207,2033060052,2017212
+7545,2334-2336 Valentine Avenue Apartments,Active,Rental,BX,10458,2334 Valentine Ave,BX0503,2026-05-14,2026-06-05,7,,3,4,,,,,7,,,,,,,,,,40.857669,-73.8978,New Construction,205,2031460019,2013434
+7574,2351 Lorillard Place Apartments,Active,Rental,BX,10458,2351 Lorillard Pl,BX0603,2026-07-02,2026-07-24,18,,2,5,11,,,5,11,2,,,,,20,10,,,40.855368,-73.890166,Preservation,206,2030550033,2011695
+7590,269 Van Cortlandt Avenue E,Active,Rental,BX,10467,269 Van Cortlandt Ave E,BX0703,2026-06-23,2026-07-16,6,2,1,,3,,,,6,,,,,,,,,,40.876657,-73.880389,New Construction,207,2033360008,2018040
+7573,3060 3rd Avenue Apartments,Active,Rental,BX,10451,3060 3 AVENUE,BX0102,2026-06-04,2026-06-26,6,3,1,2,,,,,6,,,,,,,,,,40.820702,-73.912667,Preservation,201,2023640010,2001186
+7527,786 Fairmount Place,Active,Rental,BX,10460,786 FAIRMOUNT PLACE,BX0602,2026-05-22,2026-06-15,2,,1,1,,,,,2,,,,,,,,,,40.842763,-73.889182,Preservation,206,2029540020,2010022
+7543,PENINSULA 1221 & 1225 Spofford Avenue,Active,Rental,BX,10474,1221 Spofford Ave,BX0201,2026-05-09,2026-07-07,113,23,18,48,18,6,11,34,68,,,,,,,,,,40.813893,-73.890566,New Construction,202,,
+7543,PENINSULA 1221 & 1225 Spofford Avenue,Active,Rental,BX,10474,1225 Spofford Ave,BX0201,2026-05-09,2026-07-07,190,47,74,32,37,,21,58,111,,,,,,,,,,40.813901,-73.890505,New Construction,202,,
+7549,106 Fleet Place Apartments,Active,Rental,QN,,106 Fleet Place,,2026-06-29,2026-07-21,20,5,5,10,,,,,20,,,,,,,,,,,,New Construction,,,
+7538,87-67 170th Street Apartments,Active,Rental,QN,11432,87-67 170th St,QN1201,2026-06-01,2026-06-23,8,1,6,,1,,,,8,,,,,,,,,,40.710623,-73.791752,New Construction,412,4098260049,4000000
+7495,THE BARNETT,Active,Rental,QN,11104,50-25 Barnett Ave,QN0261,2026-04-09,2026-06-08,146,15,72,45,14,,18,36,92,,,,5,2,20,10,,,40.750171,-73.913174,Preservation,402,4001190143,4000000
+7554,The Doria,Active,Rental,QN,11101,34-16 38 Street,QN0103,2026-05-18,2026-06-09,23,,9,14,,,,8,15,,,,,,,,,,40.756649,-73.921998,New Construction,401,,

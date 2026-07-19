@@ -17,51 +17,63 @@ https://www.youtube.com/watch?v=SjaqQJaqh-s
 - Extended jam possible (Derek & the Dominos version)
 
 ## Chord Progression (8-bar form in A)
+
+**Nashville Notation:** I7 — V7 — I7 — IV7 / I7 / V7 (8-bar blues, not standard 12-bar)
+
 | Bar | 1-2 | 3-4 | 5-6 | 7-8 |
 |-----|------|------|------|------|
-| Chord | A7 | E7 | A7 | D7 — A7 — E7 |
+| Nashville | I7 | V7 | I7 | IV7 — I7 — V7 |
+| Key of A | A7 | E7 | A7 | D7 — A7 — E7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Gonna move out on the highway
-Gonna move out on the highway
-Gonna move out on the highway
-Make my home in the woods
+### Verse 1 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** Gonna move out on the highway
+**[V7]** Gonna move out on the highway
+**[I7]** Gonna move out on the highway
+**[IV7]** Make my home **[I7]** in the **[V7]** woods
 
-I'm gonna move out on the highway
-Gonna move out on the highway
-Gonna move out on the highway
-Make my home in the woods
+### Verse 2 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I'm gonna move out on the highway
+**[V7]** Gonna move out on the highway
+**[I7]** Gonna move out on the highway
+**[IV7]** Make my home **[I7]** in the **[V7]** woods
 
-**(Bar 1, beat 1)** I'm gonna ride through the city
-Gonna ride through the city
-Gonna ride through the city
-When the sun goes down
+### Verse 3 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I'm gonna ride through the city
+**[V7]** Gonna ride through the city
+**[I7]** Gonna ride through the city
+**[IV7]** When the sun **[I7]** goes **[V7]** down
 
-I'm gonna ride through the city
-Gonna ride through the city
-Gonna ride through the city
-When the sun goes down
+### Verse 4 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I'm gonna ride through the city
+**[V7]** Gonna ride through the city
+**[I7]** Gonna ride through the city
+**[IV7]** When the sun **[I7]** goes **[V7]** down
 
-**(Bar 1, beat 1)** I'm gonna walk up the highway
-Gonna walk up the highway
-Gonna walk up the highway
-In the midnight rain
+### Verse 5 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I'm gonna walk up the highway
+**[V7]** Gonna walk up the highway
+**[I7]** Gonna walk up the highway
+**[IV7]** In the midnight **[I7]** **[V7]** rain
 
-I'm gonna walk up the highway
-Gonna walk up the highway
-Gonna walk up the highway
-In the midnight rain
+### Verse 6 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I'm gonna walk up the highway
+**[V7]** Gonna walk up the highway
+**[I7]** Gonna walk up the highway
+**[IV7]** In the midnight **[I7]** **[V7]** rain
 
-**(Bar 1, beat 1)** I've got the key to the highway
-Got the key to the highway
-Got the key to the highway
-And I'm gonna leave here slow
+### Verse 7 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I've got the key to the highway
+**[V7]** Got the key to the highway
+**[I7]** Got the key to the highway
+**[IV7]** And I'm gonna **[I7]** leave here **[V7]** slow
 
-I've got the key to the highway
-Got the key to the highway
-Got the key to the highway
-And I'm gonna leave here slow
+### Verse 8 (I7 → V7 → I7 → IV7 / I7 / V7)
+**[I7]** I've got the key to the highway
+**[V7]** Got the key to the highway
+**[I7]** Got the key to the highway
+**[IV7]** And I'm gonna **[I7]** leave here **[V7]** slow
 
 ## Notes
 - Classic "leaving town" blues — "I'm gonna walk on"

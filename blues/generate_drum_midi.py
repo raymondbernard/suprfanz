@@ -20,6 +20,57 @@ import os
 
 # ─── MIDI helpers ───────────────────────────────────────────────────────────
 
+def encode_varlen(value):
+    """Encode a delta-time value using MIDI variable-length encoding."""
+    if value < 0:
+        raise ValueError("Delta time cannot be negative")
+    if value == 0:
+        return bytes([0])
+    
+    bytes_out = []
+    bytes_out.append(value & 0x7F)
+    value >>= 7
+    while value > 0:
+        bytes_out.append((value & 0x7F) | 0x80)
+        value >>= 7
+    
+    return bytes(reversed(bytes_out))
+
+
+def midi_meta_event(delta, meta_type, data):
+    """Create a meta event with delta time."""
+    result = bytearray()
+    result.extend(encode_varlen(delta))
+    result.append(0xFF)
+    result.append(meta_type)
+    result.extend(encode_varlen(len(data)))
+    result.extend(data)
+    return bytes(result)
+
+
+def drum_note(note, velocity, delta=0, duration=60):
+    """Create a drum note on/off pair with delta time and duration.
+    
+    Uses channel 9 (GM drum channel).
+    duration = ticks until note_off (default 60 ticks = 1/8 note at 480 PPQN)
+    """
+    result = bytearray()
+    
+    # Note on with delta
+    result.extend(encode_varlen(delta))
+    result.append(0x99)  # Note on, channel 9 (drums)
+    result.append(note)
+    result.append(velocity)
+    
+    # Note off after duration
+    result.extend(encode_varlen(duration))
+    result.append(0x89)  # Note off, channel 9
+    result.append(note)
+    result.append(0x00)  # Release velocity
+    
+    return bytes(result)
+
+
 def write_midi(filename, tempo_bpm, bars, pattern_type, total_choruses=3):
     """
     Write a MIDI file with drum track.
@@ -29,19 +80,20 @@ def write_midi(filename, tempo_bpm, bars, pattern_type, total_choruses=3):
     total_choruses: how many times to repeat the form
     """
     ticks_per_quarter = 480
-    track_data = []
+    events = []
     
-    # Tempo
+    # Tempo meta event at delta 0
     microseconds_per_quarter = int(60_000_000 / tempo_bpm)
-    tempo_bytes = struct.pack('>I', microseconds_per_quarter)[1:]  # 3 bytes
-    track_data.append(midi_meta_event(0x51, tempo_bytes))
+    tempo_bytes = struct.pack('>I', microseconds_per_quarter)[1:]  # 3 bytes big-endian
+    events.append(midi_meta_event(0, 0x51, tempo_bytes))
     
-    # Time signature 4/4
-    track_data.append(midi_meta_event(0x58, bytes([4, 2, 24, 8])))
+    # Time signature 4/4 at delta 0
+    events.append(midi_meta_event(0, 0x58, bytes([4, 2, 24, 8])))
     
-    # Track name
-    name = filename.replace('.mid', '').replace('blues/songs/', '').encode('ascii')
-    track_data.append(midi_meta_event(0x03, name))
+    # Track name at delta 0
+    song_name = os.path.basename(filename).replace('.mid', '')
+    name_bytes = song_name.encode('ascii')
+    events.append(midi_meta_event(0, 0x03, name_bytes))
     
     total_bars = bars * total_choruses
     
@@ -51,53 +103,33 @@ def write_midi(filename, tempo_bpm, bars, pattern_type, total_choruses=3):
         is_first_bar = (bar_num == 0)
         
         if is_first_bar:
-            # Intro fill (2 bars of crash + tom fill)
-            track_data.extend(generate_fill(tempo_bpm, ticks_per_quarter, bar_num == 0))
-            # Then main groove
-            track_data.extend(generate_groove(pattern_type, ticks_per_quarter, is_chorus_end))
+            # Intro fill (1 bar)
+            events.extend(generate_fill(tempo_bpm, ticks_per_quarter, is_intro=True))
+            # Then main groove for this bar (still counts as bar 0)
+            events.extend(generate_groove(pattern_type, ticks_per_quarter, False))
         elif is_chorus_end and not is_last_bar:
             # Chorus-ending fill
-            track_data.extend(generate_groove(pattern_type, ticks_per_quarter, True))
+            events.extend(generate_groove(pattern_type, ticks_per_quarter, True))
         elif is_last_bar:
             # Outro fill
-            track_data.extend(generate_fill(tempo_bpm, ticks_per_quarter, False, is_outro=True))
+            events.extend(generate_fill(tempo_bpm, ticks_per_quarter, is_outro=True))
         else:
             # Standard groove bar
-            track_data.extend(generate_groove(pattern_type, ticks_per_quarter, False))
+            events.extend(generate_groove(pattern_type, ticks_per_quarter, False))
     
-    # End of track
-    track_data.append(midi_meta_event(0x2F, b''))
+    # End of track meta event
+    events.append(midi_meta_event(0, 0x2F, b''))
     
     # Build MIDI file
-    header = struct.pack('>HHH', 1, 1, ticks_per_quarter)  # format 1, 1 track
-    header_chunk = b'MThd' + struct.pack('>I', 6) + header
+    # Header chunk: MThd + length(6) + format(1) + ntracks(1) + division(480)
+    header_chunk = b'MThd' + struct.pack('>I', 6) + struct.pack('>HHH', 1, 1, ticks_per_quarter)
     
-    track_bytes = b''.join(track_data)
-    track_chunk = b'MTrk' + struct.pack('>I', len(track_bytes)) + track_bytes
+    # Track chunk: MTrk + length + data
+    track_data = b''.join(events)
+    track_chunk = b'MTrk' + struct.pack('>I', len(track_data)) + track_data
     
     with open(filename, 'wb') as f:
         f.write(header_chunk + track_chunk)
-
-
-def midi_meta_event(meta_type, data):
-    """Create a meta event."""
-    return bytes([0xFF, meta_type, len(data)]) + data
-
-
-def note_on(channel, note, velocity, delta=0):
-    """Note on event."""
-    return bytes([delta & 0x7F | (0x80 if delta >= 128 else 0),
-                 0x90 | channel, note, velocity]) if delta < 128 else \
-           bytes([0x80 | ((delta >> 7) & 0x7F), delta & 0x7F,
-                 0x90 | channel, note, velocity])
-
-
-def note_off(channel, note, delta=0):
-    """Note off event."""
-    return bytes([delta & 0x7F | (0x80 if delta >= 128 else 0),
-                 0x80 | channel, note, 0]) if delta < 128 else \
-           bytes([0x80 | ((delta >> 7) & 0x7F), delta & 0x7F,
-                 0x80 | channel, note, 0])
 
 
 def generate_groove(pattern_type, ppq, fill_end=False):
@@ -118,123 +150,155 @@ def generate_groove(pattern_type, ppq, fill_end=False):
         swing_off = int(ppq * 2 / 3)  # ~320 ticks
         short_8th = ppq - swing_off    # ~160 ticks
         
-        # Beat 1
-        events.append(drum_event(36, 100, 0))   # Kick
-        events.append(drum_event(42, 80, 0))    # Hat (with kick)
+        # Beat 1: Kick + Hat
+        events.append(drum_note(36, 100, 0))    # Kick
+        events.append(drum_note(42, 80, 0))     # Hat (simultaneous)
         # Beat 1 &
-        events.append(drum_event(42, 70, swing_off))
-        # Beat 2
-        events.append(drum_event(38, 100, short_8th))  # Snare
-        events.append(drum_event(42, 80, 0))
+        events.append(drum_note(42, 70, swing_off))
+        # Beat 2: Snare + Hat
+        events.append(drum_note(38, 100, short_8th))  # Snare
+        events.append(drum_note(42, 80, 0))           # Hat
         # Beat 2 &
-        events.append(drum_event(42, 70, swing_off))
-        # Beat 3
-        events.append(drum_event(36, 100, short_8th))  # Kick
-        events.append(drum_event(42, 80, 0))
+        events.append(drum_note(42, 70, swing_off))
+        # Beat 3: Kick + Hat
+        events.append(drum_note(36, 100, short_8th))  # Kick
+        events.append(drum_note(42, 80, 0))           # Hat
         # Beat 3 &
-        events.append(drum_event(42, 70, swing_off))
-        # Beat 4
-        events.append(drum_event(38, 100, short_8th))  # Snare
-        events.append(drum_event(42, 80, 0))
+        events.append(drum_note(42, 70, swing_off))
+        # Beat 4: Snare + Hat
+        events.append(drum_note(38, 100, short_8th))  # Snare
+        events.append(drum_note(42, 80, 0))           # Hat
         # Beat 4 &
         if fill_end:
             # Fill: toms on beat 4&
-            events.append(drum_event(50, 100, swing_off))
-            events.append(drum_event(48, 90, int(ppq/6)))
-            events.append(drum_event(45, 100, int(ppq/6)))
-            events.append(drum_event(36, 100, int(ppq/6)))  # Kick on downbeat
+            events.append(drum_note(50, 100, swing_off))
+            events.append(drum_note(48, 90, int(ppq/6)))
+            events.append(drum_note(45, 100, int(ppq/6)))
+            events.append(drum_note(36, 100, int(ppq/6)))  # Kick on downbeat
         else:
-            events.append(drum_event(42, 70, swing_off))
-            events.append(drum_event(36, 90, short_8th))  # Kick on 4& for shuffle
+            events.append(drum_note(42, 70, swing_off))
+            events.append(drum_note(36, 90, short_8th))  # Kick on 4& for shuffle
             
     elif pattern_type == 'slow_blues':
         # Slow blues: sparse, kick on 1, snare on 2 and 4, hats on quarters
-        # Some ghost notes on snare
-        events.append(drum_event(36, 90, 0))    # Kick beat 1
-        events.append(drum_event(42, 70, 0))    # Hat
-        events.append(drum_event(38, 30, int(ppq/2)))  # Ghost snare
-        events.append(drum_event(38, 100, ppq))  # Snare beat 2
-        events.append(drum_event(42, 70, 0))
-        events.append(drum_event(36, 80, int(ppq/2)))  # Kick on 2&
-        events.append(drum_event(36, 90, ppq))  # Kick beat 3
-        events.append(drum_event(42, 70, 0))
-        events.append(drum_event(38, 30, int(ppq/2)))  # Ghost snare
-        events.append(drum_event(38, 100, ppq))  # Snare beat 4
-        events.append(drum_event(42, 70, 0))
+        half = ppq // 2
+        
+        # Beat 1
+        events.append(drum_note(36, 90, 0))     # Kick
+        events.append(drum_note(42, 70, 0))     # Hat
+        # Beat 1 &
+        events.append(drum_note(38, 30, half))  # Ghost snare
+        # Beat 2
+        events.append(drum_note(38, 100, half)) # Snare
+        events.append(drum_note(42, 70, 0))     # Hat
+        # Beat 2 &
+        events.append(drum_note(36, 80, half))  # Kick on 2&
+        # Beat 3
+        events.append(drum_note(36, 90, half))  # Kick
+        events.append(drum_note(42, 70, 0))     # Hat
+        # Beat 3 &
+        events.append(drum_note(38, 30, half))  # Ghost snare
+        # Beat 4
+        events.append(drum_note(38, 100, half)) # Snare
+        events.append(drum_note(42, 70, 0))     # Hat
+        # Beat 4 &
         if fill_end:
-            events.append(drum_event(50, 100, int(ppq/2)))  # Tom fill
-            events.append(drum_event(48, 90, int(ppq/4)))
-            events.append(drum_event(45, 100, int(ppq/4)))
-            events.append(drum_event(36, 100, int(ppq/4)))
+            events.append(drum_note(50, 100, half))  # Tom fill
+            events.append(drum_note(48, 90, int(ppq/4)))
+            events.append(drum_note(45, 100, int(ppq/4)))
+            events.append(drum_note(36, 100, int(ppq/4)))
         else:
-            events.append(drum_event(36, 80, int(ppq/2)))  # Kick on 4&
+            events.append(drum_note(36, 80, half))  # Kick on 4&
             
     elif pattern_type == 'medium_rock':
         # Straight 8th rock: kick on 1 and 3, snare on 2 and 4, hats on all 8ths
         eighth = ppq // 2
         
-        for beat in range(4):
-            delta = 0 if beat == 0 else eighth * 2
-            # Hat on every 8th
-            events.append(drum_event(42, 80, delta if beat == 0 else 0))
-            events.append(drum_event(42, 70, eighth))
-            
-            if beat == 0 or beat == 2:
-                events.append(drum_event(36, 100, 0))  # Kick
-            if beat == 1 or beat == 3:
-                events.append(drum_event(38, 100, 0))  # Snare
-            # Extra kick on & of 3
-            if beat == 2:
-                events.append(drum_event(36, 80, eighth))
-                
+        # Beat 1
+        events.append(drum_note(36, 100, 0))    # Kick
+        events.append(drum_note(42, 80, 0))     # Hat
+        events.append(drum_note(42, 70, eighth)) # Hat &
+        # Beat 2
+        events.append(drum_note(38, 100, eighth)) # Snare
+        events.append(drum_note(42, 80, 0))       # Hat
+        events.append(drum_note(42, 70, eighth))  # Hat &
+        # Beat 3
+        events.append(drum_note(36, 100, eighth)) # Kick
+        events.append(drum_note(42, 80, 0))       # Hat
+        events.append(drum_note(42, 70, eighth))  # Hat &
+        events.append(drum_note(36, 80, 0))       # Extra kick on & of 3
+        # Beat 4
+        events.append(drum_note(38, 100, eighth)) # Snare
+        events.append(drum_note(42, 80, 0))       # Hat
+        
         if fill_end:
-            # Replace last beat with tom fill
-            events = events[:-3]  # Remove last beat
-            events.append(drum_event(50, 100, eighth * 2))  # High tom
-            events.append(drum_event(48, 90, int(ppq/4)))
-            events.append(drum_event(45, 100, int(ppq/4)))
-            events.append(drum_event(36, 100, int(ppq/4)))
+            # Replace beat 4 & with tom fill
+            events.append(drum_note(50, 100, eighth))  # High tom
+            events.append(drum_note(48, 90, int(ppq/4)))
+            events.append(drum_note(45, 100, int(ppq/4)))
+            events.append(drum_note(36, 100, int(ppq/4)))
+        else:
+            events.append(drum_note(42, 70, eighth))  # Hat &
             
     elif pattern_type == 'boogie':
         # Driving boogie: kick on every beat, snare on 2 and 4, hats on 8ths
         eighth = ppq // 2
         
-        for beat in range(4):
-            delta = 0 if beat == 0 else eighth * 2
-            events.append(drum_event(36, 100, delta if beat == 0 else 0))  # Kick every beat
-            events.append(drum_event(42, 75, 0))   # Hat
-            events.append(drum_event(42, 65, eighth))  # Hat 8th
-            
-            if beat == 1 or beat == 3:
-                events.append(drum_event(38, 100, 0))  # Snare
-                
+        # Beat 1
+        events.append(drum_note(36, 100, 0))     # Kick
+        events.append(drum_note(42, 75, 0))      # Hat
+        events.append(drum_note(42, 65, eighth)) # Hat &
+        # Beat 2
+        events.append(drum_note(36, 100, eighth)) # Kick
+        events.append(drum_note(38, 100, 0))      # Snare
+        events.append(drum_note(42, 75, 0))       # Hat
+        events.append(drum_note(42, 65, eighth))  # Hat &
+        # Beat 3
+        events.append(drum_note(36, 100, eighth)) # Kick
+        events.append(drum_note(42, 75, 0))       # Hat
+        events.append(drum_note(42, 65, eighth))  # Hat &
+        # Beat 4
+        events.append(drum_note(36, 100, eighth)) # Kick
+        events.append(drum_note(38, 100, 0))      # Snare
+        events.append(drum_note(42, 75, 0))       # Hat
+        
         if fill_end:
-            events = events[-3:]  # Keep last elements
-            events.append(drum_event(50, 100, eighth * 2))
-            events.append(drum_event(48, 90, int(ppq/4)))
-            events.append(drum_event(45, 100, int(ppq/4)))
-            events.append(drum_event(36, 100, int(ppq/4)))
+            events.append(drum_note(50, 100, eighth))
+            events.append(drum_note(48, 90, int(ppq/4)))
+            events.append(drum_note(45, 100, int(ppq/4)))
+            events.append(drum_note(36, 100, int(ppq/4)))
+        else:
+            events.append(drum_note(42, 65, eighth))  # Hat &
             
     elif pattern_type == 'slow_minor':
         # Slow minor blues (for Thrill Is Gone, I Put a Spell): very sparse
         # Kick on 1, light snare on 2 and 4, ride on quarters
-        events.append(drum_event(36, 85, 0))     # Kick
-        events.append(drum_event(51, 70, 0))    # Ride
-        events.append(drum_event(38, 40, int(ppq/2)))  # Ghost snare
-        events.append(drum_event(38, 95, ppq))  # Snare beat 2
-        events.append(drum_event(51, 65, 0))    # Ride
-        events.append(drum_event(36, 75, ppq))  # Kick beat 3
-        events.append(drum_event(51, 70, 0))    # Ride
-        events.append(drum_event(38, 40, int(ppq/2)))  # Ghost snare
-        events.append(drum_event(38, 95, ppq))  # Snare beat 4
-        events.append(drum_event(51, 65, 0))    # Ride
+        half = ppq // 2
+        
+        # Beat 1
+        events.append(drum_note(36, 85, 0))      # Kick
+        events.append(drum_note(51, 70, 0))      # Ride
+        # Beat 1 &
+        events.append(drum_note(38, 40, half))   # Ghost snare
+        # Beat 2
+        events.append(drum_note(38, 95, half))   # Snare
+        events.append(drum_note(51, 65, 0))      # Ride
+        # Beat 3
+        events.append(drum_note(36, 75, half))   # Kick
+        events.append(drum_note(51, 70, 0))      # Ride
+        # Beat 3 &
+        events.append(drum_note(38, 40, half))   # Ghost snare
+        # Beat 4
+        events.append(drum_note(38, 95, half))   # Snare
+        events.append(drum_note(51, 65, 0))      # Ride
+        # Beat 4 &
         if fill_end:
-            events.append(drum_event(50, 100, int(ppq/2)))
-            events.append(drum_event(48, 90, int(ppq/4)))
-            events.append(drum_event(45, 100, int(ppq/4)))
-            events.append(drum_event(36, 100, int(ppq/4)))
+            events.append(drum_note(50, 100, half))
+            events.append(drum_note(48, 90, int(ppq/4)))
+            events.append(drum_note(45, 100, int(ppq/4)))
+            events.append(drum_note(36, 100, int(ppq/4)))
         else:
-            events.append(drum_event(36, 70, int(ppq/2)))  # Kick on 4&
+            events.append(drum_note(36, 70, half))  # Kick on 4&
     
     return events
 
@@ -243,71 +307,49 @@ def generate_fill(tempo_bpm, ppq, is_intro=True, is_outro=False):
     """Generate a drum fill bar."""
     events = []
     eighth = ppq // 2
+    quarter = ppq
+    sixteenth = ppq // 4
     
     if is_intro:
         # Intro: crash on 1, tom fill on 3-4
-        events.append(drum_event(49, 110, 0))   # Crash
-        events.append(drum_event(36, 100, 0))   # Kick with crash
-        events.append(drum_event(42, 70, 0))    # Hat
-        events.append(drum_event(42, 60, eighth))
-        events.append(drum_event(38, 90, eighth))  # Snare on 2
-        events.append(drum_event(42, 70, 0))
-        events.append(drum_event(42, 60, eighth))
-        events.append(drum_event(50, 100, eighth))  # Tom fill on 3
-        events.append(drum_event(50, 90, int(ppq/4)))
-        events.append(drum_event(48, 95, int(ppq/4)))
-        events.append(drum_event(48, 90, int(ppq/4)))
-        events.append(drum_event(45, 100, int(ppq/4)))
-        events.append(drum_event(45, 100, int(ppq/4)))
-        events.append(drum_event(36, 100, int(ppq/4)))
-        events.append(drum_event(49, 100, 0))   # Crash on 4
-        events.append(drum_event(36, 100, 0))   # Kick
+        events.append(drum_note(49, 110, 0))    # Crash
+        events.append(drum_note(36, 100, 0))    # Kick with crash
+        events.append(drum_note(42, 70, 0))     # Hat
+        events.append(drum_note(42, 60, eighth)) # Hat &
+        # Beat 2
+        events.append(drum_note(38, 90, eighth)) # Snare
+        events.append(drum_note(42, 70, 0))      # Hat
+        events.append(drum_note(42, 60, eighth)) # Hat &
+        # Beat 3: Tom fill
+        events.append(drum_note(50, 100, eighth))  # High tom
+        events.append(drum_note(50, 90, sixteenth))
+        events.append(drum_note(48, 95, sixteenth))
+        events.append(drum_note(48, 90, sixteenth))
+        events.append(drum_note(45, 100, sixteenth))
+        # Beat 4: Crash
+        events.append(drum_note(49, 100, sixteenth))  # Crash
+        events.append(drum_note(36, 100, 0))           # Kick
+        events.append(drum_note(36, 90, quarter))      # Kick on beat 4&
     elif is_outro:
         # Outro: big fill then crash
-        events.append(drum_event(36, 100, 0))   # Kick
-        events.append(drum_event(42, 75, 0))     # Hat
-        events.append(drum_event(38, 90, ppq))   # Snare
-        events.append(drum_event(42, 70, 0))
-        events.append(drum_event(50, 100, ppq))  # High tom
-        events.append(drum_event(48, 95, int(ppq/4)))
-        events.append(drum_event(45, 100, int(ppq/4)))
-        events.append(drum_event(45, 100, int(ppq/4)))
-        events.append(drum_event(49, 110, int(ppq/4)))  # Crash
-        events.append(drum_event(36, 100, 0))
-        events.append(drum_event(49, 100, ppq * 2))  # Final crash
-        events.append(drum_event(36, 90, 0))
+        events.append(drum_note(36, 100, 0))     # Kick
+        events.append(drum_note(42, 75, 0))      # Hat
+        # Beat 2
+        events.append(drum_note(38, 90, quarter)) # Snare
+        events.append(drum_note(42, 70, 0))       # Hat
+        # Beat 3: Tom fill
+        events.append(drum_note(50, 100, quarter)) # High tom
+        events.append(drum_note(48, 95, sixteenth))
+        events.append(drum_note(45, 100, sixteenth))
+        events.append(drum_note(45, 100, sixteenth))
+        # Beat 4: Crash
+        events.append(drum_note(49, 110, sixteenth))  # Crash
+        events.append(drum_note(36, 100, 0))           # Kick
+        # Beat 5-6: Final crash + kick (2 beats)
+        events.append(drum_note(49, 100, quarter * 2))  # Final crash
+        events.append(drum_note(36, 90, 0))             # Kick
     
     return events
-
-
-def drum_event(note, velocity, delta=0):
-    """Create a drum note on/off pair with delta."""
-    result = bytearray()
-    
-    # Handle variable-length delta encoding
-    if delta > 0:
-        d = delta
-        d_bytes = []
-        d_bytes.append(d & 0x7F)
-        d >>= 7
-        while d > 0:
-            d_bytes.append((d & 0x7F) | 0x80)
-            d >>= 7
-        for b in reversed(d_bytes):
-            result.append(b)
-    
-    # Note on
-    result.append(0x99)  # Channel 9 (drums)
-    result.append(note)
-    result.append(velocity)
-    
-    # Note off after short duration (1 tick)
-    result.append(0x00)  # delta = 0
-    result.append(0x89)  # Note off channel 9
-    result.append(note)
-    result.append(0)
-    
-    return bytes(result)
 
 
 # ─── Song definitions ───────────────────────────────────────────────────────

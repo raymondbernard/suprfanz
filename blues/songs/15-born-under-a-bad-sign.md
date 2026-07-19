@@ -15,55 +15,68 @@ https://www.youtube.com/watch?v=2Py37G9qsfY
 - Horn-like fills between vocal lines
 
 ## Chord Progression (12-bar blues in C#)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | C#7 | F#7 | C#7 | G#7 | C#7 — G#7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of C# | C#7 | F#7 | C#7 | G#7 | C#7 — G#7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Born under a bad sign
-Been down since I began to crawl
-If it wasn't for bad luck
-You know, I wouldn't have no luck at all
+### Verse 1 (I7)
+**[I7]** Born under a bad sign
+**[I7]** Been down since I began to crawl
+**[IV7]** If it wasn't for bad luck
+**[V7]** You know, I wouldn't have no luck at **[I7]** all
 
-Hard luck and trouble
-Been my only friend
-I've been on my own
-Ever since I was ten
+### Verse 2 (I7)
+**[I7]** Hard luck and trouble
+**[I7]** Been my only friend
+**[IV7]** I've been on my own
+**[V7]** Ever since I was **[I7]** ten
 
-Born under a bad sign
-Been down since I began to crawl
-If it wasn't for bad luck
-You know, I wouldn't have no luck at all
+### Verse 3 (I7)
+**[I7]** Born under a bad sign
+**[I7]** Been down since I began to crawl
+**[IV7]** If it wasn't for bad luck
+**[V7]** You know, I wouldn't have no luck at **[I7]** all
 
-I can't read
-I didn't know how to write
-My whole life has been
-One big fight
+### Verse 4 (I7)
+**[I7]** I can't read
+**[I7]** I didn't know how to write
+**[IV7]** My whole life has been
+**[V7]** One big **[I7]** fight
 
-Born under a bad sign
-I've been down since I began to crawl
-If it wasn't for bad luck
-I say, I wouldn't have no luck at all
+### Verse 5 (I7)
+**[I7]** Born under a bad sign
+**[I7]** I've been down since I began to crawl
+**[IV7]** If it wasn't for bad luck
+**[V7]** I say, I wouldn't have no luck at **[I7]** all
 
-That ain't no lie, ah, oh
-You know, if it wasn't for bad luck
-I wouldn't have no kinda luck
-If it wasn't for real bad luck
-I wouldn't have no luck at all
+### Verse 6 (I7)
+**[I7]** That ain't no lie, ah, oh
+**[IV7]** You know, if it wasn't for bad luck
+**[V7]** I wouldn't have no kinda luck
+**[I7]** If it wasn't for real bad luck
+**[V7]** I wouldn't have no luck at **[I7]** all
 
-You know wine and women
-Is all I crave
-A big legged woman
-Gonna carry me to my grave
+### Verse 7 (I7)
+**[I7]** You know wine and women
+**[I7]** Is all I crave
+**[IV7]** A big legged woman
+**[V7]** Gonna carry me to my **[I7]** grave
 
-Born under a bad sign
-I've been down since I began to crawl
-If it wasn't for bad luck
-I tell ya, I wouldn't have no luck at all
+### Verse 8 (I7)
+**[I7]** Born under a bad sign
+**[I7]** I've been down since I began to crawl
+**[IV7]** If it wasn't for bad luck
+**[V7]** I tell ya, I wouldn't have no luck at **[I7]** all
 
-Yeah, I'm a bad luck boy
-Been havin' bad luck all of my days, yes
+### Outro (I7)
+**[I7]** Yeah, I'm a bad luck boy
+**[V7]** Been havin' bad luck all of my days, **[I7]** yes
 ## Notes
 - Albert King's signature — the "bad luck" blues
 - Written by Booker T. Jones and William Bell (Stax Records)

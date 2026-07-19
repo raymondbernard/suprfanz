@@ -23,32 +23,44 @@ A:  A  C  E  A  C  E  (boogie pattern, repeated)
 ```
 
 ## Chord Progression (12-bar blues in A)
+
+**Nashville Notation:** I7 — IV7 — I7 — V7 — I7 / V7 (turnaround)
+
 | Bar | 1-4 | 5-6 | 7-8 | 9-10 | 11-12 |
 |-----|------|-----|------|-------|--------|
-| Chord | A7 | D7 | A7 | E7 | A7 — E7 |
+| Nashville | I7 | IV7 | I7 | V7 | I7 — V7 |
+| Key of A | A7 | D7 | A7 | E7 | A7 — E7 |
 
-## Lyrics (vocal enters on the 1)
+## Lyrics
 
-**(Bar 1, beat 1)** Rumor spreading 'round in that Texas town
-About that shack outside La Grange
-And you know what I'm talking about
-Just let me know if you wanna go
-To that home out on the range
-They gotta lotta nice girls
+### Verse 1 (I7)
+**[I7]** Rumor spreading 'round in that Texas town
+**[I7]** About that shack outside La Grange
+**[I7]** And you know what I'm talking about
+**[IV7]** Just let me know if you wanna go
+**[I7]** To that home out on the range
+**[V7]** They gotta lotta nice girls **[I7]**
 
-Have mercy
-A-haw haw haw-haw
-Heh, a-haw haw-haw
+### Chorus (I7)
+**[I7]** Have mercy
+**[I7]** A-haw haw haw-haw
+**[IV7]** Heh, a-haw haw-haw
+**[I7]** [V7] [I7]
 
-Well, I hear it's fine if you got the time
-And the ten to get yourself in
-A hmm, hmm
+### Verse 2 (I7)
+**[I7]** Well, I hear it's fine if you got the time
+**[I7]** And the ten to get yourself in
+**[IV7]** A hmm, hmm
+**[I7]** [V7] [I7]
 
-And I hear it's tight most every night
-But now I might be mistaken
-Hmm, hmm, hmm
+### Verse 3 (I7)
+**[I7]** And I hear it's tight most every night
+**[I7]** But now I might be mistaken
+**[IV7]** Hmm, hmm, hmm
+**[I7]** [V7] [I7]
 
-Have mercy
+### Outro (I7)
+**[I7]** Have mercy **[IV7]** [I7]** [V7] [I7]
 ## Notes
 - ZZ Top's signature — "that hutch" of a song
 - Inspired by John Lee Hooker's "Boogie Chillen"
