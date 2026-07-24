@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuprFanz — Everyone Deserves SuprFanz</title>
+  <meta name="description" content="SuprFanz uses unique technologies to drive traffic to live events via social media. Personalized, automated fan outreach at scale." />
+  <link rel="icon" href="SF-fb-icon-6.gif" type="image/gif" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Primary font: DIN Next Rounded LT Pro. Falls back to Varela Round / Quicksand / system rounded sans. -->
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Official palette */
+      --yellow-600: #fdd835;
+      --blue-200: #90caf9;
+      --pink-200: #f48fb1;
+      --purple-a100: #ea80fc;
+      --deep-purple-a100: #b388ff;
+      --cyan-200: #80deea;
+      --light-green-a200: #b2ff59;
+      --orange-400: #ffa726;
+      --red-700: #d32f2f;
+
+      /* Semantic mapping */
+      --primary: var(--yellow-600);
+      --secondary: var(--blue-200);
+      --text: #212121;
+      --text-muted: #616161;
+      --bg: #ffffff;
+      --bg-soft: #f5f5f5;
+      --white: #ffffff;
+      --navy: #102027;
+      --border: #e0e0e0;
+      --max-width: 1200px;
+
+      --font-body: 'DIN Next Rounded LT Pro', 'Varela Round', 'Quicksand', 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-head: 'DIN Next Rounded LT Pro', 'Varela Round', 'Quicksand', 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* Header / Nav */
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--navy);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--navy);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--navy);
+      background: transparent;
+    }
+
+    .hero .btn-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .solution .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #263238 100%);
+      color: var(--white);
+      padding: 5rem 1.5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(253,216,53,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p.lead {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #cfd8dc;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #b0bec5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Sections */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.5rem;
+    }
+
+    section > .container {
+      width: 100%;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      color: var(--navy);
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Problem */
+    .problem {
+      background: var(--white);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .problem-card {
+      background: var(--bg-soft);
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 160px;
+    }
+
+    .problem-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    .problem-card p {
+      flex-grow: 1;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Solution */
+    .solution {
+      background: var(--primary);
+      color: var(--navy);
+    }
+
+    .solution .section-header h2,
+    .solution .section-header p {
+      color: var(--navy);
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .solution-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--navy);
+    }
+
+    .solution-text p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+
+    .solution-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      border: 4px solid var(--white);
+    }
+
+    .solution-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Features */
+    .features {
+      background: var(--white);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      padding: 1.25rem;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #ffffff, #f5f5f5);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 180px;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .feature-card:nth-child(2) .feature-icon { background: var(--cyan-200); }
+    .feature-card:nth-child(3) .feature-icon { background: var(--light-green-a200); }
+    .feature-card:nth-child(4) .feature-icon { background: var(--pink-200); }
+    .feature-card:nth-child(5) .feature-icon { background: var(--purple-a100); }
+    .feature-card:nth-child(6) .feature-icon { background: var(--orange-400); }
+    .feature-card:nth-child(7) .feature-icon { background: var(--deep-purple-a100); }
+    .feature-card:nth-child(8) .feature-icon { background: var(--cyan-200); }
+    .feature-card:nth-child(9) .feature-icon { background: var(--light-green-a200); }
+    .feature-card:nth-child(10) .feature-icon { background: var(--pink-200); }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    .feature-card p {
+      flex-grow: 1;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Screenshots */
+    /* Video */
+    .video-section {
+      background: var(--bg-soft);
+    }
+
+    /* How it works */
+    .how-it-works {
+      background: var(--white);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      background: var(--navy);
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 16px;
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1.25rem;
+      counter-reset: step;
+    }
+
+    .step {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 180px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: -14px;
+      left: 20px;
+      width: 34px;
+      height: 34px;
+      background: var(--primary);
+      color: var(--navy);
+      font-family: var(--font-head);
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .step:nth-child(2)::before { background: var(--secondary); }
+    .step:nth-child(3)::before { background: var(--primary); }
+    .step:nth-child(4)::before { background: var(--secondary); }
+    .step:nth-child(5)::before { background: var(--primary); }
+    .step:nth-child(6)::before { background: var(--secondary); }
+
+    .step h3 {
+      margin-top: 0.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .step p {
+      flex-grow: 1;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, #fbc02d 100%);
+      color: var(--navy);
+      text-align: center;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .cta h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .cta .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: #b0bec5;
+      padding: 3rem 1.5rem 2rem;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+      color: #b0bec5;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 2rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .social-link img {
+      height: 24px;
+      width: auto;
+      opacity: 0.9;
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--white);
+      opacity: 0.9;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .socials img {
+      height: 28px;
+      width: auto;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .socials img:hover {
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .problem-grid,
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      section {
+        min-height: auto;
+        padding: 4rem 1.5rem;
+      }
+
+      .problem-grid,
+      .feature-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 3rem 1rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <img src="SF-fb-icon-6.gif" alt="SuprFanz robot mascot" />
+        SuprFanz
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem">For Promo Artists</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu" aria-label="Menu">☰</button>
+    </nav>
+  </header>
+
+  <div class="beta-banner">
+    <strong>Limited Beta Offer</strong> First 100 customers get one live event promoted for free. No credit card required.
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>Everyone Deserves <span>SuprFanz</span></h1>
+        <p class="lead">
+          Unique technologies to drive traffic to your live events via social media.
+          AI-powered fan marketing — personalized outreach, smart targeting, and campaign copy that sells out shows without the 20-hour promo grind.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-secondary">Bring Back SuprFanz</a>
+          <a href="#solution" class="btn btn-outline">See How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">Tickets sold out</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Meetup RSVPs</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10-20</span>
+            <span class="stat-label">Hours saved per week</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="section-header">
+        <h2>The Live Event Problem</h2>
+        <p>
+          You put everything into the show — then spend your week begging people to show up.
+          Social feeds are noisy, fans are scattered, and every empty seat costs you money and momentum.
+          SuprFanz fixes that.
+        </p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3>Promo Eats Your Creative Time</h3>
+          <p>Artists lose 20+ hours a week messaging fans, posting to pages, and chasing RSVPs. SuprFanz runs that campaign while you write, rehearse, or rest.</p>
+        </div>
+        <div class="problem-card">
+          <h3>The Feed Is a Noise War</h3>
+          <p>1.4M event invites hit Facebook every 20 minutes. SuprFanz uses AI to find the fans who actually want to come — precision beats spam.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Your Fans Are Scattered</h3>
+          <p>They're on Facebook, email, SMS, and who-knows-what-else. SuprFanz stitches every channel into one smart outreach machine.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Half-Empty Rooms Hurt Everyone</h3>
+          <p>Venues, artists, and the crowd all feel a weak room. SuprFanz turns maybes into yeses and empty seats into a packed house.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Your Best Fans Forget to Show Up</h3>
+          <p>Life gets busy. SuprFanz sends the right reminder at the right time so your true fans never miss the gig.</p>
+        </div>
+        <div class="problem-card">
+          <h3>You Don't Have a Promo Team</h3>
+          <p>Big tours have marketing departments. SuprFanz is your AI-powered promo team that works 24/7 for a fraction of the cost.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Your Event Posts Get Buried</h3>
+          <p>Social algorithms hide event posts from fans who already liked your page. SuprFanz reaches fans directly where they actually respond.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Repeat Promotion Burns Goodwill</h3>
+          <p>Blasting the same invite over and over annoys fans. SuprFanz personalizes every touch so fans feel invited, not spammed.</p>
+        </div>
+        <div class="problem-card">
+          <h3>You Lose Fans After Every Show</h3>
+          <p>Fans come once and disappear into the crowd. SuprFanz keeps the conversation going so your audience grows show after show.</p>
+        </div>
+        <div class="problem-card">
+          <h3>Promo Guilt Keeps You Up at Night</h3>
+          <p>You know you should be promoting, but you're exhausted after the show. SuprFanz never sleeps, so your event keeps selling while you rest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="solution" id="solution">
+    <div class="container">
+      <div class="section-header">
+        <h2>SuprFanz Puts Butts in Seats</h2>
+        <p>The same AI agent that sold out B.B. King’s can sell out your room too.</p>
+      </div>
+      <div class="solution-grid">
+        <div class="solution-image">
+          <img src="bbkings-crowd.jpg" alt="Crowded B.B. King’s blues show powered by SuprFanz" />
+        </div>
+        <div class="solution-text">
+          <p>
+            SuprFanz grew out of a real need: Cosmic Ray had a weekly blues residency at B.B. King’s in New York and needed to sell out a 120-seat room every week.
+          </p>
+          <p>
+            By combining social network intelligence with an AI agent trained on event marketing, SuprFanz turned his fan graph into a reliable engine for live attendance.
+          </p>
+          <p>
+            <strong>The result:</strong> a string of sold-out shows, thousands of fans reached automatically, and a platform that can do the same for any artist, promoter, or venue.
+          </p>
+          <a href="#features" class="btn btn-primary">Explore the Platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>What SuprFanz Can Do</h2>
+        <p>AI-powered fan marketing that behaves like your hardest-working roadie — personalized, targeted, and automatic.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI-Powered Event Marketing</h3>
+          <p>Let AI draft and optimize your campaign messages, pick the best fans to reach, and run your promo on autopilot — while you focus on the show.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📩</div>
+          <h3>Personalized Messaging at Scale</h3>
+          <p>Send tailored Facebook Messenger, email, and SMS messages using fans' first names and attendance status — dynamically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Smart Fan Targeting</h3>
+          <p>Discover the SuprFanz hiding in your social network. Target by location, event distance, past attendance, and engagement signals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3>Organic Network Growth</h3>
+          <p>SuprFanz actively reaches out and friends potential fans on your behalf — then nurtures those relationships over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Leverage the Whole Band</h3>
+          <p>Run coordinated campaigns across every band member's social accounts to amplify one event with unified messaging.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Smart Audience Insights</h3>
+          <p>See who your real fans are, where they live, and which messages actually drive attendance — so every campaign is sharper than the last.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h3>Auto Follow-Up & Reminders</h3>
+          <p>SuprFanz nudges fans who showed interest but haven't RSVP'd yet, then sends event-day reminders so fewer tickets go unused.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✅</div>
+          <h3>One-Click Campaign Approval</h3>
+          <p>Review the AI-generated campaign, hit approve, and launch. No spreadsheets, no copy-paste, no stress.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎟️</div>
+          <h3>Waitlist & Pre-Sale Buzz</h3>
+          <p>Build anticipation before tickets drop. SuprFanz captures early interest, runs pre-sale campaigns, and turns waitlists into first-hour buyers.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎟️</div>
+          <h3>Waitlist & Pre-Sale Buzz</h3>
+          <p>Build anticipation before tickets drop. SuprFanz captures early interest, runs pre-sale campaigns, and turns waitlists into first-hour buyers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" id="video">
+    <div class="container">
+      <div class="section-header">
+        <h2>Watch the SuprFanz Story</h2>
+        <p>See how SuprFanz helped turn a weekly blues residency into a string of sold-out shows.</p>
+      </div>
+      <div class="video-wrapper">
+        <video controls autoplay muted loop playsinline poster="welcome (1).jpg">
+          <source src="suprfanz-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="video-caption">SuprFanz — the new video.</p>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>From event link to sold-out room in six AI-assisted steps.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Connect Your Event</h3>
+          <p>Paste your event or page URL. The SuprFanz AI agent scans your audience, past events, and fan activity.</p>
+        </div>
+        <div class="step">
+          <h3>Agent Builds Your Campaign</h3>
+          <p>The agent drafts personalized messages, selects the right fans, and schedules outreach across social media and email.</p>
+        </div>
+        <div class="step">
+          <h3>Review & Launch</h3>
+          <p>Approve the AI-generated campaign with one click, then the agent reaches the fans most likely to show up.</p>
+        </div>
+        <div class="step">
+          <h3>Sell Out & Learn</h3>
+          <p>Track RSVPs and message performance in real time. The agent learns from every campaign and gets smarter for the next show.</p>
+        </div>
+        <div class="step">
+          <h3>Track & Optimize</h3>
+          <p>Watch opens, clicks, and conversions as they happen. See what's working and fine-tune your campaign on the fly.</p>
+        </div>
+        <div class="step">
+          <h3>Grow Your Fanbase</h3>
+          <p>Every campaign adds data to your fan graph. Your next show starts with a bigger, smarter, more engaged audience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Be One of the First 100</h2>
+      <p>
+        SuprFanz is back in limited beta. For a short time, we're promoting one live event free for the first 100 artists, venues, and promoters who sign up.
+        No setup fees. No credit card. Just SuprFanz doing what it does best — selling out your room.
+      </p>
+      <a href="mailto:info@suprfanz.com" class="btn btn-primary">Claim Your Free Event</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>SuprFanz</h4>
+        <p>Everyone deserves SuprFanz. Unique technologies to drive traffic to events via social media.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook" class="social-link"><img src="SF-fb-icon-6.gif" alt="Facebook" /></a>
+          <a href="https://x.com/Suprfanz" aria-label="SuprFanz on X" target="_blank" rel="noopener noreferrer" class="social-link twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#contact">Early Access</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Story</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help & Support</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Copyright SuprFanz 2026. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '70px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.background = '#fff';
+      navLinks.style.padding = '1rem';
+      navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+    });
+  </script>
+
+</body>
+</html>
