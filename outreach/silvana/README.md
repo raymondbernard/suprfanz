@@ -38,7 +38,7 @@ Each PDF has a matching `.html` file. Edit the HTML to change dates, prices, cop
 ## How to Regenerate PDFs
 
 ```powershell
-C:\Users\RayBe\AppData\Local\Programs\Python\Python313\python.exe outreach/residency/print_assets/print_to_pdf.py
+C:\Users\RayBe\AppData\Local\Programs\Python\Python313\python.exe outreach/silvana/print_to_pdf.py
 ```
 
 Requires Playwright for Python 3.13.
