@@ -1,0 +1,4 @@
+door split -1 none
+dinner + blues 12133 " Eastern food, so we're marketing it as dinner + blues.\n\nCan you confirm by [Date]? Happy to answer any questions.\n\nBest"
+Columbia students, Harlem locals 12013 "nare/cymbals if needed\n\nWe're targeting Columbia students, Harlem locals, and the NYC blues scene. Silvana serves Middle"
+30-minute set 11632 'W 116th St in Harlem. Each band plays a 30-minute set (Cosmic Blues Band closes as anchor).\n\nDetails for [Date]:\n- Load-'

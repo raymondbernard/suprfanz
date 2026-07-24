@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Silvana Blues Review - Elevator Strips v2</title>
+<style>
+@page { size: letter; margin: 0.6in 0.4in; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #fff; }
+.sheet { width: 8.5in; height: 11in; padding: 0.6in 0.4in; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.strip { width: 7.7in; height: 2.25in; position: relative; overflow: hidden; border-radius: 0.15in; border: 4px solid #111; background: #fff8dc; page-break-inside: avoid; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+
+.swirl { position: absolute; top: -50%; left: -10%; width: 120%; height: 200%; background: radial-gradient(circle at 20% 50%, #ff6b35 0%, transparent 30%), radial-gradient(circle at 80% 50%, #7c3aed 0%, transparent 30%), radial-gradient(circle at 50% 50%, #1e3a8a 0%, transparent 35%); opacity: 0.30; filter: blur(12px); }
+.strip::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, transparent 0, transparent 12px, rgba(30,58,138,0.06) 12px, rgba(30,58,138,0.06) 14px); z-index: 1; }
+
+.inner { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; align-items: center; padding: 0.18in; }
+.logo-col { width: 1.6in; height: 100%; display: flex; align-items: center; justify-content: center; }
+.logo-col img { width: 1.35in; height: 1.35in; border-radius: 50%; border: 3px solid #111; background: #fff; box-shadow: 0 0 0 3px #ff6b35, 0 0 0 6px #dc2626, 0 0 18px rgba(30,58,138,0.5); }
+.text-col { flex: 1; padding: 0 0.18in; display: flex; flex-direction: column; justify-content: center; }
+.when { font-size: 22pt; font-weight: 900; color: #dc2626; transform: rotate(-1.5deg) skewX(-4deg); text-shadow: 2px 2px 0 #ff6b35; letter-spacing: 1px; line-height: 1; }
+.what { font-size: 13pt; font-weight: 800; color: #111; margin: 0.05in 0; line-height: 1.2; }
+.food { font-size: 10pt; color: #111; font-weight: 700; background: rgba(255,255,255,0.7); padding: 0.03in 0.08in; border-radius: 0.08in; display: inline-block; }
+.free-col { width: 2.2in; height: 100%; background: #1e3a8a; border-radius: 0.12in; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff8dc; border: 3px solid #111; }
+.big-free { font-size: 26pt; font-weight: 900; line-height: 0.95; text-shadow: 2px 2px 0 #dc2626, -1px -1px 0 #ff6b35; transform: rotate(-2deg); }
+.tip { font-size: 10pt; font-weight: 800; margin-top: 0.04in; color: #ff6b35; }
+.qr { width: 0.55in; height: 0.55in; margin-top: 0.04in; border: 2px solid #fff; border-radius: 5px; background: #fff; }
+
+.wave { position: absolute; top: 0; left: 0; right: 0; height: 0.06in; background: repeating-linear-gradient(45deg, #dc2626, #dc2626 6px, #ff6b35 6px, #ff6b35 12px, #1e3a8a 12px, #1e3a8a 18px); z-index: 3; }
+</style>
+</head>
+<body>
+<div class="sheet">
+<div class="strip">
+  <div class="swirl"></div>
+  <div class="wave"></div>
+  <div class="inner">
+    <div class="logo-col"><img src="logo_cb1.png" alt="Cosmic Blues Band"></div>
+    <div class="text-col">
+      <div class="when">THU AUG 20 · 7 PM</div>
+      <div class="what">Silvana Blues Review — 4 NYC blues acts · Cosmic Blues Band headlines</div>
+      <div class="food">Hummus · Falafel · Shawarma · Schnitzel · Cocktails · 300 W 116th St</div>
+    </div>
+    <div class="free-col">
+      <div class="big-free">FREE<br>ADMISSION</div>
+      <div class="tip">TIP THE BANDS</div>
+      <img src="qr_epk_100.png" class="qr" alt="QR">
+    </div>
+  </div>
+</div>
+<div class="strip">
+  <div class="swirl"></div>
+  <div class="wave"></div>
+  <div class="inner">
+    <div class="logo-col"><img src="logo_cb1.png" alt="Cosmic Blues Band"></div>
+    <div class="text-col">
+      <div class="when">THU AUG 20 · 7 PM</div>
+      <div class="what">Silvana Blues Review — 4 NYC blues acts · Cosmic Blues Band headlines</div>
+      <div class="food">Hummus · Falafel · Shawarma · Schnitzel · Cocktails · 300 W 116th St</div>
+    </div>
+    <div class="free-col">
+      <div class="big-free">FREE<br>ADMISSION</div>
+      <div class="tip">TIP THE BANDS</div>
+      <img src="qr_epk_100.png" class="qr" alt="QR">
+    </div>
+  </div>
+</div>
+<div class="strip">
+  <div class="swirl"></div>
+  <div class="wave"></div>
+  <div class="inner">
+    <div class="logo-col"><img src="logo_cb1.png" alt="Cosmic Blues Band"></div>
+    <div class="text-col">
+      <div class="when">THU AUG 20 · 7 PM</div>
+      <div class="what">Silvana Blues Review — 4 NYC blues acts · Cosmic Blues Band headlines</div>
+      <div class="food">Hummus · Falafel · Shawarma · Schnitzel · Cocktails · 300 W 116th St</div>
+    </div>
+    <div class="free-col">
+      <div class="big-free">FREE<br>ADMISSION</div>
+      <div class="tip">TIP THE BANDS</div>
+      <img src="qr_epk_100.png" class="qr" alt="QR">
+    </div>
+  </div>
+</div>
+<div class="strip">
+  <div class="swirl"></div>
+  <div class="wave"></div>
+  <div class="inner">
+    <div class="logo-col"><img src="logo_cb1.png" alt="Cosmic Blues Band"></div>
+    <div class="text-col">
+      <div class="when">THU AUG 20 · 7 PM</div>
+      <div class="what">Silvana Blues Review — 4 NYC blues acts · Cosmic Blues Band headlines</div>
+      <div class="food">Hummus · Falafel · Shawarma · Schnitzel · Cocktails · 300 W 116th St</div>
+    </div>
+    <div class="free-col">
+      <div class="big-free">FREE<br>ADMISSION</div>
+      <div class="tip">TIP THE BANDS</div>
+      <img src="qr_epk_100.png" class="qr" alt="QR">
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
