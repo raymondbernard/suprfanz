@@ -3,8 +3,8 @@
 **Show:** Silvana Blues Review  
 **Date:** Thursday, August 20, 2026  
 **Venue:** Silvana, 300 W 116th St, Harlem, NYC  
-**QR Code target:** https://raymondbernard.github.io/cosmic-blues-epk/  
-*(Update this to your Eventbrite/Facebook event URL before final print run.)*
+**QR Code target:** https://maps.app.goo.gl/JoCJZHJX2KLz6tRm7 (opens Google Maps directions to Silvana)  
+*(Update this to your Eventbrite/Facebook event URL before final print run if you want QR to link to the event page instead.)*
 
 ---
 
@@ -24,12 +24,12 @@
 Each PDF has a matching `.html` file. Edit the HTML to change dates, prices, copy, or QR URL.
 
 ### QR Codes
-- `qr_epk_100.png` (180×180 px) — used in most assets
-- `qr_epk_200.png` (360×360 px) — for larger applications
-- `qr_epk_300.png` (540×540 px) — for posters
+- `qr_maps_100.png`, `qr_maps_200.png`, `qr_maps_300.png` — Google Maps link to Silvana, used in all assets
+- `qr_epk_100.png`, `qr_epk_200.png`, `qr_epk_300.png` — alternate EPK link (not currently used)
 
 ### Helper Scripts
-- `make_qr.py` — regenerate QR codes
+- `make_qr_maps.py` — regenerate Google Maps QR codes
+- `make_qr.py` — regenerate EPK QR codes
 - `update_qr.py` — swap QR placeholders in HTML for real images
 - `print_to_pdf.py` — regenerate all PDFs from HTML via Playwright
 
@@ -47,10 +47,11 @@ Requires Playwright for Python 3.13.
 
 ## How to Update the QR Code URL
 
-1. Edit `make_qr.py` and change `URL` to your event link.
+The assets currently point to the Google Maps location. To switch to an event page:
+
+1. Edit `make_qr_maps.py` and change `URL` to your event link.
 2. Run it.
-3. Run `update_qr.py` (only needed if you change image filenames).
-4. Run `print_to_pdf.py`.
+3. Run `print_to_pdf.py`.
 
 ---
 
@@ -62,6 +63,7 @@ Requires Playwright for Python 3.13.
 - **Table tents:** Print, cut along crop lines, fold in half vertically so the design faces both directions. Add a small tape dot inside to keep shape.
 - **Elevator strips:** Cut vertically. Tape top and bottom only — easier to remove cleanly.
 - **QR stickers:** Print on full-sheet label paper and punch/cut to size.
+- **Test-scan the QR codes** from your screen and from a test print before the final print run, especially the small ones on pass cards and stickers.
 
 ---
 
@@ -104,4 +106,5 @@ Requires Playwright for Python 3.13.
 - All assets use a cohesive psychedelic cream + electric blue + red + orange color scheme to read as one campaign.
 - Copy emphasizes food + proximity + free admission + tips — the four levers that convert Columbia students.
 - Silvana is at 300 W 116th St, on the corner of Frederick Douglass Blvd (8th Ave) — walk **east** on 116th from campus.
-- Replace the QR URL with an event-specific link (Eventbrite/Facebook/Instagram) before the big print push.
+- The QR code on every asset links directly to **Google Maps directions to Silvana**.
+- Replace the QR URL with an event-specific link (Eventbrite/Facebook/Instagram) before the big print push if you prefer event-page traffic over directions.
