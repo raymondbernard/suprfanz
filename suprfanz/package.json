@@ -1,0 +1,17 @@
+{
+  "name": "suprfanz",
+  "version": "1.0.0",
+  "description": "SuprFanz landing page with Vercel serverless API for event signups",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@vercel/kv": "^1.0.1",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
+}
